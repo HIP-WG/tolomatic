@@ -2,6 +2,10 @@
 use strict;
 use warnings;
 
+while(<>) {
+	warn $_;
+}
+
 my ( $key, $infile ) = @ARGV;
 my @fields;
 {
