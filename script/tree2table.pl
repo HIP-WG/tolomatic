@@ -20,6 +20,14 @@ my %args = (
 $file ? $args{'-file'} = $file : $url ? $args{'-url'} = $url : die "Need -file or -url";
 my ($tree) = @{ parse(%args)->get_items(_TREE_) };
 
+my $counter = 1;
+$tree->visit_depth_first(
+	'-post' => sub {
+		my $node = shift;
+		$node->set_name($counter++) if $node->is_internal;
+	}
+);
+
 $tree->visit_depth_first(
 	'-pre' => sub {
 		my $node = shift;
