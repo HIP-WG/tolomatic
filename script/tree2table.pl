@@ -3,6 +3,7 @@ use strict;
 use Bio::Phylo::IO 'parse';
 use Bio::Phylo::Util::CONSTANT ':objecttypes';
 use Getopt::Long;
+use Digest::MD5 'md5_hex';
 
 my ( $file, $format, $dir, $url );
 GetOptions(
@@ -36,7 +37,7 @@ $tree->visit_depth_first(
 			unshift @path, $node->get_internal_name;
 			$node->set_generic( 'path' => \@path );
 			if ( $node->is_terminal ) {
-				my $filename = $path[0];
+				my $filename = md5_hex($path[0]);
 				open my $fh, '>', "${dir}/${filename}" or die "Can't open ${dir}/${filename}: $!";
 				print $fh join "\t", @path;
 				close $fh;
