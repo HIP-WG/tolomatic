@@ -1,13 +1,14 @@
 package Bio::PhyloTastic::Pruner::MapReduce;
 use Moose::Role;
 use Scalar::Util 'refaddr';
+use Digest::MD5 'md5_hex';
 
 die "Need DATADIR environment variable" if not -d $ENV{'DATADIR'};
 
 sub map { 
     my ($self, $taxon) = @_;
-    my $file = $ENV{'DATADIR'} . '/' . $taxon;
-    open my $fh, '<', $file or die "Can't open ${file}: $!";
+    my $file = $ENV{'DATADIR'} . '/' . md5_hex($taxon);
+    open my $fh, '<', $file or die "Can't process taxon ${taxon} (${file}): $!";
     my @lines = <$fh>;
     my @fields = split /\t/, $lines[0];    
     for my $i ( 1 .. $#fields ) {
