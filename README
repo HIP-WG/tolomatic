@@ -2,6 +2,5 @@ Here's how we're going to build PhyloTastic:
 * Take a very big tree (example: the ToLWeb XML dump)
 * For each tip, compute its path to the root
 * Write that path out as a tab-delimited list of node names
-* Using map.pl, given a list of taxa, emit matching paths as a list of parent-child pairs
-* Using the reducer, retain unique parent-child pairs
+* Using prune.sh, given a list of taxa, emit matching paths of parent-child pairs
 * Place those into a template for NeXML
