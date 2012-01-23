@@ -120,25 +120,29 @@ exercise.
 
 =head1 INSTALLING
 
-To make this work, you firstly need to install a couple of dependencies:
+To make this work, you firstly need to install a couple of dependencies. The
+following three are best installed from the CPAN shell:
 
 =over
 
-=item L<http://search.cpan.org/dist/Moose|Moose>
+=item Moose - L<http://search.cpan.org/dist/Moose>
 
-=item L<http://search.cpan.org/dist/Bio-Phylo|Bio::Phylo>
+=item Bio::Phylo - L<http://search.cpan.org/dist/Bio-Phylo>
 
-=item L<http://search.cpan.org/dist/Hadoop-Streaming|Hadoop::Streaming>
-
-=item L<http://hadoop.apache.org/|Hadoop>
+=item Hadoop::Streaming - L<http://search.cpan.org/dist/Hadoop-Streaming>
 
 =back
+
+In addition you will need to install Hadoop (L<http://hadoop.apache.org/>). This
+is pretty simple if you just get the compiled version and unpack it. All you
+need to do is set the C<$HADOOP_HOME> and C<$HADOOP_VERSION> environment
+variables correctly.
 
 Subsequently, you can add the lib folder in this project to your C<$PERL5LIB>
 environment variable so that the module C<Bio::PhyloTastic::Pruner::MapReduce>
 is available to any scripts that need it. There are no installation
 scripts (Makefile.PL or Build.PL), META.yml, unit tests or any of the other
-goodies yet. Feel free to contribute these :-)
+goodies for this yet. Feel free to contribute these :-)
 
 =head1 RUNNING
 
