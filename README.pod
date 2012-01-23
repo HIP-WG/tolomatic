@@ -5,13 +5,16 @@ tree and a list of taxa and returns a topology for just those taxa by pruning
 down the very big tree. There are different ways in which this can be
 done, including by recursive calls into a database (which probably would need
 to hit the database many times) or by loading the whole tree into memory (which
-might take a while to read in the file, and cost a bit of memory). The way it
-is done here is B<much cooler> than that (in fact, it's phylotastic), because
-it never requires the whole tree to be in memory or in a database: the pruning
-is done in parallel using MapReduce. Some tests on the entire dump of the Tree
-of Life Web Project (L<http://tolweb.org>) showed that this in fact does return
-results pretty quickly. It would go even quicker if this was actually run on
-multiple compute nodes and if we ported the implementation to Java so that it
+might take a while to read in the file, and cost a bit of memory).
+
+The way it is done here is B<much cooler> than that (in fact, it's phylotastic),
+because it never requires the whole tree to be in memory or in a database: the
+pruning is done in parallel using MapReduce
+(L<http://en.wikipedia.org/wiki/MapReduce>). Some tests on the entire dump of
+the Tree of Life Web Project (L<http://tolweb.org>) showed that this in fact
+does return a pruned subtree within a few seconds, fast enough for a web
+service. It would go even quicker if this was actually run on multiple compute
+nodes and if we ported the implementation to Java so that it
 embeds more tightly into hadoop.
 
 =head1 THE ALGORITHM
