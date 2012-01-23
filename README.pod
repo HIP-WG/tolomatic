@@ -1,0 +1,197 @@
+=head1 INTRODUCTION
+
+This is a prototype implementation of a phylotastic app that takes a very big
+tree and a list of taxa and returns a topology for just those taxa by pruning
+down the very big tree. There are different ways in which this can be
+done, including by recursive calls into a database (which probably would need
+to hit the database many times) or by loading the whole tree into memory (which
+might take a while to read in the file, and cost a bit of memory). The way it
+is done here is B<much cooler> than that (in fact, it's phylotastic), because
+it never requires the whole tree to be in memory or in a database: the pruning
+is done in parallel using MapReduce. Some tests on the entire dump of the Tree
+of Life Web Project (L<http://tolweb.org>) showed that this in fact does return
+results pretty quickly. It would go even quicker if this was actually run on
+multiple compute nodes and if we ported the implementation to Java so that it
+embeds more tightly into hadoop.
+
+=head1 THE ALGORITHM
+
+Assume we have a tree like this:
+
+ ((((A,B)1,(C,D)2)3,E)4,(F,G)5)6;
+
+The nodes on this tree are labelled with integers (1-6), which have been applied
+in a post-order traversal. The important point of this is that a child node will
+always have a label whose value is a lower number than any of its ancestors. Now
+assume that we want to get a tree that retains these tips:
+
+ A
+ C
+ F
+ G
+ 
+Such that we end up with a tree like this:
+
+ ((A,C)3,(F,G)5)6;
+
+We're going to solve this using MapReduce. Here are the steps:
+
+=over
+
+=item B<map>
+
+In the first step, the map function is passed one taxon of interest per call. In
+response to each of these, it returns a list of key value pairs, where each key
+is a node label for one of the nodes between the taxon and the root of the tree,
+and the value is the taxon. This is what it emits:
+ 
+ (for A:)
+ 1 => A
+ 3 => A
+ 4 => A
+ 6 => A
+ 
+ (for C:)
+ 2 => C
+ 3 => C
+ 4 => C
+ 6 => C
+ 
+ (for F:)
+ 5 => F
+ 6 => F
+ 
+ (for G:)
+ 5 => G
+ 6 => G
+
+=item B<combine>
+
+In the second step, the output of the map function are passed into a combiner.
+The hadoop toolkit we're using preprocesses the output from map such that for
+each key that was emitted multiple times by map the input now becomes such that
+that key is only seen once, with a list of the values associated with it, i.e.
+like so:
+
+ 1 => [ A ]
+ 2 => [ C ]
+ 3 => [ A, C ]
+ 4 => [ A, C ]
+ 5 => [ F, G ]
+ 6 => [ A, C, F, G ]
+
+In this step we're now going to switch the keys and values around, as a first
+step towards filtering out the unbranched internal node that was created by
+pruning E (so is that node 3 or 4?). In addition, we will also want to prune out
+the unbranched internals that were created by pruning B and D (being node 1 and
+2, respectively). For that we're going to count how many descendants those nodes
+have. So two things: switch keys and values, count number of descendants.
+Because keys and values we emit need to be scalars we concatenate the keys with
+| and the values with , (for example). Here's the result we're going to emit:
+
+ A       => 1,1 # the first integer is the node ID, the second its tip count
+ C       => 2,1
+ A|C     => 3,2
+ A|C     => 4,2
+ F|G     => 5,2
+ A|C|F|G => 6,4
+ 
+=item B<reduce>
+
+Out of these we firstly want to filter out "unbranched internals" such as node
+1 and 2, which became "unbranched" by the pruning of B and D, respectively. This
+is easy, because we just won't emit any key/value pairs where the value has a
+tip count of one (the integer after the comma). For 3 and 4 it's a bit harder,
+we know they're both on the path to the root for both A and C, but the only way
+to know which of these is the MRCA is by recourse to our node labelling scheme:
+because the labels were applied in post-order, descendants have lower label
+values than ancestors, and so 3 is the MRCA. Having so reduced the number of
+key/value pairs, we finally emit:
+
+ A|C     => 3,2
+ F|G     => 5,2
+ A|C|F|G => 6,2
+
+This final result is a taxon bipartition table (with labels for each implied
+node retained), so turning that into a format the user wants should be a trivial
+exercise.
+
+=back
+
+=head1 INSTALLING
+
+To make this work, you firstly need to install a couple of dependencies:
+
+=over
+
+=item L<http://search.cpan.org/dist/Moose|Moose>
+
+=item L<http://search.cpan.org/dist/Bio-Phylo|Bio::Phylo>
+
+=item L<http://search.cpan.org/dist/Hadoop-Streaming|Hadoop::Streaming>
+
+=item L<http://hadoop.apache.org/|Hadoop>
+
+=back
+
+Subsequently, you can add the lib folder in this project to your C<$PERL5LIB>
+environment variable so that the module C<Bio::PhyloTastic::Pruner::MapReduce>
+is available to any scripts that need it. There are no installation
+scripts (Makefile.PL or Build.PL), META.yml, unit tests or any of the other
+goodies yet. Feel free to contribute these :-)
+
+=head1 RUNNING
+
+The first thing you are going to have to do is pre-process a very large tree to
+massage it in the format the mapper expects. Two things need to happen: i) nodes
+need to be labelled in a post-order traversal; ii) for each tip in the tree, the
+path to the root needs to be constructed based on those node labels. Each path
+then needs to be written out to a separate file, named after the MD5 hex hash
+of the focal taxon. For our example tree here, this will write out the following
+paths (each line in a separate file):
+
+ A  1   3   4   6
+ B  1   3   4   6
+ C  2   3   4   6
+ D  2   3   4   6
+ E  4   6
+ F  5   6
+ G  5   6
+
+The script/tree2table.pl script does that for you. Usage is as follows:
+
+ perl tree2table.pl \
+    --file=<input tree> \ # e.g. examples/tolweb/tolskeletaldump.xml
+    --format=<input tree format> \ # e.g. tolweb, or nexml/newick/nexus/phyloxml
+    --dir=<dir to write to>
+
+If you actually run this on the tolskeletaldump.xml, be aware that this step
+will take several minutes: it's a big tree. Luckily we only have to do this once!
+When that's done, we can run a query, e.g.:
+
+ $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/hadoop-$HADOOP_VERSION-streaming.jar \
+    -cmdenv DATADIR=<dir that you wrote to> \ # i.e. the output from tree2table.pl
+    -input <file with taxa to keep, one per line> \ # e.g. examples/tolweb/taxa.txt
+    -output <dir for hadoop to write to> \ # this dir must not exist yet!
+    -mapper script/pruner/mapper.pl \
+    -combiner script/pruner/combiner.pl \
+    -reducer script/pruner/reducer.pl \
+    -verbose
+
+When you run that, there will be a firehose of logging messages from log4j (and
+a couple from Bio::Phylo). Once it's done there will be a part-00000 file inside
+your output folder with the taxon bipartition table as described above.
+
+=head1 TO DO
+
+None of this has actually been tested on a multinode machine, and I'm a
+MapReduce novice. My understanding is that the algorithm is stateless enough
+to be able to run in a distributed fashion, but I'm eager to learn if it works.
+
+Also, there needs to be more post-processing of the results. Conceivably, the
+post-processing needs to be MapReduced as well if the output is very large, but
+either way it would be nice to have it in an actual tree format.
+
+And of course there should be more docs, unit tests, install scripts, etc.
+Alternatively, the algorithm could be ported to Java so we don't need any
+additional CPAN niceties (but then we need Java niceties).
