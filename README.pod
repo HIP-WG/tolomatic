@@ -113,7 +113,7 @@ key/value pairs, we finally emit:
 
  A|C     => 3,2
  F|G     => 5,2
- A|C|F|G => 6,2
+ A|C|F|G => 6,4
 
 This final result is a taxon bipartition table (with labels for each implied
 node retained), so turning that into a format the user wants should be a trivial
