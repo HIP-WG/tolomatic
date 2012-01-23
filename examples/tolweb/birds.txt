@@ -1,0 +1,600 @@
+Archaeopteryx
+Confuciusornithidae
+Enantiornithes
+Ichthyornithiformes
+Hesperornithiformes
+Patagopteryx
+Musophagiformes
+Opisthocomiformes
+Cuculiformes
+Anhimidae
+Tytonidae
+Strigidae
+Pteroclidae
+Columbidae
+Cacatuidae
+Psittacidae
+Loriidae
+Rhea americana
+Pterocnemia pennata
+Megalapteryx
+Struthio camelus
+Anseranatidae
+Anatidae
+Cracidae
+Gaviiformes
+Cariamidae
+Mesitornithidae
+Otididae
+Podargidae
+Aegothelidae
+Acanthisittidae
+Coliiformes
+Trogoniformes
+Rhynchotus rufescens
+Nothocercus julius
+Dinornis
+Eulipoa wallacei
+Macrocephalon maleo
+Numididae
+Oceanitidae
+Podicipedidiformes
+Phoenicopteriformes
+Cathartidae
+Ciconiidae
+Rhynochetidae
+Eurypygidae
+Steatornithidae
+Trochilidae
+Bucconidae
+Galbulidae
+Eudromia formosa
+Eudromia elegans
+Tinamotis pentlandii
+Tinamotis ingoufi
+Nothocercus nigrocapillus
+Nothocercus bonepartei
+Crypturellus kerriae
+Pachyornis
+Aepyornis
+Mullerornis
+Megapodius laperouse
+Megapodius bernsteinii
+Megapodius geelvinkianus
+Megapodius nicobariensis
+Leipoa ocellata
+Odontophoridae
+Phasianidae
+Procelariidae
+Diomediidae
+Aptenodytes forsteri
+Aptenodytes patagonicus
+Sagittariidae
+Phaethon aethereus
+Ardeidae
+Threskiornithidae
+Psophiidae
+Rallidae
+Heliornithidae
+Caprimulgidae
+Nyctibiidae
+Apodidae
+Hemiprocnidae
+Old World barbets
+Picidae
+Indicatoridae
+Meropidae
+Bucerotidae
+Taoniscus nanus
+Nothoprocta cinerascens
+Tinamus major
+Tinamus guttatus
+Tinamus osgoodi
+Anomalopteryx
+Dromaius novaehollandiae
+Megapodius cumingii
+Megapodius tenimberensis
+Talegalla cuvieri
+Talegalla jobiensis
+Talegalla fuscirostris
+Alectura lathami
+Pygoscelis adeliae
+Charadriidae
+Burhinidae
+Chionididae
+Turnicidae
+Scolopacidae
+Herpetotheres cachinnans
+Pandionidae
+Phaethon rubricauda
+Phaethon lepturus
+Fregata ariel
+Scopidae
+Gruidae
+Aramidae
+Ramphastidae
+New World barbets
+Sapayoa aenigma
+Pittidae
+Menuridae
+Atrichornithidae
+Upupidae
+Phoeniculidae
+Nothura boraquira
+Crypturellus obsoletus
+Tinamus tao
+Tinamus solitarius
+Emeus
+Euryapteryx
+Casuarius bennetti
+Casuarius casuarius
+Casuarius unappendiculatus
+Casuarius papuanus
+Apteryx haastii
+Apteryx owenii
+Apteryx australis
+Megapodius pritchardii
+Megapodius layardi
+Aepypodius arfakianus
+Aepypodius bruijnii
+Eudyptula minor
+Megadyptes antipodes
+Pygoscelis antarcica
+Pygoscelis papua
+Recurvirostridae
+Haematopodidae
+Glareolidae
+Micrastur gilvicollis 
+Micrastur semitorquatus 
+Micrastur mirandollei 
+Micrastur buckleyi 
+Micrastur plumbeus 
+Micrastur ruficollis 
+Spiziapteryx circumcincta
+Phalacrocoracidae
+Balaenicipitidae
+Pelecanidae
+Eurylaimidae
+Philepittidae
+Melanoparaeia
+Piprinae
+Oxyruncus
+Cotinginae
+Tityrinae
+Tyrannidae
+Ptilonorhynchidae
+Climacteridae
+Leptosomatidae
+Nothura minor
+Nothoprocta kalinowski
+Nothoprocta ornata
+Crypturellus boucardi
+Crypturellus ptaritepui
+Crypturellus parvirostris
+Crypturellus tataupa
+Apteryx rowii
+Apteryx mantelli
+Megapodius decollatus
+Megapodius ermita
+Megapodius reinwardt
+Spheniscus demersus
+Spheniscus magellanicus
+Eudyptes chrysocome
+Eudyptes robustus
+Eudyptes sclateri
+Eudyptes pachyrrhynchus
+Laridae
+Alcidae
+Jacanidae
+Rostratulidae
+Thinocoridae
+Pedionomidae
+Microhierax latifrons 
+Microhierax erythrogenys 
+Microhierax fringillarius 
+Microhierax melanoleucos 
+Microhierax caerulescens 
+Falco peregrinus
+Falco hypoleucos
+Falco ardosiaceus
+Falco jugger
+Falco columbarius
+Falco berigora
+Falco alopex
+Falco subbuteo
+Falco rufigularis
+Falco dickinsoni
+Falco rusticolus
+Falco naumanni
+Falco mexicanus
+Falco fasciinucha
+Falco sparverius
+Falco deiroleucus
+Falco zoniventris
+Falco cherrug
+Falco concolor
+Falco biarmicus
+Falco femoralis
+Falco subniger
+Falco punctatus
+Falco rupicoloides
+Falco severus
+Falco cuvieri
+Falco amurensis
+Falco eleonorae
+Falco novaezeelandiae
+Falco moluccensis
+Falco tinnunculus
+Falco cenchroides
+Falco newtoni
+Falco longipennis
+Falco pelegrinoides
+Falco chicquera
+Falco araea
+Falco vespertinus
+Polihierax semitorquatus 
+Polihierax insignis 
+Chelictinia
+Elanus
+Gampsonyx
+Fregata magnificens
+Fregata aquila
+Fregata andrewsi
+Fregata minor
+Anhinga rufa
+Anhinga melanogaster
+Anhinga novaehollandiae
+Anhinga anhinga
+Papasula abbotti
+Sula sula
+Formicariidae part 1
+Conopophagidae
+Thamnophilidae
+Pomatostomidae
+Maluridae
+Dasyornis
+Acanthizidae
+Momotidae
+Coraciidae
+Nothura darwinii
+Nothoprocta pentlandii
+Nothoprocta taczanowskii
+Nothoprocta perdicaria
+Nothoprocta curvirostris
+Crypturellus berlepschi
+Crypturellus cinereus
+Megapodius forstenii
+Megapodius freycinet
+Spheniscus humboldti
+Spheniscus mendiculus
+Eudyptes schlegeli
+Eudyptes chrysolophus
+Ibycter americana
+Caracara cheriway
+Caracara lutosa
+Caracara plancus
+Polyboroides
+Morus bassanus
+Sula leucogaster
+Rhinocryptidae
+Orthonychidae
+Meliphagidae
+Pardalotidae
+Lacedo
+Megaceryle
+Alcedo
+Ceyx
+Uratelornis chimaera
+Nothura maculosa
+Nothura chacoensis
+Crypturellus soui
+Crypturellus strigulosus
+Spilornis
+Harpyopsis
+Morus serrator
+Morus capensis
+Formicariidae part 2
+Melanocharitidae
+Cnemophilinae
+Callaeatidae
+Halcyon
+Pelargopsis
+Actenoides
+Chloroceryle
+Ceryle
+Todus subulatus
+Todus multicolor
+Todus angustirostris
+Atelornis crossleyi
+Atelornis pittoides
+Brachypteracias leptosomus
+Brachypteracias squamigera
+Crypturellus atrocapillus
+Crypturellus undulatus
+Phalcoboenus albogularis
+Phalcoboenus megalopterus
+Phalcoboenus australis
+Phalcoboenus carunculatus
+Daptrius ater
+Sarcogyps
+Necrosyrtes
+Gyps
+Pithecophaga
+Spizastur
+Lophaetus
+Polemaetus
+Stephanoaetus
+Ictinaetus
+Spizaetus
+Aquila
+Oroaetus
+Hieraaetus
+Megatriorchis
+Urotriorchis
+Kaupifalco
+Erythrotriorchis
+Macheiramphus
+Morphnus
+Harpia
+Gypohierax
+Sula granti
+Sula dactylatra
+Sula variegata
+Sula nebouxii
+Furnariidae
+Dendrocolaptidae
+Todiramphus
+Syma
+Cittura
+Tanysiptera
+Melidora
+Todus todus
+Todus mexicanus
+Crypturellus duide
+Crypturellus transfasciatus
+Crypturellus cinnamomeus
+Milvago chimango
+Milvago chimachima
+Trigonoceps
+Terathopius
+Eutriorchis
+Chondrohierax
+Leptodon
+Ptilorrhoa
+Daphoenositta
+Paramythia
+Campephagidae
+Colluricincla
+Pachycephalidae
+Falcunculus
+Picathartidae
+Petroicidae
+Clytoceyx
+Dacelo
+Crypturellus erythropus
+Torgos
+Aegypius
+Circaetus
+Dryotriorchis
+Butastur
+Circus
+Accipiter
+Micronisus
+Melierax
+Gypaetus
+Neophron
+Henicopernis
+Pernis
+Aegithinidae
+Pitohui
+Oreoica
+Sphecotheres
+Oriolidae
+Rhipiduridae
+Dicruridae
+Vireonidae
+Erpornis
+Regulidae
+Hyliota
+Crypturellus noctivagus
+Crypturellus variegatus
+Haliaeetus
+Ichthyophaga
+Milvus
+Haliastur
+Harpagus
+Lophoictinia
+Hamirostra
+Aviceda
+Elanoides
+Dryoscopus
+Malaconotinae
+Prionopidae
+Vangidae
+Batis
+Lanioturdus
+Artamidae
+Melampitta
+Paradisaeidae
+Promeropidae
+Crypturellus casiquiare
+Ictinia
+Strepera
+Corcorax
+Struthidea
+Corvidae
+Laniidae
+Monarchidae
+Grallina
+Irenidae
+Stenostiridae
+Crypturellus brevirostris
+Crypturellus bartletti
+Gymnorhina
+Cracticidae
+Dicaeidae
+Nectariniidae
+Sittidae
+Paridae
+Remizidae
+Melocichla
+Timaliidae
+Macrosphenus
+Bradypterus victorini
+Cisticolidae
+Nicator
+Panurus
+Alaudidae
+Rostrhamus
+Geranospiza
+Busarellus
+Prunellidae
+Peucedramus taeniatus
+Ploceidae
+Hypocoliidae
+Bombycillidae
+Certhiidae
+Hirundinidae
+Phylloscopidae
+Pycnonotidae
+Achaetops
+Sphenoeacus
+Acrocephalidae
+Asturina
+Buteo
+Leucopternis
+Geranoaetus
+Parabuteo
+Harpyhaliaetus
+Buteogallus
+Passeridae
+Sturnidae
+Buphagus
+Rhabdornis
+Mimidae
+Cinclidae
+Polioptilidae
+Troglodytidae
+Cettiidae
+Aegithalidae
+Hylia
+Megaluridae
+Donacobius
+Motacillidae
+Turdidae
+Muscicapidae
+Fringillidae
+Calcarius
+Plectrophenax
+Emberizidae
+Parulidae
+Thraupidae
+Cardinalidae 
+Amblycercus holosericeus
+Icterus auricapillus
+Icterus maculialatus
+Nesopsar nigerrimus
+Dolichonyx oryzivorus
+Xanthocephalus xanthocephalus
+Sturnella bellicosa
+Sturnella loyca
+Sturnella militaris
+Sturnella superciliaris
+Sturnella defilippii
+Cacicus melanicterus
+Cacicus koepckeae
+Sturnella neglecta
+Psarocolius decumanus
+Zarhynchus wagleri
+Cacicus solitarius
+Icterus wagleri
+Macroagelaius
+Sturnella magna
+Sturnella lilianae
+Psarocolius viridis
+Psarocolius atrovirens
+Psarocolius angustifrons
+Icterus mesomelas
+Icterus cucullatus
+Gnorimopsar chopi
+Lampropsar tanagrinus
+Dives dives
+Dives warszewiczi
+Dives atroviolacea
+Euphagus
+Molothrus rufoaxillaris
+Psarocolius guatimozinus
+Cacicus sclateri
+Cacicus chrysopterus
+Icterus leucopteryx
+Icterus parisorum
+Amblyramphus holosericeus
+Gymnomystax mexicanus
+Hypopyrrhus pyrohypogaster
+Quiscalus nicaraguensis
+Quiscalus quiscula
+Quiscalus palustris
+Agelaius humeralis
+Agelaius xanthomus
+Agelaius tricolor
+Molothrus oryzivora
+Psarocolius cassini
+Cacicus cela
+Icterus chrysater
+Icterus graduacauda
+Icterus icterus
+Icterus graceannae
+Icterus pectoralis
+Icterus prosthemelas
+Agelasticus thilius
+Curaeus curaeus
+Curaeus forbesi
+Quiscalus lugubris
+Agelaius phoeniceus
+Agelaius assimilis
+Molothrus aeneus
+Psarocolius montezuma
+Cacicus uropygialis
+Cacicus microrhynchus
+Cacicus haemorrhous
+Cacicus leucoramphus
+Cacicus chrysonotous
+Icterus bullockii
+Icterus pustulatus
+Icterus jamacaii
+Icterus croconotus
+Icterus dominicensis melanopsis
+Icterus dominicensis northropi
+Icterus dominicensis portoricensis
+Icterus spurius
+Icterus fuertesi
+Agelasticus cyanopus
+Agelasticus xanthophthalmus
+Agelaioides badius
+Agelaioides oreopsar
+Quiscalus niger
+Molothrus bonariensis
+Molothrus ater
+Psarocolius yuracares
+Psarocolius bifasciatus
+Ocyalus latirostris
+Clypicterus oseryi
+Icterus galbula
+Icterus abeillei
+Icterus auratus
+Chrysomus ruficapillus
+Chrysomus icterocephalus
+Xanthopsar flavus
+Quiscalus major
+Quiscalus mexicanus
+Icterus nigrogularis
+Icterus gularis
+Icterus bonana
+Icterus laudabilis
+Icterus oberi
+Pseudoleistes virescens
+Pseudoleistes guirahuro
+Icterus chrysocephalus
+Icterus cayanensis cayanensis
+Icterus cayanensis periporphyrus
+Icterus cayanensis pyrrhopterus
