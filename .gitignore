@@ -1,5 +1,6 @@
 examples\/primates\/nodes
 examples\/primates\/result
 examples\/tolweb\/result
+examples\/tolweb\/xmlbuilder
 _Inline
 script\/pruner\/build
