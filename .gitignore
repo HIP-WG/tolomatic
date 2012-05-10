@@ -2,5 +2,10 @@ examples\/primates\/nodes
 examples\/primates\/result
 examples\/tolweb\/result
 examples\/tolweb\/xmlbuilder
+examples\/angiosperms/
+examples\/fishes/
+examples\/mammals/
+examples\/phylomatic/
+examples\/tol/
 _Inline
 script\/pruner\/build
