@@ -1,0 +1,735 @@
+
+label initialize_morphology
+
+Trachelomonas_abrupta_____@Euglenozoa_Euglenida_Euglenales_Trachelomonas ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+@@
+
+label set_morphology ; 
+
+set 0 0 ; 
+set 1 3 ;    /* This is the WEIGHT of the morphological characters */ 
+
+sil = all ; 
+
+agroup = 0 (Stramenopiles) :stramenopiles_; 
+agroup = 1 (Eumetazoa) :_Platyhelminthes_ :_Chaetognatha_ :_Chordata_ :_Echinodermata_ :_Hemichordata_ :_Xenoturbellida_ :_Annelida_ :_Echiura_ :_Pogonophora_ :_Bryozoa_ :_Entoprocta_ :_Mollusca_ :_Myzostomida_ :_Nemertea_ :_Arthropoda_ :_Onychophora_ :_Tardigrada_ :_Priapulida_ :_Sipuncula_ :_Acanthocephala_ :_Cycliophora_ :_Gastrotricha_ :_Kinorhyncha_ :_Loricifera_ :_Micrognathozoa_ :_Nematoda_ :_Nematomorpha_ :_Rotifera_ :_Gnathostomulida_ :_Cnidaria_ :_Ctenophora_ ; 
+agroup = 2 (Agaricomycotina) :_Agaricomycetes_ :_Dacrymycetes_ :_Tremellomycetes_ ;
+agroup = 3 (Mesozoa) :_Orthonectida_ :_Rhombozoa_ ; 
+agroup = 4 (Trachymedusae) :_Geryoniidae_ :_Halicreatidae_ :_Rhopalonematidae_ ;
+agroup = 5 (Narcomedusae) :_Aeginidae_ :_Cuninidae_ :_Polypodiidae_ Tetraplatia_ ;
+agroup = 6 (Bilateria) :_Platyhelminthes_ :_Chaetognatha_ :_Chordata_ :_Echinodermata_ :_Hemichordata_ :_Xenoturbellida_ :_Annelida_ :_Echiura_ :_Pogonophora_ :_Bryozoa_ :_Entoprocta_ :_Mollusca_ :_Myzostomida_ :_Nemertea_ :_Arthropoda_ :_Onychophora_ :_Tardigrada_ :_Priapulida_ :_Sipuncula_ :_Acanthocephala_ :_Cycliophora_ :_Gastrotricha_ :_Kinorhyncha_ :_Loricifera_ :_Micrognathozoa_ :_Nematoda_ :_Nematomorpha_ :_Rotifera_ :_Gnathostomulida_  ; 
+agroup = 7 (Stomatopoda) :_Stomatopoda_ ; 
+agroup = 8 (Peracarida) :_Amphipoda_ :_Cumacea_ :_Isopoda_ :_Mictacea_ :_Lophogastrida_ :_Mysida_ :_Spelaeogriphacea_ :_Tanaidacea_ :_Thermosbaenacea_ ;
+agroup = 9 (Dicondylia) :_Insecta_ <9 Nardia_insecta :_Machilidae_ :_Meinertellidae_ ;
+agroup =10 (Pterygota) :_Insecta_  <10 Nardia_insecta :_Machilidae_ :_Meinertellidae_ :_Thysanura_ ; 
+agroup =11 (Neoptera) :_Insecta_  <11 Nardia_insecta :_Machilidae_ :_Meinertellidae_ :_Thysanura_ :_Ephemeroptera_ :_Odonata_ ; 
+agroup =12 (Endopterygota) :_Lepidoptera_ :_Trichoptera_ :_Coleoptera_ :_Diptera_ :_Hymenoptera_ :_Mecoptera_ :_Megaloptera_ :_Neuroptera_ :_Raphidioptera_ :_Siphonaptera_ :_Strepsiptera_ <12 Halesia_diptera ;
+agroup =13 (Panarthropoda) :_Arthropoda_ :_Onychophora_ :_Tardigrada_ ;
+agroup =14 (Neolepidoptera) :_Lepidoptera_ <14 :_Micropterigidae_ :_Eriocraniidae_ ;   /*  absent also in :_Agathiphagidae_ :_Heterobathmiidae_ :_Neopseustidae_ :_Acanthopteroctetidae_ */
+agroup= 15 (Tetrapoda) :_Amphibia_ :_Mammalia_ :_Archosauria_ :_Lepidosauria_ :_Testudines_ <15 :Viridiplantae :stramenopiles ;
+agroup= 16 (Amniota) :_Mammalia_ :_Archosauria_ :_Lepidosauria_ :_Testudines_;
+agroup= 17 (Diapsida) :_Archosauria_ :_Lepidosauria_;
+agroup= 18 (Galloanserae) :_Galliformes_ :_Anseriformes_;
+agroup= 19 (Sarcopterygii):_Dipnoi_ :_Coelacanthiformes_ :_Amphibia_ :_Mammalia_ :_Archosauria_ :_Lepidosauria_ :_Testudines_ <19 :Viridiplantae_ :Stramenopiles_ ;
+
+loop 0 609 xread =! #1 [ . ] 0 ; stop 
+
+macreport=; 
+report- ; 
+
+/* EUKARIOTA */
+xread =!'0' [ :Cryptophyta_ :Chlorarachniophyceae_ :Bacillariophyta_         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Plastid associated with a nucleomorph Patterson 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Cryptophyta_ :Haptophyceae_ :Bolidophyceae_ :Chrysophyceae_ 
+    :Dictyochophyceae_ :Pelagophyceae_ :Pinguiophyceae_ :Raphidophyceae_ 
+    :Xanthophyceae_ :Phaeophyceae_ :_Gymnodiniales_ :_Prorocentrales_        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  c2 Chlorophyll Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Cryptophyta_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Canal flagelar con pelos y salientes en los dos flagelos Patterson 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Entamoebidae_                                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Gancho intranuclear Patterson, 1999  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Acantharea_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Inorganic skeleton of 10/20 spicules made of strontium sulphate Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Polycystinea_ :Acantharea_                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Capsule with fusules separating endoplasm and ectoplasm Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Haplosporidia_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Kernstab, persistent spindle through interphase Patterson, 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Haptophyceae_                                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Haptonema, organero de alimentacion y movilidad Patterson 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Haptophyceae_ :Bolidophyceae_ :Chrysophyceae_ 
+    :Dictyochophyceae_ :Pelagophyceae_ :Pinguiophyceae_ :Raphidophyceae_ 
+    :Synurophyceae_ :Xanthophyceae_ :Phaeophyceae_                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  c1 Chlorophyll Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cercomonadida_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cuerpo paranuclear Patterson, 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Clathrulinidae_                                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Lorica organica fenestrada Patterson, 1999  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Thaumatomonadida_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Escamas inorganicas y espinas Patterson, 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Plasmodiophoridae_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Nucleo en la mitosis de las celulas vegetativas con apariencia de cruz Patterson, 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Stramenopiles }                                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pelos tubulares trupartidos  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Stramenopiles } -:Blastocystis_ -:_Bacillariophyceae_ 
+    -:_Fragilariophyceae_ -:Adriamonas_ -:Pelagophyceae_                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  2 row mastigonema with anterior direction Patterson, 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Lobosea_ -:Heterolobosea :Acanthamoebidae_ 
+    :Mycetozoa_ -:Hyperamoeba_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Branched cristae Patterson 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Acantharea_ :Entamoebidae_ :Heterolobosea_ :_Microsporidia_ 
+    :Haplosporidia_ :Oxymonadida_ :Pelobiontida_ :Nucleariidae_              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Intranuclear spindle during mitosis Lipscomb, 1989 Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Plasmodiophorida_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cruciform mitotic profile Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Alveolata_ -:Fungi_ -:Viridiplantae_ :Metazoa_                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cortical alveoli that form a continuous layer under plasma membrane Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Dinophyceae_                                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Chromosomes remains condensed during interphase, dinokaryon Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Apicomplexa_                                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Apical complex consisting of one or more polar rings, rhoptries, micronemes, conoid, and subpelliclar microtubules Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ciliophora_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Polygenomic macronucleous and diploid micronucleus Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ciliophora_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Citostoma, o 'boca celular' Lipscomb etal 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Haptophyceae_ -:_Isochrysidales_                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Haptonema Adl etal 2005 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :Cryptomonadaceae_ :Haptophyceae_ :_Bacillariophyta_ 
+    :_Bolidophyceae_ :_Chrysophyceae_ :_Eustigmatophyceae_ :Phaeophyceae_ 
+    :Pinguiophyceae_ :Xanthophyceae_ :Bacillariophyta_ :_Gymnodiniales_ 
+    :_Prorocentrales_ :Pelagophyceae_ :Raphidophyceae_                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Nuclear membrane and endoplasmatic reticulum surrounds chloroplast Lipscomb, 1989 Williams, 1992 Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Bacillariophyta_                                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cell wall of tightly integrated silicified elemets, comprised of two valves, at each end of cell, and several girdle bands Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Schizocladia_ :Phaeophyceae_                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cell wall with alginate Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Centroheliozoa_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Multilamellate microtubule organizing center Patterson, 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Euglenozoa_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Heteromorphic paraxonemal rods, dorsal flagellum with tubular rod, ventral with lattice structure Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Euglenozoa_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Strips of protein material on cell surface Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Kinetoplastida_                                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Kinetoplastid, aggregates of DNA, in mitochondrion Patterson, 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Parabasalidea_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Parabasal aparatus of dictyosomes anchored to a striate root Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Bolidophyceae_ :Chrysophyceae_ :Dictyochophyceae_ 
+    :Pelagophyceae_ :Pinguiophyceae_ :Raphidophyceae_ :Schizocladia_ 
+    :Synurophyceae_ :Phaeophyceae_ :_Gymnodiniales_ :_Prorocentrales_ 
+    :Haptophyceae_ :Bacillariophyta_ :Pelagophyceae_                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Fucoxanthin Lipscomb, 1989 Daugbjerg & Andersen, 1997 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Glaucocystophyceae_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cyanelle, a plastid with peptidoglycan wall Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Rhodophyta_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cytoplasmic carbohydrate reserve floridean starch Adl et al. 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Rhodophyta_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pit connections Patterson, 1999 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Chlorarachniophyceae_ :Viridiplantae_  Euglena_               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  b Chlorophyll Lipscomb, 1989 Patterson, 1999 Adl et al. 2005 */   sil=all ; set 0 ++ ; 
+/* VIRIDIPLANTAE */
+xread =!'0' [ :Viridiplantae_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Plastids with thylakoids arranged in granae (stacks) Patterson, 1999 Adl et al. 2005  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Viridiplantae_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  structure of the ciliary transition Cavalier-Smith, 1981a */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Viridiplantae_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Store starch in chloroplasts  Cavalier-Smith, 1981a */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Viridiplantae_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Plastids with chlorophyle A and B Cavalier-Smith, 1981a */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Charales_ :_Coleochaetales_ :_Embryophyta_                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Vegetative growth from apical cell at end of branches and main axis Bremer, K. et al. 1987 Adl et al. 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Embryophyta_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Meiospores with exine  Doyle 1998        */   sil=all ; set 0 ++ ;
+xread =!'0' [ :Embryophyta_              		                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  2n sporophyte  Doyle 1998        */   sil=all ; set 0 ++ ;
+xread =!'0' [ :Anthocerotophyta_ :_Bryophyta_  :Tracheophyta_                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Stoma Bremer, K. et al. 1987 Doyle 1998 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Tracheophyta_         			                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  True tracheids Doyle 1998        */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Tracheophyta_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Esporofito independiente y ramificado Bremer, K. et al. 1987 Doyle, 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Tracheophyta_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Lignina Bremer, K. et al. 1987  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Lycopodiophyta_        			                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Transverse dehiscence Doyle 1998 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :Filicophyta_              		                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Planated frond Pryer et al 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Filicales_                 		                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Leptosporangio Doyle 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Spermatophyta_                   	                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Semillas  Bremer, K. et al. 1987 Doyle 1998        */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Spermatophyta_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Secondary growth Doyle 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Spermatophyta_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Axiliary branching Doyle 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Spermatophyta_ -:_Cycadales_                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tubo del polen penetrante Loconte & Stevenson, 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Coniferopsida_ :_Ephedrales_ :_Gnetales_ :_Magnoliophyta_    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Embrion madurando antes de liberar la semilla Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cycadales_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Huellas de las hojas en cinturon Loconte & Stevenson, 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Coniferopsida_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Compound female strobili Doyle 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Coniferopsida_ :_Gnetales_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Canales corticales secretorios Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Coniferopsida_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Leptolema en el polen Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Pinaceae_ :_Araucariaceae_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Alas de las semillas en cono Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ephedrales_ :_Gnetales_ :_Magnoliophyta_                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Lignina siringal Loconte & Stevenson 1991 Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ephedrales_ :_Gnetales_ :_Magnoliophyta_                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Estomas sindecocelicos Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ephedrales_ :_Gnetales_ :_Magnoliophyta_                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tectum Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ephedrales_ :_Gnetales_ :_Magnoliophyta_                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Xylema en tubos perforados Loconte & Stevenson 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ephedrales_ :_Gnetales_ :_Magnoliophyta_                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Embriogenia temprana celular Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ephedrales_ :_Gnetales_                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tubo micropilar Loconte & Stevenson 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Magnoliophyta_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Carpel Doyle 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Magnoliophyta_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Celula acompanante en los tubos del floema ('sieve') Loconte & Stevenson 1991 Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Magnoliophyta_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cuticula nucelar gruesa Loconte & Stevenson 1991 Nixon et al., 1994 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Chloranthales_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Nodos agrandados Loconte & Stevenson 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Magnoliaceae_ :_Degeneriaceae_                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Floema secundario estratificado tangencialmente Loconte & Stevenson 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Laurales_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Apendice filamentoso Loconte & Stevenson 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Laurales_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Polen 'exine' espinoso Loconte & Stevenson 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Nymphaeales_                                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Raices homoricicas Loconte & Stevenson 1991 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :eudicotyledons_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  tricolpate pollen Doyle 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Liliopsida_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  One cotyledon Doyle 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Liliopsida_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Division mitotica final del microgametofito pre-polinizacion Loconte & Stevenson 1991 */   sil=all ; set 0 ++ ; 
+/* FUNGI-METAZOA group */
+xread =!'0' [ :Metazoa_ :Fungi_ :Ichthyosporea_ :Choanoflagellida_           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Single posterior cilium without mastigonemes at least one life cycle stage or secondarily lost Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Choanoflagellida_ :_Porifera_                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Collar complexes Glenner et al 2004 */   sil=all ; set 0 ++ ; 
+     /* FUNGI */
+xread =!'0' [ :Fungi_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pared celular de quitina y B-glucano, al menos en la espora Tehler, 1988 Patterson, 1999 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Fungi_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Ruta AAA de la lisina Tehler, 1988 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ascomycota_ :_Basidiomycota_                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Dicaria Adl etal 2005 Hibbett et al. 2007 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Pezizomycotina_                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Ascocarpo Tehler, 1988 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Pezizomycotina_                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cuerpos de Woronina Tehler, 1988 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Pezizomycotina_                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  "Croziers" Tehler, 1988 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Basidiomycota_                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pared celular multilamelar Tehler, 1988 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Agaricomycotina }                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Basidiocarpo y basidiohymenio Tehler, 1988  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Agaricomycotina }                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Compatibilidad sexual tetrapolar Tehler, 1988 */   sil=all ; set 0 ++ ; 
+     /* METAZOA */
+xread =!'0' [ :Metazoa_ -:_Porifera_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Homeobox-containing genes Hickmann, 2001  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Metazoa_                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  sexual with production of an egg cell that is fertilized by a smaller, often monociliated, sperm cell Adl 2005 spermatozoa Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Metazoa_ -{ Mesozoa } -:_Placozoa_               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  A collagen-based extracellular matrix, between two dissimilar epithelia Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Metazoa_ -:_Porifera_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Outer epithelia with septate or tight junctions Glenner et al 2004 Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :Metazoa_ -:_Ctenophora_                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Septate junctions Glenner et al 2004 */   sil=all ; set 0 ++ ; 
+           /* EUMETAZOA */
+xread =!'0' [ { Eumetazoa }                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Nerve cells with chemical synapses Glenner 2004, Adl etal 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa } -:_Cnidaria_ -:_Platyhelminthes_ 
+     +:_Nemertodermatida_ -:_Entoprocta_ -:_Bryozoa_ 
+     +:_Phylactolaemata_ -:_Nematoda_ -:_Kinorhyncha_ 
+     -:_Rotifera_ -:_Acanthocephala_ -:_Amia_ -:_Teleostei_           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  sperm with (single compact)acrosome Adl etal 2005 Glenner 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa }                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  basal lamina Adl etal 2005 Tyler 2003 Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa }                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Striated ciliary rootlets Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa }                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  organized gonads Zrzavy 2003? Glenner etal 2004 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa }                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  definable germ layers (ectoderm, endoderm) Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa } -:_Cnidaria_                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  With ecto-, endo-, and mesoderm Glenner etal 2004 Schram in Backeljau et al. 1993 for bilateria? */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa } -:_Cnidaria_                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  bilaterian symmetry Zrzavy, J. 2002 Schram in Backeljau et al. 1993  Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa } -:_Cnidaria_                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Synapses with acetylcholine Glenner 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Eumetazoa } -:_Cnidaria_ +:_Hydrozoa_ -:_Onychophora_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Gap junctions Glenner etal 2004, Adl etal 2005 Lipscomb etal 1998 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Platyhelminthes_ -:_Acoela_  :_Entoprocta_ :_Mollusca_ 
+     :_Nemertea_ :_Sipuncula_ :_Gnathostomulida_                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Spiral quartet cleavage ch29 Glenner etal 2004 [:_Nemertodermatida_ :_Bryozoa_  :_Acanthocephala_ :_Cycliophora_ :_Kinorhyncha_ :_Rotifera_ ] ? */   sil=all ; set 0 ++ ; 
+
+                  /* CNIDARIA */
+xread =!'0' [ :_Cnidaria_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cnidae ch6 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cnidaria_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Nematocysts ch13 Marques & Collins 2004 Lipscomb etal 1998 Schram (in Backeljau) 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cnidaria_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Planula in the life cycle ch28 Marques & Collins 2004 */   sil=all ; set 0 ++ ;  /* AUSENTE -:_Actinulida_ --there's none in the matrix */ 
+xread =!'0' [ :_Cnidaria_ -:_Anthozoa_                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Medusoid phase ch49 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cnidaria_ - { Trachymedusae } - { Narcomedusae }     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Polypoid phase ch36 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cnidaria_ -:_Anthozoa_ -:_Scyphozoa_ -:_Cubozoa_     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Location of gonads in epidermis ch25  Marques & Collins 2004 */   sil=all ; set 0 ++ ; /* AUSENTE -:_Actinulida_ */ 
+xread =!'0' [ :_Scyphozoa_ :_Cubozoa_                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Rhopalia/rhopalioids ch51 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Scyphozoa_ -:_Stauromedusae_                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Type of apical medusa formation "strobilation" ch.21 segun Marques & Collins tb tienen una Cubozoa y Stauromedusae (un Scyphozoa)  pero sin transv fission codifico solo Strobilation   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cubozoa_ :_Stauromedusae_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Shape of horizontal cross-section quadrate ch72 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Siphonophora_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Birhopaloids ch15 Marques & Collins 2004  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Siphonophora_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Rhopalonemes ch16 Marques & Collins 2004  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cubozoa_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Velarium ch66 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cubozoa_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Organization of the nervous system, 1 with nerve rings ch46 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Rhizostomeae_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Strobilation type monodisk ch22 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Anthozoa_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Stomodeum, corresponding to the pharynx, is unique to Anthozoa no es equivalente a la scyphopharynx de Scyphozoa ch45 Marques & Collins 2004 */   sil=all ; set 0 ++ ; 
+                /* CTENOPHORA */
+xread =!'0' [ :_Ctenophora_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Adhesive colloblasts Schram en Backeljau etal 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ctenophora_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cydippid larval stage  */   sil=all ; set 0 ++ ; 
+               /* BILATERIA */
+xread =!'0' [ { Bilateria } -:Acoela_                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Ganglio cerebral Schram en Backeljau et al. 1993 */   sil=all ; set 0 ++ ; 
+                   /* ACOELOMATA */
+xread =!'0' [ :_Platyhelminthes_                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXPosterior adhesive organ  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Platyhelminthes_                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMehli's gland   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Platyhelminthes_                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Gut is a blind sack without anus ch54 Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Aspidogastridae_ :_Multicalycidae 
+     :_Rugogastridae_ :_Digenea_                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXPosteroventral adhesive organ a sucker   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Monogenea_ :_Cestoda_                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXPosterior adhesive organ with hooks -cercomer-  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Digenea_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMiracidium larva   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Monogenea_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXOncomiracidium larva   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cestoda_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXTegument covered with microvili   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cestoda_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXAdults with proglotiids   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Acoela_ -:_Solenofilomorphidae_                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Body wall musculature U-shape muscles (Hooge & Tyler, 2006)  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Acoela_ -:_Childiidae_                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Body wall musculature crossover muscles (Hooge & Tyler, 2006)  */   sil=all ; set 0 ++ ; 
+                 /* COELOMATA */
+
+           /* PSEUDOCOELOMATA */
+xread =!'0' [ :_Nematoda_ :_Nematomorpha_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Capa basal de colageno bajo la cutiila Zrzavy, J. 2002 Nielsen 2003 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Nematoda_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XX6+6+4 sensilla */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Priapulida_ :_Kinorhyncha_ :_Loricifera_             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXRings of scalids on introvert */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Priapulida_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXLarge body cavity with amebocytes and erythrocytes   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Kinorhyncha_ :_Loricifera_                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXNon-inversible mouth cone with cuticular ridges and spines   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Loricifera_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXScalids with muscles   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Loricifera_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMyoepithelial sucking pharynx */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Rotifera_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Toes with adhesive glands Nielsen (1995) */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Rotifera_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Syncytial germovitellarium ch28 Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Rotifera_ :_Acanthocephala_                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Trunk with intracellular skeletal lamina Nielsen (1995) */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Acanthocephala_                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Apical proboscis with intracellular hooks Nielsen (1995)   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Nematoda_ :_Priapulida_ :_Loricifera_ :_Kinorhyncha_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pharynx radial Nielsen (1995) */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Nematoda_ :_Priapulida_ :_Loricifera_ :_Kinorhyncha_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Brain peripharyngeal with three regions Nielsen (1995) */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastrotricha_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Ectoderm with multilayered cuticle covering all cilia Rieger and Rieger, 1977 Hochberg & Litvaitis (2000)  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastrotricha_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  presence of unique, cuticle-covered duo-gland adhesive organs (Tyler and Rieger,1980)  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastrotricha_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMyoepithelial sucking pharynx   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastrotricha_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  cuticle-covered locomotory and sensory cilia (Rieger and Rieger, 1977) Hochberg & Litvaitis (2000) Kieneke et al 2008  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastrotricha_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  visceral helicoidal muscles Kieneke et al 2008  */   sil=all ; set 0 ++ ; 
+
+
+                 /* PROSTOMIA */
+xread =!'0' [ { Panarthropoda } :_Nematoda_ :_Nematomorpha_ :_Priapulida_ :_Kinorhyncha_ :_Loricifera_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cuticle molted Nielsen 2003 Glenner 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Porifera_ :Choanoflagellida_ ] ? ; 
+xread =! '0' [ { Panarthropoda } :_Priapulida_ :_Kinorhyncha_ :_Loricifera_ :_Echiura_                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Alpha? Chitinous cuticle Nielsen 2003  Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ctenophora_ :_Cycliophora_ :_Gastrotricha_ :_Chaetognatha_ 
+    :_Placozoa_ :_Porifera_ :_Rotifera_ :Choanoflagellida_ ] ? ; 
+xread =! '0' [ :_Cnidaria_ :_Sipuncula_ :_Mollusca_ :_Echiura_ :_Annelida_ :_Platyhelminthes_ 
+    :_Nemertea_ :_Entoprocta_ :_Bryozoa_ :_Nematoda_ :_Nematomorpha_ :_Acanthocephala_ 
+    :_Gnathostomulida_ :_Brachiopoda_ :_Echinodermata_ :_Chordata                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Collagenous cuticle  Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Nemertea_ :_Annelida_ :_Mollusca_                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Sistema gliointestinal Zrzavy, J. 2002  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Nemertea_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Rhynchocelo Schram en Backeljau et al. 1993  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Annelida_ :_Echiura_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Body with successively added segments developed from a teloblastic growth zone Glenner etal 2004  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Annelida_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Distinct prostomium Rouse & Fauchald, 1997 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Polychaeta_ -:_Glyceridae_ -:_Goniadidae_ -:_Magelonidae_     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Nuchal organs Rouse & Fauchald, 1997 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Aciculata_ -:_Oenonidae_ -:Viridiplantae                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Ventral cirri Rouse & Fauchald, 1997 Rousset et al., 2007 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Aciculata_ -:Viridiplantae                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Aciculae Rouse & Fauchald, 1997 Rousset et al., 2007 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Terebellida_ -:_Sternaspidae_ -:_Fauveliopsidae_              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Dorsal branchiae in a few anterior chaetigers Rouse & Fauchald, 1997 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Clitellata_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Clitella Rousset et al., 2007  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Crinoidea_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Chambered organ formed as extension of right somatocoel Littlewood et al., 1997 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Brachiopoda_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Lophophoro Zrzavy, J. 2002 */   sil=all ; set 0 ++ ; 
+
+                     /* PANARTHROPODA */
+xread =!'0' [ { Panarthropoda }                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXVentrolateral appendages  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Panarthropoda } -:_Tardigrada_ -:_Pauropodidae_ -:_Balanus -:_Cypridopsis ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Dorsal heart with segmental ostia and pericardial sinus ch39 Giribet 2005 */   sil=all ; set 0 ++ ;  /* AUSENTE  -:_Semibalanus_  */ 
+xread =!'0' [ { Panarthropoda } -:_Onychophora_ -:_Pentastomida_                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Limbs (mostly articulated) with intrinsic muscles ch243 Giribet 2005 antes solo codificado para Arhtropoda Giribet 2003, Zrzavy 2002*/   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Tardigrada_                                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Telescopic legs ch244 Giribet 2005 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Arthropoda_                                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Sclerotization of cuticle into hard, articulated exoskeleton ch18 Giribet 2005 Edgecombe etal 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Arthropoda_                                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tendon cells with tonofilaments penetrating epidermis ch21 Giribet 2005 Edgecombe etal 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Arthropoda_                                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Resilin protein ch24 Giribet  2005 Edgecombe etal 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Arthropoda_                                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cephalon composed of one pair of pre-oral appendages and three or more pairs of post-oral appendages ch70 Giribet 2005 Edgecombe etal 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Arthropoda_                                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXCephalic ecdysial glands */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Arthropoda_                                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXFully segmental sclerites */   sil=all ; set 0 ++ ;
+                         /* MANDIBULATA */
+xread =!'0' [ :_Myriapoda_ :_Crustacea_ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXTwo pairs of maxillae on postacronal somites 4 and 5   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Myriapoda_ :_Crustacea_ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXAppendages of 3rd postacronal somite are mandibles   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Myriapoda_ :_Crustacea_ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXTripartite brain   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Myriapoda_ :_Crustacea_ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMandibulate structure of ommatidia   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Myriapoda_ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XX"Whole-limb" mandibles */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Myriapoda_ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXTracheal system   */   sil=all ; set 0 ++ ; 
+                               /* MYRIAPODA */
+xread =!'0' [ :_Myriapoda_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Repugnatorial glands Brusca & Brusca, 1990 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Myriapoda_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Organs of Tomoary Brusca & Brusca, 1990 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Diplopoda_ :_Pauropoda_                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Gnathochilarium Brusca & Brusca, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chilopoda_ :_Symphyla_                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Poisonous maxillipeds Brusca & Brusca, 1990 */ sil=all ; set 0 ++ ;
+ 
+                               /* PANCRUSTACEA */
+                                   /* CRUSTACEA */
+xread =!'0' [ :_Crustacea_ -:Viridiplantae_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Larva Nauplius Schram, 1986 Edgecombe et al. 2000 Wheeler et al. 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Crustacea_ -:Viridiplantae_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Antennules Schram, 1986 Edgecombe et al. 2000 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Crustacea_ -:Viridiplantae_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Labro carnoso Edgecombe et al. 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Crustacea_ -:Viridiplantae_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Esterno esclerotizado formado por los esternos antenales y mandibulares Edgecombe et al. 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Crustacea_ -:Viridiplantae_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Patas birramias Edgecombe et al. 2000 Wheeler et al. 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Crustacea_ -:_Branchiopoda_  -:Viridiplantae_                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Two pairs of maxillae */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Remipedia_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Maxilas que sostienen la presa e inyectan una sustancia histoliica Wheeler et al. 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Remipedia_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMounthparts in atrium */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eumalacostraca_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXUropods */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eumalacostraca_ -:_Hoplocarida_                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXCaridoid musculature */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Hoplocarida_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXTriramus antennules */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Branchiopoda_                                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Apedices filopodiales filtradores Wheeler et al. 1993  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Stomatopoda }                                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Toracopodos 2 a 5 en forma de garras subqueladas Wheeler et al. 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Peracarida }  -:_Thermosbaenacea_                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Oostergite marsupium Wheeler et al. 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Decapoda_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXZoea larva */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Isopoda_ :_Amphipoda_                                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXThoracic coxal plates */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Isopoda_                                                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXRespiratory pleopods */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euphausiacea_                                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Fotoforos Wheeler et al. 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Brachyura_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Abdomen reducido y plegado bajo el torax */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Anomura_                                                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Abdomen blando, escondido en conchas Wheeler et al. 1993  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Mictacea_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMultisegmental uropodal rami */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Tanaidacea_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXSecond thoracopod as chelicers */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cumacea_                                                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMaxillipedal siphons */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Spelaeogriphacea_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXThoracopodal expods respiratory */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Branchiopoda_ :_Cephalocarida_ :_Phyllocarida_                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXFoliaceous limbs */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cephalocarida_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXEgg brooding appendages */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Phyllocarida_                                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXCaudal rami as paddles */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Maxillopoda_ :_Ostracoda_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXHearth --also absent in :_Podoplea_ */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Ostracoda_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXNaupliar carapace */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cirripedia_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXCypris larva */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Copepoda_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXSix naupliar stages */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Copepoda_ -:_Monstrilloida_ :_Poecilostomatoida_                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXgeniculate antennules */ sil=all ; set 0 ++ ;
+                                   /* HEXAPODA */
+xread =!'0' [ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Placa maxilar, la parte basal del quinto metamero con miembros fusionada medialmente Edgecombe et al. 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Maxila de insecto, cardo, estipe, lacinia, galea, y su musculatura asociada Edgecombe et al. 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Thorax con tres segmentos con miembros Edgecombe et al. 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Diplura_ :_Collembola :_Protura_ :_Insecta_ -:Viridiplantae_          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXSecond maxillae form labrum  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Protura_ :_Collembola_ :_Diplura_                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Entognathous mouthparts Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Collembola_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Furcula de colembolo Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Collembola_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Collophoro Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Insecta_ -:Viridiplantae_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Apodemos posteriores del tentorio Edgecombe et al. 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Dicondylia }                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Articulacion mandibular dicondilica  Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Dicondylia }                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tarso de 5 segmentos Wheeler et al. 2001 */   sil=all ; set 0 ++ ;                  
+xread =!'0' [ { Pterygota }                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Dos pares de alas toracicas Wheeler et al. 2001 */   sil=all ; set 0 ++ ;   
+xread =!'0' [ { Neoptera }                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tercer esclerito alar axilar, con flexion de las alas sobre el cuerpo Wheeler et al. 2001 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Odonata_                                                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Labio larval prensil Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Phasmatodea_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Glandula pronotal repelente Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Embioptera_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXhindbasitarsus with silkglans  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Embioptera_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXFemale sec gland */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Embioptera_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXFemale 8st+1Vfs */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Embioptera_ -:_Clothoda                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMale 10T 9S para-epipro asimetricos  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Embioptera_ -:_Clothodidae                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMale Cercos asimetricos  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Hemiptera_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mandibula y Maxila en forma de estilete, envuelto por el labium Wheeler et al. 2001  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Endopterygota }                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Metamorfosis holometabola, tres estadios (larva, pupa, imago Wheeler et al. 2001 Whiting, MF et al. 1997 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Coleoptera_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  elytra fully sclerotized Wheeler et al. 2001 Beutel & Haas, 2000 Whiting, MF et al. 1997 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Coleoptera_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  hind-wings folded under elytra Beutel & Haas, 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Polyphaga_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  MP1+2 bent posteriorly  Beutel & Haas 2000, Haas, 2006 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Polyphaga_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  RA34 cut twice by triangular fold  Beutel & Haas 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Scarabaeiformia_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  marginal joint: an elbow-like articulation of the costal margin Haas, 2006 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Adephaga_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  abdominal sternite II divided by metacoxae Beutel & Haas, 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Myxophaga_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  left mandible with articulate tooth Beutel & Haas, 2000 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Strepsiptera_                                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Alas anteriores en forma de halterios Wheeler et al. 2001 Whiting, MF et al. 1997 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Hymenoptera_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Glandula accesoria de veneno en las hembras Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Hymenoptera_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Volsella Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Hymenoptera_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Hamuli Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Hymenoptera_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Clypeus (Vilhelmsen, 1996): not inflected Vilhelmsem 2001, Schulmeister etal 2002 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Apocrita_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Petiole; classic */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Apocrita_Aculeata_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  stinging ovipositor; classic */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Trichoptera_ :_Lepidoptera_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXVestidura en forma de pelos o escamas en las alas  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Trichoptera_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Propata anal en las larvas Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Lepidoptera_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXTergo abdominal X bilobular  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Glossata_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  non-functional mandibles Krenn & Kristensen, 2000 Beutel R.G. & H. Pohl. 2006 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Glossata_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  galeae forming a proboscis Krenn & Kristensen, 2000 Beutel R.G. & H. Pohl. 2006 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Glossata_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  normal type scales on wings (no hay Acanthopteroctetoidea) Beutel R.G. & H. Pohl. 2006 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Neolepidoptera }                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  adecticous, obtect pupa Kristensen & Skalski, 1998; Kristensen, 2003 Beutel R.G. & H. Pohl. 2006 */    sil=all ; set 0 ++ ;  
+xread =!'0' [ :_Heteroneura_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  frenulum–retinaculum wing coupling Beutel R.G. & H. Pohl. 2006  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Heteroneura_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  reduction of the Rs system of the hind wing Beutel R.G. & H. Pohl. 2006  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ditrysia_                                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  intrinsic galeal muscles with both origins and insertions markedly distal from the basal region, at least some of them oblique Krenn & Kristensen, 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ditrysia_ -:_Tineoidea_ -:_Yponomeutoidea_ :_Gelechioidea_            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  series of pronouncedly oblique lateral intrinsic muscles Krenn & Kristensen, 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Tortricoidea_ :_Bombycoidea_ :_Drepanoidea_ :_Geometroidea_ 
+    :_Hedyloidea_ :_Hesperioidea_ :_Papilionoidea_ :_Noctuoidea_ :_Pyraloidea_ :_     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  two series of oblique lateral and median intrinsic galeal muscles Krenn & Kristensen, 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Diptera_  -Halesia_diptera                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Halterios Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Diptera_  -Halesia_diptera                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Palpos labiales formando un labelo Wheeler et al. 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Brachycera_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  antennae; classic */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Brachycera_                                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  larvae with puparium; classic */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Muscomorpha_                                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  antennae with arista; classic */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Hippoboscoidea_ :_Muscoidea :_Oestroidea_                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Calyptratae: calypters; classic */   sil=all ; set 0 ++ ; 
+
+                    /*   ... a few more characters for insects .... */
+xread =!'0' [ :_Ephemeroptera                                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Male styke IX as claspers Wheeler et al 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Plecoptera                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tufled 'plecopteran' larval gills Wheeler et al 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Orthoptera                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pronotum overlapping propleuron Kristensen 1981, Wheeler et al 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Orthoptera                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Saltatorial 'orthopteran' hindlegs Kristensen 1981, Wheeler et al 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Dictyoptera                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Anterior teeth of proventriculus forming ring of strongly sclerotized teeth, Wheeler et al 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Mantodea :_Blattaria                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Ootheca Wheeler et al 2001 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Blattaria                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Clypeofrontal 'blattarian' sulcus Wheeler et al 2001 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Psocoptera :_Phthiraptera                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Unique complement of sclorotization in the cibarium Kristensen 1981, Wheeler et al 2001 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Thysanoptera                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Wings straplike, fringed Wheeler et al 2001 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Neuroptera :Raphidioptera :_Megaloptera                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Fusion of third valvulae with intrinsic musculature Kristensen 1981, Wheeler et al 2001 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Siphonaptera                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Prothoracic ctenidium Wheeler et al 2001 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Polyphaga :_Myxophaga :_Adephaga                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Sclerites firmly connected, without visible mebrane Beutel & Hass 2000 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Polyphaga :_Myxophaga :_Adephaga                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mesothoracic elytra locking device Beutel & Hass 2000 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Polyphaga :_Myxophaga                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Ventrites of meta- and mesothorax connected between and within mesocoxal cavities Beutel & Hass 2000 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Polyphaga :_Myxophaga                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Prothoraci trocantin fused with propleura Beutel & Hass 2000 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Polyphaga                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Propleura concealed and reduced in adults Beutel & Hass 2000 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cucujiformia :_Bostrichiformia                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cryptonephric malpigian tubules Beutel & Hass 2000 */  sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Curculionidae_ :_Brentidae_ :_Anthribidae :_Attelabidae_ :_Belidae_ 
+              :_Ithyceridae_ :_Nemonychidae_                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mandibular 'curculionid' pharyngeal process Marvaldi et al 2002 */   sil=all ; set 0 ++ ; 
+xread =!'0' [:_Adephaga                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Lateral lobes 'adephagan' on mentum Beutel & Hass 2000 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Hymenoptera                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Separation of mesothoracic anapisterna Schulmeister 2003 -- also absent in -:_Xyelidae */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Tenthredinoidea                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Metanoto-metapleural muscle Schulmeister 2003 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Tenthredinoidea                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  "Fusion" of the two parts muscle u of male genitalia Schulmeister 2003 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Cephidae  :_Siricidae :_Orussidae :_Apocrita                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Distal epipharynx wall sclerotized Schulmeister 2003 -- and :_Anaxyelidae  :_Xiphydriidae */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Cephidae :_Siricidae  :_Orussidae :_Apocrita                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Anterior mesofurcal arms fused Schulmeister 2003 --and :_Anaxyelidae :_Xyphydriidae */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Orussidae :_Apocrita                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Subdivision of the mesocoxa by distinct transvese grooves Schulmeister 2003 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Orussidae :_Apocrita                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Accommodation of the mesocoxa in well developed metespisternal depressions Schulmeister 2003 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:Apocrita_Aculeata :_Ichneumonoidea                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Articulation between first and second abdominal segments with a pair of tooth like condyli Ronquist et al 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Apoidea :_Sphecoidea :_Vespoidea                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Abdominal tergum 8 of females fully internal and desclerotized Schulmeister 2003 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Formicidae                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Second abdominal segment forming a nodelike petiole Ronquist et al 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Apoidea :_Sphecoidea                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tergum and mesopostnotum abutting strongly enlarged Ronquist et al 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Culicoidea :_Chironomoidea                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Higly modified mouthparts for filter feeding in larvae Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Brachycera                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Posterior portion of larva head elongated posteriorly into prothorax Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Brachycera                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Separate epandrium and hypandrium in males Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Muscomorpha -:_Nemestrinoidea -:_Asiloidea                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Larval maxilla reduced to an elogate membranous lobe Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Muscomorpha -:_Nemestrinoidea -:_Asiloidea -:_Empidoidea       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pupa enclosed in a puparium forming by hardened larva cuticle Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Muscomorpha -:_Nemestrinoidea -:_Asiloidea -:_Empidoidea       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Larva with cephalopharyngeal skeleton Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Muscomorpha -:_Nemestrinoidea -:_Asiloidea -:_Empidoidea       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Hypogynium circumverted 360 degress Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Muscomorpha -:_Nemestrinoidea -:_Asiloidea -:_Empidoidea 
+    -:_Platypezoidea -:_Syrphoidea                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Adults emerge from puparium by inflation of ptilinum Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Muscomorpha -:_Nemestrinoidea -:_Asiloidea -:_Empidoidea 
+    -:_Platypezoidea -:_Syrphoidea                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  First abdominal segment with an adventitious 'dipteran' suture Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Hippoboscoidea :_Muscoidea :_Oestroidea                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Dorsolaterally placed cleft or seam in antennal pedicel Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Hippoboscoidea :_Muscoidea :_Oestroidea                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Prosternal teeth Yeates & Weigmann 1999 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Ditrysia_Papilionoidea :_Hesperioidea                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mesophragma with dorsal plates or processes Wahlber et al 2007 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Ditrysia_Papilionoidea                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Parepisternal sutrure running striaght from dorsal end to base of spinasternum Wahlber et al 2007 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Ditrysia_Papilionoidea                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Secondary 'papilionid' sclerite posterior to metascutellum Wahlber et al 2007 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Nymphalidae                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Antennal segments with paired lateral grooves Wahlber et al 2007 */  sil=all ; set 0 ++ ; 
+xread =!'0' [:_Nymphalidae                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Three raised ventral carinae on antennal flagellum Wahlber et al 2007 */  sil=all ; set 0 ++ ; 
+
+                  /* CHELICERATA */
+xread =!'0' [ :_Arachnida_ :_Xiphosura_ :_Pycnogonida_              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXChelicerae and pedipals (Chelicerata) */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Arachnida_ :_Xiphosura_ :_Pycnogonida_              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXFour pairs of legs  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Xiphosura_ :_Arachnida_                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Ganglia of post-oral appendages fused into single nerve mass ch58 Giribet 2005 Edgecombe etal 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Arachnida_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXAbdominal appendices reduced, lost or modified */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Arachnida_ -:_Palpigradi_                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Slit sensilla ch142 Shultz 2007 Giribet 2005 Wheeler & Hayashi 1998 Wheeler et al. 1993 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Scorpiones_ :_Opiliones_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Stomotheca ch50 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Scorpiones_ :_Opiliones_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  the epistomal lumen is spanned by a transverse muscle ch188 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Scorpiones_ :_Opiliones_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  a pair of large epistomal arms projecting rearward into the prosoma and attaching to the endosternite ch189 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Solifugae_ :_Pseudoscorpiones_                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  a rostrosoma ch32 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Solifugae_ :_Pseudoscorpiones_                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Appendages V and VI with elongate femur-like patellae ch 48 Shultz 2007 */    sil=all ; set 0 ++ ;
+xread =!'0' [ :_Pseudoscorpiones_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cheliceral silk glands ch26 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Pseudoscorpiones_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cheliceral serrula interior and exterior ch28 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Opiliones_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pair of repugnatorial glands in the carapace Giribet 2005 Wheeler & Hayashi 1998 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Opiliones_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Penis ch160 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Opiliones_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Chelicera pivoting on dorsal protuberance of epistome ch21 Shultz 2007  */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Palpigradi_                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Intercheliceral median organ ch148 Shultz 2007  */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Scorpiones_                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pectines ch147 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_ :_Amblypygi_ :_Thelyphonida_ :_Schizomida_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Respiratory lamellae on opisthosomal somite 2 ch121 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_ :_Amblypygi_ :_Thelyphonida_               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Respiratory lamellae on opisthosomal somite 3 ch122 Shultz 2007 * /   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_ :_Amblypygi_ :_Thelyphonida_ :_Schizomida_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  megoperculum somite2 ch106 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Acari_ :_Ricinulei_                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Larva 6 legs adult 8 legs ch176 Shultz 2007 Wheeler & Hayashi 1998 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Amblypygi_ :_Thelyphonida_ :_Solifugae_             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pedipalpos raptoriales ch35 Shultz 2007 Wheeler & Hayashi 1998 * /   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Amblypygi_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tarsal grooming organ ch40 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Solifugae_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cheliceral ‘flagellum’ in male ch29 Shultz 2007 * /   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Solifugae_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Malleoli ch146 Shultz 2007 * /   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Solifugae_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Patella–tibia joint spanned by elastic (‘springlike’) sclerite ch81 Shultz 2007 * /   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Solifugae_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Terminal adhesive organ ch45 Shultz 2007 * /   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Schizomida_                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Specialized postanal flagellum in male ch119 Shultz 2007 * /   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Ricinulei_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  three diplotergites ch101 Shultz 2007 * /   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Organo copulatorio en el pedipalpo masculino ch42 Shultz 2007 Wheeler & Hayashi 1998 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Glandulas de veneno en el quelicero ch27 Shultz 2007 Wheeler & Hayashi 1998 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Glandulas de seda en el opisthomio ch112 Shultz 2007 Wheeler & Hayashi 1998 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Palate plate ch187 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Patella–tibia joint with posterior compression zone ch73 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneae_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Depressor muscle (or homologue) of trochanter femur joint ch60 Shultz 2007 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Mygalomorphae_  :_Araneomorphae_                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Posterior abdominal somites reduced (=opistothelae); classic; Platnick 1977  */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Mygalomorphae_  :_Araneomorphae_                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Abdominal segments fused; classic; Platnick 1977 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneomorphae_                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  diaxial chelicerae; classic */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Araneomorphae_                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  anterior median spinnerets converted into cribellum (or colulum) */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Mesothelae_                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  tibiae-metatarsi with proprioreceptor bristle/unsclerotized patch; Platnick & Goloboff 1985 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Salticidae_                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Modified eyes; classic */   sil=all ; set 0 ++ ;
+
+                     /* MOLLUSCA */
+xread =!'0' [ :_Mollusca_ -:_Bivalvia_ -:_Cirrata_                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Radular apparatus Wheeler et al. 1993 Giribet & Wheeler, 2002 Lindgren et al., 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Mollusca_ -:_Scaphopoda_ -:_Cephalopoda_              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Osphradia Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastropoda_ :_Cephalopoda_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mantle covering dorsal surface Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastropoda_ :_Bivalvia_ :_Nautiloidea_ :_Scaphopoda_  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Calcified outer mollusc's shell Lindgren et al., 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Caudofoveata_ :_Polyplacophora_ :_Gastropoda_ 
+    :_Bivalvia_ :_Cephalopoda_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Gill with filaments of leaflets (ctenidia) Lindgren et al., 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Scaphopoda_ :_Bivalvia_ :_Gastropoda_ :_Cephalopoda_  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cerebral (pretrochal) eyes Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Bivalvia_ :_Scaphopoda_                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Burrowing, foot  with  anterior  enlargement Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Bivalvia_ :_Scaphopoda_                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mantle lobes Giribet & Wheeler, 2002 Lindgren et al., 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Bivalvia_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Pallial lines Giribet & Wheeler, 2002 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Bivalvia_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Posterior pedal gland (juvenile stage) Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Bivalvia_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Labial palps Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Bivalvia_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Lateral body compression Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Bivalvia_ -:_Protobranchia_                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mantle cavity occupied by gills lateral and posterior to foot Giribet & Wheeler, 2002 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Scaphopoda_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Captacula, retractile feeding tentacles Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Palaeoheterodonta_ :_Anomalodesmata_ :_Heteroconchia_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Proventriculum (larval hinge apparatus) with diferentiated dentition Giribet & Wheeler, 2002 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Heteroconchia_                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Gasteropod's chelazae connecting the eggs  Ponder & Lindberg, 1997 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cephalopoda_ :_Gastropoda_ :_Scaphopoda_              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Position of anus, near mouth opening at ventral side Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Bivalvia_ :_Cephalopoda_ :_Scaphopoda_                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  True pedal ganglia Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastropoda_ :_Cephalopoda_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Specific head retractor Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastropoda_ :_Cephalopoda_                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Hydrostatic muscular system Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastropoda_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cephalic tentacles Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastropoda_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Torsion Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastropoda_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Tubular protoconch Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gastropoda_                                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Operculum, in larval stage Giribet & Wheeler 2003, Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cephalopoda_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Cartilaginous "cranium" Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cephalopoda_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Closed "circulatory system" Lindgren etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Coleoidea_                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Inner shell sac Lindgren et al., 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Coleoidea_ -:_Octopoda_                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  One pair of cephalopod's fins Lindgren et al., 2004 */   sil=all ; set 0 ++ ; 
+           /* DEUTEROSTOMIA */
+xread =!'0' [ :_Chaetognatha_ :_Chordata_  :_Echinodermata_ :_Hemichordata_ 
+    :_Xenoturbellida_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXEnterocoely */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ctenophora_ :_Brachiopoda_ :_Chaetognatha_ :_Chordata_  
+    :_Echinodermata_ :_Hemichordata_ :_Xenoturbellida_                           ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mesoderm derived from archenteron Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Chaetognatha_ :_Chordata_  :_Echinodermata_ :_Hemichordata_ 
+    :_Xenoturbellida_                                                            ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXCoelom tripartite (or derived therefrom)   */   sil=all ; set 0 ++ ; 
+xread =!'0' [ { Panarthropoda } -:_Tardigrada_ :_Mollusca_ :_Echiura_ 
+    :_Annelida_ :_Brachiopoda_ :_Chaetognatha_ :_Chordata_  :_Echinodermata_ 
+    :_Hemichordata_ :_Xenoturbellida_                                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Haemal system Zrzavy, J. 2002 Schram en Backeljau et al. 1993 Glenner etal 2004  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Echinodermata_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Calcified endoskeleton Schram en Backeljau et al. 1993 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Echinodermata_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXExternal ciliary grooves for suspension feeding */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Echinodermata_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXPentaradial (secondary) symmetry */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Echinodermata_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XX5 open ambulacral grooves */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Echinodermata_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXMouth and anus on oral surface */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Echinodermata_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXAttachment to substratum by aboral face */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Ophiuroidea_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  central body disk is sharply marked off from the arms Pawson, 2007 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Asteroidea_ -:Viridiplantae_                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Odontoforo?? Pawson, 2007 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Chordata_ :_Hemichordata_                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  U-shaped pharyngeal gill slits with collagenous skeleton Zrzavy, J. 2002 Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Chordata_ :_Hemichordata_                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Epithelia binding iodine and secreting iodothyrosine Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Hemichordata_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXPreoral gut diverticulum */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Hemichordata_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXGlomerulus as unique excretory structure  */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gnathostomulida_ :_Brachiopoda_ -:_Phoroniformea_                 ] ? ; 
+xread =!'0' [ :_Phoroniformea_ :_Chordata_ :_Hemichordata_ :_Echinodermata_       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Dorsal nerve concentration/brain behind apical organ/apical  pole ch 82 Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Gnathostomulida_ :_Hemichordata_ ] ? ; xread =! '0' [ :_Chordata_ ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Dorsal longitudinal nerve cord ch83 Glenner etal 2004 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Chordata_                                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXEndostyle or thymus */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Chordata_                                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  XXPostanal tail */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Chordata_ :_Urochordata_                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Notochord Zrzavy, J. 2002 */   sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Cephalochordata_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  notochord extended to tip of snout ^tol-Lundberg  */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cephalochordata_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  segmentally organized gonads ^tol-Lundberg */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cephalochordata_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  hood-like atrium ^tol-Lundberg  */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cephalochordata_ :_Chordata_Craniata_                             ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Body with segmented longitudinal musculature developed from rows of mesodermal pockets from the archenteron Glenner etal 2004 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chordata_Craniata_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  head skeleton ^tol-Lundberg */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chordata_Craniata_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  nephrons ^tol-Lundberg   */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chordata_Craniata_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  neural crest ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chordata_Craniata_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  adenohypophysis and neurohypophysis ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chordata_Craniata_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  optic tectum ^Donoghue et al., 2000  */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Hyperotreti_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  oesophagocutaneous duct ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Hyperotreti_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  a series of slime glands ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mauthner fibres in central nervous system ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  paired olfactory organ ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  segmented adenohypophysis ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  vertebrae ^tol-Janvier ^Donoghue et al., 2000    */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  extrinsec eye muscles ^tol-Janvier   */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  close atrium and ventricle of heart ^tol-Janvier ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  closed pericardium ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  true lymphocytes  ^Donoghue et al., 2000  */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  nervous regulation of heart ^tol-Janvier ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  spleen ^Donoghue et al., 2000    */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  collecting kidney tubules ^Donoghue et al., 2000  */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  typhlosole ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  two or three semicircular canals ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Vertebrata_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  true neuromasts ^tol-Janvier ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Hyperoartia_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  sucker mouth with annular cartilage ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Hyperoartia_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  nasohypophyseal opening ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  calcified dermal skeleton ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  cerebellum ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  jaws and teeth ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_  -:_Anguilliformes_ -:_Gymnotiformes_ 
+    -:_Carapus -:_Xiphiidae_ -:_Melanocetidae_ -:_Oneirodidae_ 
+    -:_Ceratiidae_ -:_Cetomimidae_ -:_Synbranchidae_ -:_Schindleriidae_ 
+    -:_Gymnophiona_ -:_Colubroidea_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  pelvic girdle and fins/limbs ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  three semicircular canals ^tol-Janvier ^Donoghue et al., 2000 */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  paired nasal sacs, independent from hypophyseal tube ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  myelinated nerve fibres ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  sperms passing through urinary ducts ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  superior oblique muscle of eye attached anteriorly to eyeball ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  braincase including nasal capsules ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  jaw muscle external to mandibular arch ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chondrichthyes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  prismatic endoskeletal calcification ^Grogan & Lund, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chondrichthyes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  placoid scales ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chondrichthyes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  pelvic fins modified as claspers in males ^Grogan & Lund, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Holocephali_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  gill cover over the four gill openings ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Holocephali_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  clasping organ in head ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Actinopterygii_ { Sarcopterygii }                                 ] '1' ; sil-buf fil; quote Char. '0' ;  /*  three otholites in ear ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Actinopterygii_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  laterosensory canal in dentary ^Gardiner et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Actinopterygii_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  two series of pelvic radials ^Gardiner et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Actinopterygii_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  acrodin cap on teeth ^Gardiner, 1984 ^Gayet et al., 2002 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Neopterygii_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  equal number of rays and supporting bones in anal and dorsal fins ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Neopterygii_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  premaxilla with internal process lining the anterior part of nasal pit ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Teleostei_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  diural caudal skeleton ^de Pinna, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Teleostei_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  ural neural arches modified as uroneurals ^de Pinna, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Teleostei_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  division of hypurals into dorsal and ventral groups ^de Pinna, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Teleostei_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  first two hypurals supported by a single centrum ^de Pinna, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Teleostei_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  urohyal formed by a medial tendon bone ^de Pinna, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Teleostei_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  foramen between hypohyals for passage of hyoidean artery ^de Pinna, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Teleostei_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  ossified basihyal ^de Pinna, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Teleostei_ -:_Siluriformes_                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  posterior myodome extending into basioccipital ^de Pinna, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Osteoglossomorpha_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  primary bite between parasphenoid and tongue ^Greenwood et al., 1966 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Osteoglossomorpha_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  paired tendon bones on second hypobranchial ^Greenwood et al., 1966 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Osteoglossomorpha_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  18 principal caudal-fin rays  ^Patterson & Rosen, 1977 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Osteoglossomorpha_  -Hiodon_                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  a complete neural spine on the first preural centrum ^Patterson & Rosen, 1977 ^Hilton, 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Osteoglossomorpha_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  intestine passes to the left of stomach ^Patterson & Rosen, 1977 ^Li & Wilson, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Albuliformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  fenestra between hyomandibular and metapterygoid for passage of levator arcus palatini ^Forey et al., 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anguilliformes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  gill arches free from neurocranium ^Forey et al., 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anguilliformes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  symplectic fused with quadrate ^Forey et al., 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anguilliformes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  scales not imbricated ^Forey et al., 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Clupeiformes_ :_Ostariophysi_                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  pleurostyle ^Lecointre & Nelson, 1996 ^di Dario, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Clupeiformes_ :_Ostariophysi 
+    -:_Chanos Phractolaemus_ -:_Kneria -:_Parakneria                              ] '1' ; sil-buf fil; quote Char. '0' ;  /*  fusion of hypural two and ural centrum one ^Lecointre & Nelson, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Clupeiformes_ :_Ostariophysi                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  fusion of extrascapular and parietal ^Lecointre & Nelson, 1996 ^di Dario, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Clupeiformes_ :_Ostariophysi                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  silvery peritoneum over gas bladder ^di Dario, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Clupeiformes_                                          	          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  otophysic connection with otic bullae invading otic capsule ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Clupeiformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  recessus lateralis ^Grande, 1985 ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Ostariophysi_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  gasbladder with anterior and posterior chambers ^Fink & Fink, 1981, 1996 ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Ostariophysi_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  peritoneal tunic of anterior chamber of gasbladder attached to anterior two pleural ribs ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cypriniformes_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  kinethmoid ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cypriniformes_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  dorsomedial process of palatine contacting mesethmoid ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cypriniformes_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  teeth on ceratobranchial 5 ankylosed to bone ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cypriniformes_ :_Characiformes_ :_Siluriformes_ :_Gymnotiformes_  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  scaphium on Weberian apparatus ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cypriniformes_ :_Characiformes_ :_Siluriformes_ :_Gymnotiformes_  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  tripus on Weberian apparatus ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cypriniformes_ :_Characiformes_ :_Siluriformes_ :_Gymnotiformes_  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  os suspensorium ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Characiformes_ :_Siluriformes_ :_Gymnotiformes_                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  mesethmoid articulating anterior to vomer ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Characiformes_ :_Siluriformes_ :_Gymnotiformes_                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  haemal spine of PU2 fused with its centrum and parhypural and haemal spine 1 fused with compund terminal centrum ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Characiformes_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  auditory foramen on prootic ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Characiformes_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  deep mediodorsal opening to posttemporal fossa ^Fink & Fink, 1981, 1996 ^di Dario, 2004*/ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Characiformes_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  lagenar capsules ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Characiformes_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  replacement dentary and some premaxillary teeth developed in crypts ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Siluriformes_ :_Gymnotiformes_                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Baudelot's ligament robust and bifurcated distally ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Siluriformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  endopterygoid reduced, not contacting quadrate, metapterygoid or hyomandibula ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Siluriformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  third and fourth neural arches fused together and to the complex centrum ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;      
+xread =!'0' [ :_Siluriformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  centra 2-4 fused into "complex centrum" ^Fink & Fink, 1981, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostei_                                                      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  supraneurals develop in "pattern 2" and first supraneural becomes clearly differentiated from the second ^Johnson & Patterson 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Argentiniformes_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  crumenal organ ^Begle, 1992 ^Johnson & Patterson, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Neoteleostei_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  retractor dorsalis muscle ^Rosen, 1973 ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Neoteleostei_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  lobular testis ^Parenti & Grier, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Aulopiformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  elongation of third pharyngobranchial and uncinate process of third epibranchial ^Rosen, 1973 ^Baldwin & Johnson, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Myctophiformes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  well-developed median dorsal keel on the mesethmoid ^Stiassny, 1996 */ sil=all ; set 0 ++ ;                                                     
+xread =!'0' [ :_Myctophiformes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  adipose fin supports (either of hyaline cartilage or chondroid tissue) penetrating the supracarinalis posterior muscle mass ^Stiassny, 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Acanthomorpha_                                                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  median chondrified rostral cartilage present and strongly bound to premaxillary ascending process via well-developed rostro-premaxillary ligament ^Hartel and Stiassny, 1986 ^Stiassny, 1986 ^Johnson and Patterson, 1993 */ sil=all ; set 0 ++ ; 
+xread =!'0' [ :_Lampridiformes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  maxilla protrusible together with premaxilla ^Olney et al., 1993 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Gadiformes_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  larvae with a lateral placement of the anus ^Fahay & Markle, 1984 ^Markle, 1989 ^Endo, 2002 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Gadiformes_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  X and Y bones in caudal skeleton ^Markle, 1982 ^Markle, 1989 ^Endo, 2002 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Gadiformes_                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  pince-nez-shaped sulcus and central collicular in otholit ^Nolf & Steurbaut, 1989 ^Endo, 2002 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Lophiiformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  spinous dorsal fin primitively of six spines, the anterior-most three of which are cephalic in position, the first modified to serve as a luring apparatus ^Pietsch and Grobecker, 1987 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Lophiiformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  epiotics separated from the parietals and meeting on the midline posterior to the supraoccipital ^Pietsch and Grobecker, 1987 */ sil=all ; set 0 ++ ;;
+xread =!'0' [ :_Atherinomorpha_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  restricted lobular testis ^Parenti & Grier, 2004 ^Parenti, 2005 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Atherinomorpha_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  egg demersal, with several chorionic filaments and oil globes that coalesce at the vegetal pole ^Parenti, 2005 */ sil=all ; set 0 ++ ;                                       
+xread =!'0' [ :_Atheriniformes_                                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  pelvic-rib ligament ^Dyer, 1998 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Beloniformes_                                                     ] '1' ; sil-buf fil; quote Char. '0' ;  /*  caudal skeleton with lower caudal lobe with more principal rays than the upper ^Parenti, 2005 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cyprinodontiformes_                                               ] '1' ; sil-buf fil; quote Char. '0' ;  /*  caudal fin skeleton symmetrical ^Costa, 1998 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Zeiformes_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  dorsal, anal, and pectoral fin rays unbranched ^Tyler et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Zeiformes_                                                        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  three and one-half gills (seven hemibranchs) ^Tyler et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Scorpaeniformes_                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  suborbital stay ^Nelson, 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Pleuronectiformes_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  bilaterally asymmetrical adults, with one eye migrating during growth ^Nelson, 2006 */ sil=all ; set 0 ++ ;                                            
+xread =!'0' [ { Tetrapoda }	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  cranium free from pectoral girdle ^tol-Laurin */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Tetrapoda }                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  four muscular limbs with discrete digits ^tol-Laurin */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Tetrapoda }                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  a sacral rib connecting the axial skeleton (the spine) to the pelvic girdle (the hip) ^tol-Laurin */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Tetrapoda }                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  a layer of dead, horny cells that reduces evaporative water loss ^tol-Laurin */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Tetrapoda }                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  parathyroid gland ^tol-Laurin */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Tetrapoda }                                                       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Harderian gland located anterior to the eye ^tol-Laurin */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Amphibia_ -:Viridiplantae -:Stramenopiles                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  pedicellate teeth, crown separated from root by a fibrous tissue ^Trueb & Cloutier, 1991 ^Grant et al., 2006 ^Montero & Autino, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Amphibia_ -:Viridiplantae -:Stramenopiles                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  green rods in the eye ^Montero & Autino, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Amphibia_ -:Viridiplantae -:Stramenopiles                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  fat bodies associated with gonads ^Trueb & Cloutier, 1991 ^Grant et al., 2006 ^Montero & Autino, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Amphibia_ -:Viridiplantae -:Stramenopiles                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  two types of skin glands (mucous & granular) ^Montero & Autino, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Amphibia_ -:Viridiplantae -:Stramenopiles                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  papilla amphibiorum present in ear ^Trueb & Cloutier, 1991 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Gymnophiona_	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  paired sensory tentacles on snout ^Nussbaum & Wilkinson, 1989 ^Trueb & Cloutier, 1991 ^Grant et al., 2006 ^Montero & Autino, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Gymnophiona_	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  an eversible phallodeum in males formed by a portion of the cloacal wall ^Nussbaum & Wilkinson, 1989 ^Trueb & Cloutier, 1991 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Batrachia_	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  papilla neglecta ^Trueb & Cloutier, 1991 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Batrachia_	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  carotid labyrinth ^Trueb & Cloutier, 1991 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Batrachia_	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  choanal tube opening into archenteron during development ^Trueb & Cloutier, 1991 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Batrachia_	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  pronephros modified for sperm transport ^Trueb & Cloutier, 1991 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Batrachia_Caudata_                                                ] '1' ; sil-buf fil; quote Char. '0' ;  /*  tuberculum interglenoideum ^Trueb & Cloutier, 1991 ^Larson and Dimmick, 1993 ^Larson et al., 2003 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anura_	            	                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  nine or fewer vertebrae ^Trueb & Cloutier, 1991 ^Ford & Cannatella, 1993 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anura_	            	                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  atlas with a single centrum ^Trueb & Cloutier, 1991 ^Ford & Cannatella, 1993 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anura_	            	                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  first spinal nerve exits from spinal nerve canal via intervertebral foramen ^Trueb & Cloutier, 1991 ^Ford & Cannatella, 1993 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anura_	            	                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*    fusion of caudal vertebral segments into a urostyle ^Trueb & Cloutier, 1991 ^Ford & Cannatella, 1993 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anura_	            	                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  fusions of radius and ulna and tibia and fibula ^Trueb & Cloutier, 1991 ^Ford & Cannatella, 1993 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Anura_	            	                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  fusion of hyobranchial elements into a hyoid plate ^Trueb & Cloutier, 1991 ^Ford & Cannatella, 1993 ^Grant et al., 2006 */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Amniota }	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  two pairs of sacral vertebrae ^Laurin et al., 1996 */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Amniota }	            	                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  amniotic egg ^tol-Laurin & Gauthier */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Amniota }	                                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  astragalus bone ^tol-Laurin & Gauthier */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Amniota }                                                         ] '1' ; sil-buf fil; quote Char. '0' ;  /*  paired spinal accessory (11th) and hypoglossal (12th) cranial nerves incorporated into the skull */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Testudines_                    	                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  carapace formed by costal, neural, and peripheric bones ^Ruckes, 1929 ^tol-Meylan */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Testudines_                    	                                  ] '1' ; sil-buf fil; quote Char. '0' ;  /*  maxilla, premaxilla, and dentary without teeth but covered by a horny triturating surface ^tol-Meylan */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Testudines_            	                                          ] '1' ; sil-buf fil; quote Char. '0' ;  /*  quadrate is concave posteriorly and exposed laterally on the cheek ^tol-Meylan */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Diapsida }                    ] '1' ; sil-buf fil; quote Char. '0' ;  /*  upper and a lower lateral temporal fenestra ^tol-Laurin & Gauthier */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Diapsida }            	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  low concentration of urea in the blood plasma ^tol-Laurin & Gauthier */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Diapsida }            	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  suborbital fenestra between the palatine, the ectopterygoid, and the maxilla ^tol-Laurin & Gauthier */ sil=all ; set 0 ++ ;
+xread =!'0' [ { Diapsida }            	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Huxley's foramen in the extracolumella ^tol-Laurin & Gauthier */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Lepidosauria_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  transverse cloacal slit ^Gauthier et al., 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Lepidosauria_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  forked tongue ^Gauthier et al., 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Lepidosauria_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  skin shed all at once ^Gauthier et al., 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Squamata_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  femoral and preanal glands ^Gauthier et al., 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Squamata_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  hemipenes ^Gauthier et al., 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Squamata_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  lacrimal duct associated with Jacobson's organ ^Gauthier et al., 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Archosauria_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  antorbital fenestra ^Benton & Clark, 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Archosauria_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  mandibular fenestra ^Montero & Aquino, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Archosauria_          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  a fourth trochanter on the femur ^Benton & Clark, 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Archosauria_ :_Mammalia_      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  four-chambered heart ^Goodrich, 1930 ^Benton & Clark, 1988 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Aves_	          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  feathers ^tol-Mindel & Brown */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Aves_	          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  bill ^tol-Mindel & Brown */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Aves_	          	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  fused digits, carpals and metacarpals ^tol-Mindel & Brown */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Aves_  	         	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  aerial sacs ^Montero & Autino, 2004 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Palaeognathae_         	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  mesethmoid reaching rostrally markedly beyond naso-frontal hinge ^Mayr & Clarke, 2003*/ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Palaeognathae_         	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  two strong grooves on ventral surface of mandibular symphysis ^Mayr & Clarke, 2003*/ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Palaeognathae_         	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  dorsal surface of mandibular symphysis essentially flat ^Mayr & Clarke, 2003*/ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Neognathae_         	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  pterygoid and palatines not fused ^Mayr & Clarke, 2003*/ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Neognathae_         	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  tubae auditivae paired and close to/adjacent on cranial midline or single anterior opening ^Mayr & Clarke, 2003*/ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Neognathae_ :_Rheidae_        ] '1' ; sil-buf fil; quote Char. '0' ;  /*  foramen ilioischiadicum cadually closed ^Mayr & Clarke, 2003*/ sil=all ; set 0 ++ ;
+xread =!'0' [ { Galloanserae }	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  facet of basipterygoid for articulation with pterygoid large and ovoid ^Mayr & Clarke, 2003*/ sil=all ; set 0 ++ ;
+xread =!'0' [ { Galloanserae }	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  ostia canalis carotici et ophtalmici externi situated in a well marked depression ^Mayr & Clarke, 2003*/ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Galliformes_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  double, and open, incisurae laterales on the sternum ^Dyke et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Galliformes_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  incisura capitis of proximal humerus enclosed from crus dorsale fossa by a distinct ridge ^Dyke et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Galliformes_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  trochlea metatarsalia III of tarsometatarsus distinctly asymmetric ^Dyke et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Passeriformes_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  "passerine" tensor propatagialis brevis ^Raikow, 1982 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Passeriformes_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  bundled spermatozoa with coiled head and large acrosome ^Raikow, 1982 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Passeriformes_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  type VII deep plantar tendons ^Raikow, 1982 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Mammalia_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  mammary glands */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Mammalia_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  postparietals fused ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Mammalia_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  lower temporal fenestra only ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Mammalia_	 	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  differentiation of cheek teeth in premolars and molars ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Metatheria_ :_Eutheria_       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  anterior lamina fused to the ventral ramus of alisphenoid, and cranial process of squamosal expanded ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Metatheria_ :_Eutheria_       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  nipples */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Metatheria_ :_Eutheria_       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  vertical tympanic membrane ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Metatheria_ :_Eutheria_       ] '1' ; sil-buf fil; quote Char. '0' ;  /*  tribosphenic molar teeth ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eutheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  modified trophoblast and inner cell mass ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eutheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  chorioallantoic placenta ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eutheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  seminal vesicle ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eutheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  prolonged intrauterine gestation ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eutheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Mullerian ducts fused to a median vagina ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eutheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  corpus callosus connecting cerebral hemispheres ^Benton, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Metatheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  four upper molars ^Horovitz et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Metatheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  "marsupial" pattern of dental replacement ^Horovitz et al., 2003 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Glires_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  incisor enamel restricted to labial surface ^Meng & Wyss, 2001 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Glires_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  paracone and metacone transverse ^Meng & Wyss, 2001 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Glires_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  lower diastema significant ^Meng & Wyss, 2001 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Primates_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  prehensile hands ^Martin, 1990 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chiroptera_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  modified forelimbs, which support a wing membrane (patagium) ^tol-Simmons & Conway */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chiroptera_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  deciduous dentition does not resemble adult dentition ^tol-Simmons & Conway */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Chiroptera_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  posterior laminae present on ribs ^tol-Simmons & Conway */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Microchiroptera_   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  a sophisticated echolocation system ^tol-Simmons & Conway */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cetartiodactyla_   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  double-trochleated astragalus  ^Rose, 2001 */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Ruminantia_	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  stomach with four compartments: the rumen, reticulum, omasum and abomasum */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cetacea_	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  paddle-like forelimbs with hyperphalangy and a non-rotational elbow joint ^tol-Milinkovitch & Lambert */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cetacea_	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  external nares on the top of the skull ^tol-Milinkovitch & Lambert */ sil=all ; set 0 ++ ;
+xread =!'0' [ :_Cetacea_	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  Isolation of the earbones related to the development of underwater hearing and echolocation abilities ^tol-Milinkovitch & Lambert */ sil=all ; set 0 ++ ;
+
+sil - all ; 
+macreport-; 
+report=; 
+
+xread == ; 
+quote DEFINED '0' MORPHOLOGICAL CHARACTERS ; 
+set 0 -- ; 
+ccode + 0.'0'; 
+proc/; 
+
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  braincase including nasal capsules ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Euteleostomi_ :_Chondrichthyes_                                   ] '1' ; sil-buf fil; quote Char. '0' ;  /*  jaw muscle external to mandibular arch ^tol-Janvier */   sil=all ; set 0 ++ ;
+xread =!'0' [ :_Eutheria_ 	   	      ] '1' ; sil-buf fil; quote Char. '0' ;  /*  prolonged intrauterine gestation ^Benton, 1990 */ sil=all ; set 0 ++ ;
