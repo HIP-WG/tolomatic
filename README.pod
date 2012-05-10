@@ -1,11 +1,12 @@
 =head1 INTRODUCTION
 
-This is a prototype implementation of a phylotastic app that takes a very big
-tree and a list of taxa and returns a topology for just those taxa by pruning
-down the very big tree. There are different ways in which this can be
-done, including by recursive calls into a database (which probably would need
-to hit the database many times) or by loading the whole tree into memory (which
-might take a while to read in the file, and cost a bit of memory).
+This is a prototype implementation of a phylotastic (L<https://twitter.com/#!/search/%23phylotastic>) 
+app that takes a very big tree and a list of taxa and returns a topology for 
+just those taxa by pruning down the very big tree. There are different ways in 
+which this can be done, including by recursive calls into a database (which 
+probably would need to hit the database many times) or by loading the whole 
+tree into memory (which might take a while to read in the file, and cost a 
+bit of memory).
 
 The way it is done here is B<much cooler> than that (in fact, it's phylotastic),
 because it never requires the whole tree to be in memory or in a database: the
