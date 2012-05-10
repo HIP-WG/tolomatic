@@ -41,6 +41,7 @@ $tree->visit_depth_first(
 				open my $fh, '>', "${dir}/${filename}" or die "Can't open ${dir}/${filename}: $!";
 				print $fh join "\t", @path;
 				close $fh;
+				print $filename, "\t", $path[0], "\n";
 			}
 		}
 		else {
