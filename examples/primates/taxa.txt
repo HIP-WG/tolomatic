@@ -1,7 +1,0 @@
-Homo_sapiens
-Pan_paniscus
-Pongo_pygmaeus
-Gorilla_gorilla
-Lemur_catta
-Tarsius_syrichta
-Macaca_mulatta
