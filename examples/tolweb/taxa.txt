@@ -1,6 +1,0 @@
-Homo sapiens
-Pan paniscus
-Pongo pygmaeus
-Gorilla gorilla
-Lemur catta
-Tarsius syrichta
