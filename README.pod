@@ -16,7 +16,8 @@ the Tree of Life Web Project (L<http://tolweb.org>) showed that this in fact
 does return a pruned subtree within a few seconds, fast enough for a web
 service. It would go even quicker if this was actually run on multiple compute
 nodes and if we ported the implementation to Java so that it
-embeds more tightly into hadoop.
+embeds more tightly into hadoop. (The prototype mapper, reducer and combiner scripts
+are written in Perl.)
 
 =head1 THE ALGORITHM
 
@@ -33,7 +34,7 @@ assume that we want to get a tree that retains these tips:
  C
  F
  G
- 
+
 Such that we end up with a tree like this:
 
  ((A,C)3,(F,G)5)6;
@@ -48,23 +49,23 @@ In the first step, the map function is passed one taxon of interest per call. In
 response to each of these, it returns a list of key value pairs, where each key
 is a node label for one of the nodes between the taxon and the root of the tree,
 and the value is the taxon. This is what it emits:
- 
+
  (for A:)
  1 => A
  3 => A
  4 => A
  6 => A
- 
+
  (for C:)
  2 => C
  3 => C
  4 => C
  6 => C
- 
+
  (for F:)
  5 => F
  6 => F
- 
+
  (for G:)
  5 => G
  6 => G
@@ -99,7 +100,7 @@ Because keys and values we emit need to be scalars we concatenate the keys with
  A|C     => 4,2
  F|G     => 5,2
  A|C|F|G => 6,4
- 
+
 =item B<reduce>
 
 Out of these we firstly want to filter out "unbranched internals" such as node
@@ -125,7 +126,8 @@ exercise.
 =head1 INSTALLING
 
 To make this work, you firstly need to install a couple of dependencies. The
-following three are best installed from the CPAN shell:
+following three are best installed from the CPAN shell (i.e. C<sudo cpan Moose>
+and so on):
 
 =over
 
@@ -142,21 +144,53 @@ is pretty simple if you just get the compiled version and unpack it. All you
 need to do is set the C<$HADOOP_HOME> and C<$HADOOP_VERSION> environment
 variables correctly.
 
-Subsequently, you can add the lib folder in this project to your C<$PERL5LIB>
-environment variable so that the module C<Bio::PhyloTastic::Pruner::MapReduce>
-is available to any scripts that need it. There are no installation
-scripts (Makefile.PL or Build.PL), META.yml, unit tests or any of the other
-goodies for this yet. Feel free to contribute these :-)
+The prerequisites aside, there are no installation scripts for this package
+(Makefile.PL or Build.PL), META.yml, unit tests or any of the other goodies for this yet. 
+Feel free to contribute these if you feel they are necessary :-)
 
 =head1 RUNNING
 
-The first thing you are going to have to do is pre-process a very large tree to
-massage it in the format the mapper expects. Two things need to happen: i) nodes
-need to be labelled in a post-order traversal; ii) for each tip in the tree, the
-path to the root needs to be constructed based on those node labels. Each path
-then needs to be written out to a separate file, named after the MD5 hex hash
+The Makefile implements several example targets that can be invoked to sample 
+a percentage of tips from one of the megatrees in the examples/rawdata directory. 
+All of these are invoked in the same way:
+
+ make PERCENTAGE=<integer 1..99> sample_<megatree>
+
+For example, to get a tree C<outfile.tre> that has a random 10% of the tips from 
+Smith_2011_angiosperms.txt, do:
+
+ make PERCENTAGE=10 sample_angio
+
+The C<megatree> can be one of the following:
+
+=over
+
+=item B<fishes> - the first tree from Westneat_Lundberg_BigFishTree.nex
+
+=item B<mammals> - the first tree from Bininda-emonds_2007_mammals.nex
+
+=item B<tol> - the tree from TOL.xml
+
+=item B<angio> - the tree from Smith_2011_angiosperms.txt
+
+=item B<phylomatic> - the tree from Phylomatictree.nex
+
+=back
+
+When you run any of these targets for the first time there is a pre-processing step
+that takes a fair amount of time. Once this is done the first time, additional invocations
+will go pretty fast, each time overwriting the Newick file C<outfile.tre>.
+
+=head1 IMPLEMENTATION DETAILS
+
+=head2 PRE-PROCESSING
+
+For your nerdy edification - during the pre-processing step, two things need 
+to happen: i) nodes need to be labelled in a post-order traversal; ii) for each tip 
+in the tree, the path to the root needs to be constructed based on those node labels. 
+Each path then needs to be written out to a separate file, named after the MD5 hex hash
 of the focal taxon. For our example tree here, this will write out the following
-paths (each line in a separate file):
+paths (each line in a separate file with some opaque name):
 
  A  1   3   4   6
  B  1   3   4   6
@@ -166,21 +200,23 @@ paths (each line in a separate file):
  F  5   6
  G  5   6
 
-The script/tree2table.pl script does that for you. Usage is as follows:
+The script/tree2table.pl script does that. Pre-processing outside of the invocation that
+the Makefile does implicitly is done as follows:
 
  perl tree2table.pl \
     --file=<input tree> \ # e.g. examples/tolweb/tolskeletaldump.xml
     --format=<input tree format> \ # e.g. tolweb, or nexml/newick/nexus/phyloxml
     --dir=<dir to write to>
 
-If you actually run this on the tolskeletaldump.xml, be aware that this step
-will take several minutes: it's a big tree. Luckily we only have to do this once!
-When that's done, we can run a query, e.g.:
+If you actually run this on the TOL.xml, be aware that this step will take several 
+minutes: it's a big tree. Luckily we only have to do this once! When that's done, 
+the Makefile will then run a query, which when done by hand looks roughly like this:
 
  $HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/hadoop-$HADOOP_VERSION-streaming.jar \
     -cmdenv DATADIR=<dir that you wrote to> \ # i.e. the output from tree2table.pl
-    -input <file with taxa to keep, one per line> \ # e.g. examples/tolweb/taxa.txt
-    -output <dir for hadoop to write to> \ # this dir must not exist yet!
+    -cmdenv PERL5LIB="$(PERL5LIB):lib" \ # to add this package to Perl class path 
+    -input <file with taxa to keep, one per line> \ # e.g. ./sample.txt
+    -output <dir for hadoop to write to> \ # this dir must not exist yet, e.g. ./tmp
     -mapper script/pruner/mapper.pl \
     -combiner script/pruner/combiner.pl \
     -reducer script/pruner/reducer.pl \
@@ -188,7 +224,10 @@ When that's done, we can run a query, e.g.:
 
 When you run that, there will be a firehose of logging messages from log4j (and
 a couple from Bio::Phylo). Once it's done there will be a part-00000 file inside
-your output folder with the taxon bipartition table as described above.
+your output folder with the taxon bipartition table as described above. This file
+can be turned into a Newick string as follows (again, this is done by the Makefile):
+
+ perl script/newickify.pl <part-00000 file> > outfile.tre
 
 =head1 TO DO
 
