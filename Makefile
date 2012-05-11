@@ -3,7 +3,14 @@ MKPATH=mkdir -p
 RMRF=rm -rf
 
 SCRIPT=script
+PRUNESCRIPTS=$(SCRIPT)/pruner
+PRUNEMAPPER=$(PRUNESCRIPTS)/mapper.pl
+PRUNECOMBINER=$(PRUNESCRIPTS)/combiner.pl
+PRUNEREDUCER=$(PRUNESCRIPTS)/reducer.pl
 EXAMPLES=examples
+TMP=tmp
+SAMPLE=sample.txt
+OUTFILE=outfile.tre
 RAWDATA=$(EXAMPLES)/rawdata
 
 MAMMALTREE=$(RAWDATA)/Bininda-emonds_2007_mammals.nex
@@ -84,3 +91,73 @@ $(PHYLOMATICMAP) :
 		--file=$(PHYLOMATICTREE) \
 		--format=nexus \
 		--dir=$(PHYLOMATICDIR) > $@
+
+sample_fishes : init_fishes
+	$(RMRF) $(TMP) $(SAMPLE)
+	$(PERL) $(SCRIPT)/randomtaxa.pl -i $(FISHMAP) -p $(PERCENTAGE) > $(SAMPLE)
+	$(HADOOP_HOME)/bin/hadoop  jar $(HADOOP_HOME)/hadoop-$(HADOOP_VERSION)-streaming.jar \
+		-cmdenv DATADIR=$(FISHDIR) \
+		-cmdenv PERL5LIB="$(PERL5LIB):lib" \
+		-input $(SAMPLE) \
+		-output $(TMP) \
+		-mapper $(PRUNEMAPPER) \
+		-combiner $(PRUNECOMBINER) \
+		-reducer $(PRUNEREDUCER) \
+		-verbose
+	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+
+sample_mammals : init_mammals
+	$(RMRF) $(TMP) $(SAMPLE)
+	$(PERL) $(SCRIPT)/randomtaxa.pl -i $(MAMMALMAP) -p $(PERCENTAGE) > $(SAMPLE)
+	$(HADOOP_HOME)/bin/hadoop  jar $(HADOOP_HOME)/hadoop-$(HADOOP_VERSION)-streaming.jar \
+		-cmdenv DATADIR=$(MAMMALDIR) \
+		-cmdenv PERL5LIB="$(PERL5LIB):lib" \
+		-input $(SAMPLE) \
+		-output $(TMP) \
+		-mapper $(PRUNEMAPPER) \
+		-combiner $(PRUNECOMBINER) \
+		-reducer $(PRUNEREDUCER) \
+		-verbose
+	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+
+sample_tol : init_tol
+	$(RMRF) $(TMP) $(SAMPLE)
+	$(PERL) $(SCRIPT)/randomtaxa.pl -i $(TOLMAP) -p $(PERCENTAGE) > $(SAMPLE)
+	$(HADOOP_HOME)/bin/hadoop  jar $(HADOOP_HOME)/hadoop-$(HADOOP_VERSION)-streaming.jar \
+		-cmdenv DATADIR=$(TOLDIR) \
+		-cmdenv PERL5LIB="$(PERL5LIB):lib" \
+		-input $(SAMPLE) \
+		-output $(TMP) \
+		-mapper $(PRUNEMAPPER) \
+		-combiner $(PRUNECOMBINER) \
+		-reducer $(PRUNEREDUCER) \
+		-verbose
+	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+
+sample_angio : init_angio
+	$(RMRF) $(TMP) $(SAMPLE)
+	$(PERL) $(SCRIPT)/randomtaxa.pl -i $(ANGIOMAP) -p $(PERCENTAGE) > $(SAMPLE)
+	$(HADOOP_HOME)/bin/hadoop  jar $(HADOOP_HOME)/hadoop-$(HADOOP_VERSION)-streaming.jar \
+		-cmdenv DATADIR=$(ANGIODIR) \
+		-cmdenv PERL5LIB="$(PERL5LIB):lib" \
+		-input $(SAMPLE) \
+		-output $(TMP) \
+		-mapper $(PRUNEMAPPER) \
+		-combiner $(PRUNECOMBINER) \
+		-reducer $(PRUNEREDUCER) \
+		-verbose
+	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+
+sample_phylomatic : init_phylomatic
+	$(RMRF) $(TMP) $(SAMPLE)
+	$(PERL) $(SCRIPT)/randomtaxa.pl -i $(PHYLOMATICMAP) -p $(PERCENTAGE) > $(SAMPLE)
+	$(HADOOP_HOME)/bin/hadoop  jar $(HADOOP_HOME)/hadoop-$(HADOOP_VERSION)-streaming.jar \
+		-cmdenv DATADIR=$(PHYLOMATICDIR) \
+		-cmdenv PERL5LIB="$(PERL5LIB):lib" \
+		-input $(SAMPLE) \
+		-output $(TMP) \
+		-mapper $(PRUNEMAPPER) \
+		-combiner $(PRUNECOMBINER) \
+		-reducer $(PRUNEREDUCER) \
+		-verbose
+	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
