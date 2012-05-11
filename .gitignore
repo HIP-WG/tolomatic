@@ -9,3 +9,6 @@ examples\/phylomatic/
 examples\/tol/
 _Inline
 script\/pruner\/build
+outfile\.tre
+sample\.txt
+tmp/
