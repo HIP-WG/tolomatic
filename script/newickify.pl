@@ -1,21 +1,35 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use Getopt::Long;
 use Bio::Phylo::Factory;
-use Data::Dumper;
+use Bio::Phylo::IO 'unparse';
+
+# process command line arguments
+my $infile;
+my $format = 'newick';
+my %defines;
+GetOptions(
+	'infile=s' => \$infile,
+	'format=s' => \$format,
+	'define=s' => \%defines,
+);
 
 # build ancestor paths for all tips
 my %ancestors;
-while(<>) {
-	chomp;
-	my @line = split /\t/, $_;
-	my @taxa = split /\|/, $line[0];
-	my ( $ancestor, $ntax ) = split /,/, $line[1];
-	
-	# by now these aren't sorted in post-order
-	for my $taxon ( @taxa ) {
-		$ancestors{$taxon} = [] if not $ancestors{$taxon};
-		push @{ $ancestors{$taxon} }, $ancestor;
+{
+	open my $fh, '<', $infile or die $!;
+	while(<$fh>) {
+		chomp;
+		my @line = split /\t/, $_;
+		my @taxa = split /\|/, $line[0];
+		my ( $ancestor, $ntax ) = split /,/, $line[1];
+		
+		# by now these aren't sorted in post-order
+		for my $taxon ( @taxa ) {
+			$ancestors{$taxon} = [] if not $ancestors{$taxon};
+			push @{ $ancestors{$taxon} }, $ancestor;
+		}
 	}
 }
 
@@ -43,4 +57,26 @@ for my $taxon ( keys %ancestors ) {
 	}
 }
 
-print $tree->to_newick;
+# populate wrapper objects
+my $forest  = $fac->create_forest;
+$forest->insert($tree);
+my $taxa = $forest->make_taxa;
+my $project = $fac->create_project;
+$project->insert($taxa);
+$project->insert($forest);
+
+# attach provenance metadata
+my $ns = 'http://phylotastic.org/terms#';
+for my $key ( keys %defines ) {
+	$project->add_meta(
+		$fac->create_meta(
+			'-namespaces' => { 'pt' => $ns },
+			'-triple'     => { "pt:$key" => $defines{$key} }
+		)
+	);
+}
+
+print unparse(
+	'-phylo'  => $project,
+	'-format' => $format,
+);
