@@ -152,6 +152,11 @@ __DATA__
                     <option value="fishes">fishes</option>
                     <option value="phylomatic">phylomatic</option>
                 </select>
+                <select name="format" id="formatSelector">
+                    <option value="nexml">NeXML</option>
+                    <option value="nexus">Nexus</option>
+                    <option value="newick">Newick</option>
+                </select>				
                 <input type="submit"/>
             </fieldset>
         </form>
