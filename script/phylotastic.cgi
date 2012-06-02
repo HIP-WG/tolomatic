@@ -127,7 +127,9 @@ system(
 
 # create output
 print $cgi->header if $ENV{'QUERY_STRING'};
-print `$CWD/newickify.pl $TEMPDIR/part-00000`, "\n";
+my $defines = join ' ', map { "--define $_=$params{$_}" } keys %params;
+my $outfile = "$TEMPDIR/part-00000";
+print `$CWD/newickify.pl -i $outfile -f $params{'format'} $defines`, "\n";
 
 
 __DATA__
