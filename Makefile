@@ -12,6 +12,7 @@ EXAMPLES=examples
 TMP=tmp
 SAMPLE=sample.txt
 OUTFILE=outfile.tre
+OUTFORMAT=newick
 RAWDATA=$(EXAMPLES)/rawdata
 
 MAMMALTREE=$(RAWDATA)/Bininda-emonds_2007_mammals.nex
@@ -105,7 +106,7 @@ sample_fishes : init_fishes
 		-combiner $(PRUNECOMBINER) \
 		-reducer $(PRUNEREDUCER) \
 		$(VERBOSITY)
-	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+	$(PERL) $(SCRIPT)/newickify.pl -i $(TMP)/part-00000 -f $(OUTFORMAT) > $(OUTFILE)
 
 sample_mammals : init_mammals
 	$(RMRF) $(TMP) $(SAMPLE)
@@ -119,7 +120,7 @@ sample_mammals : init_mammals
 		-combiner $(PRUNECOMBINER) \
 		-reducer $(PRUNEREDUCER) \
 		$(VERBOSITY)
-	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+	$(PERL) $(SCRIPT)/newickify.pl -i $(TMP)/part-00000 -f $(OUTFORMAT) > $(OUTFILE)
 
 sample_tol : init_tol
 	$(RMRF) $(TMP) $(SAMPLE)
@@ -133,7 +134,7 @@ sample_tol : init_tol
 		-combiner $(PRUNECOMBINER) \
 		-reducer $(PRUNEREDUCER) \
 		$(VERBOSITY)
-	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+	$(PERL) $(SCRIPT)/newickify.pl -i $(TMP)/part-00000 -f $(OUTFORMAT) > $(OUTFILE)
 
 sample_angio : init_angio
 	$(RMRF) $(TMP) $(SAMPLE)
@@ -147,7 +148,7 @@ sample_angio : init_angio
 		-combiner $(PRUNECOMBINER) \
 		-reducer $(PRUNEREDUCER) \
 		$(VERBOSITY)
-	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+	$(PERL) $(SCRIPT)/newickify.pl -i $(TMP)/part-00000 -f $(OUTFORMAT) > $(OUTFILE)
 
 sample_phylomatic : init_phylomatic
 	$(RMRF) $(TMP) $(SAMPLE)
@@ -161,4 +162,4 @@ sample_phylomatic : init_phylomatic
 		-combiner $(PRUNECOMBINER) \
 		-reducer $(PRUNEREDUCER) \
 		$(VERBOSITY)
-	$(PERL) $(SCRIPT)/newickify.pl $(TMP)/part-00000 > $(OUTFILE)
+	$(PERL) $(SCRIPT)/newickify.pl -i $(TMP)/part-00000 -f $(OUTFORMAT) > $(OUTFILE)
