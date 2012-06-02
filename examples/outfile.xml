@@ -1,0 +1,85 @@
+<nex:nexml about="#nl50" generator="Bio::Phylo::Project v.0.49_1660" version="0.9" xmlns="http://www.nexml.org/2009" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:nex="http://www.nexml.org/2009" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.nexml.org/2009 http://www.nexml.org/2009/nexml.xsd">
+  <meta content="rvosa" datatype="xsd:string" id="ma51" property="dc:creator" xsi:type="nex:LiteralMeta"/>
+  <meta content="2012-06-02T17:29:45" datatype="xsd:date" id="ma52" property="dc:date" xsi:type="nex:LiteralMeta"/>
+  <otus id="os33">
+    <otu id="ou45" label="anemiaceae"/>
+    <otu id="ou43" label="dipteridaceae"/>
+    <otu id="ou34" label="equisetaceae"/>
+    <otu id="ou40" label="gleicheniaceae"/>
+    <otu id="ou39" label="hymenophyllaceae"/>
+    <otu id="ou49" label="loxomataceae"/>
+    <otu id="ou41" label="lygodiaceae"/>
+    <otu id="ou35" label="marattiaceae"/>
+    <otu id="ou46" label="marsileaceae"/>
+    <otu id="ou42" label="matoniaceae"/>
+    <otu id="ou37" label="ophioglossaceae"/>
+    <otu id="ou38" label="osmundaceae"/>
+    <otu id="ou36" label="psilotaceae"/>
+    <otu id="ou47" label="salviniaceae"/>
+    <otu id="ou44" label="schizaeaceae"/>
+    <otu id="ou48" label="thyrsopteridaceae"/>
+  </otus>
+  <trees id="ts32" otus="os33">
+    <tree id="te1" xsi:type="nex:IntTree">
+      <node id="ne8" label="1200" root="true"/>
+      <node id="ne7" label="32"/>
+      <node id="ne13" label="33"/>
+      <node id="ne6" label="29"/>
+      <node id="ne24" label="equisetaceae" otu="ou34"/>
+      <node id="ne30" label="marattiaceae" otu="ou35"/>
+      <node id="ne12" label="psilotaceae" otu="ou36"/>
+      <node id="ne17" label="ophioglossaceae" otu="ou37"/>
+      <node id="ne5" label="27"/>
+      <node id="ne20" label="osmundaceae" otu="ou38"/>
+      <node id="ne4" label="24"/>
+      <node id="ne11" label="25"/>
+      <node id="ne28" label="hymenophyllaceae" otu="ou39"/>
+      <node id="ne3" label="23"/>
+      <node id="ne16" label="22"/>
+      <node id="ne10" label="3"/>
+      <node id="ne23" label="gleicheniaceae" otu="ou40"/>
+      <node id="ne2" label="lygodiaceae" otu="ou41"/>
+      <node id="ne19" label="4"/>
+      <node id="ne15" label="21"/>
+      <node id="ne27" label="20"/>
+      <node id="ne9" label="matoniaceae" otu="ou42"/>
+      <node id="ne21" label="dipteridaceae" otu="ou43"/>
+      <node id="ne18" label="schizaeaceae" otu="ou44"/>
+      <node id="ne22" label="anemiaceae" otu="ou45"/>
+      <node id="ne14" label="marsileaceae" otu="ou46"/>
+      <node id="ne29" label="salviniaceae" otu="ou47"/>
+      <node id="ne26" label="19"/>
+      <node id="ne25" label="thyrsopteridaceae" otu="ou48"/>
+      <node id="ne31" label="loxomataceae" otu="ou49"/>
+      <edge id="edge7" source="ne8" target="ne7"/>
+      <edge id="edge13" source="ne8" target="ne13"/>
+      <edge id="edge6" source="ne7" target="ne6"/>
+      <edge id="edge24" source="ne7" target="ne24"/>
+      <edge id="edge30" source="ne7" target="ne30"/>
+      <edge id="edge12" source="ne13" target="ne12"/>
+      <edge id="edge17" source="ne13" target="ne17"/>
+      <edge id="edge5" source="ne6" target="ne5"/>
+      <edge id="edge20" source="ne6" target="ne20"/>
+      <edge id="edge4" source="ne5" target="ne4"/>
+      <edge id="edge11" source="ne5" target="ne11"/>
+      <edge id="edge28" source="ne5" target="ne28"/>
+      <edge id="edge3" source="ne4" target="ne3"/>
+      <edge id="edge16" source="ne4" target="ne16"/>
+      <edge id="edge10" source="ne11" target="ne10"/>
+      <edge id="edge23" source="ne11" target="ne23"/>
+      <edge id="edge2" source="ne3" target="ne2"/>
+      <edge id="edge19" source="ne3" target="ne19"/>
+      <edge id="edge15" source="ne16" target="ne15"/>
+      <edge id="edge27" source="ne16" target="ne27"/>
+      <edge id="edge9" source="ne10" target="ne9"/>
+      <edge id="edge21" source="ne10" target="ne21"/>
+      <edge id="edge18" source="ne19" target="ne18"/>
+      <edge id="edge22" source="ne19" target="ne22"/>
+      <edge id="edge14" source="ne15" target="ne14"/>
+      <edge id="edge29" source="ne15" target="ne29"/>
+      <edge id="edge26" source="ne27" target="ne26"/>
+      <edge id="edge25" source="ne26" target="ne25"/>
+      <edge id="edge31" source="ne26" target="ne31"/>
+    </tree>
+  </trees>
+</nex:nexml>
