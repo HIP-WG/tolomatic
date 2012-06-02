@@ -63,6 +63,15 @@ use File::Path qw(remove_tree);
 use CGI;
 use Cwd;
 
+# so this is obviously dumb, to hardcode it here. sorry. need a config system
+my %source = (
+	'mammals'    => 'http://phylotastic-wg.nescent.org/examples/rawdata/Bininda-emonds_2007_mammals.nex',
+	'fishes'     => 'http://phylotastic-wg.nescent.org/examples/rawdata/Westneat_Lundberg_BigFishTree.nex',
+	'tol'        => 'http://phylotastic-wg.nescent.org/examples/rawdata/TOL.xml',
+	'angio'      => 'http://phylotastic-wg.nescent.org/examples/rawdata/Smith_2011_angiosperms.txt',
+	'phylomatic' => 'http://phylotastic-wg.nescent.org/examples/rawdata/Phylomatictree.nex',
+);
+
 # current working directory
 my $CWD = getcwd;
 
@@ -125,9 +134,21 @@ system(
 	'-reducer'  => $CWD . '/pruner/reducer.pl',
 ) == 0 or die $?;
 
-# create output
-print $cgi->header if $ENV{'QUERY_STRING'};
-my $defines = join ' ', map { "--define $_=$params{$_}" } keys %params;
+# create provenance info
+my %provenance = (
+	'species' => $params{'species'},
+	'treeid'  => $params{'tree'},
+	'tnrs'    => 'exactMatch',
+	'pruner'  => 'MapReduce',
+	'source'  => $source{lc $params{'tree'}},
+);
+my $defines = join ' ', map { "--define $_='$provenance{$_}'" } keys %provenance;
+
+# print header
+my $mime_type = 'nexml' eq lc $params{format} ? 'application/xml' : 'text/plain';
+print $cgi->header( $mime_type ) if $ENV{'QUERY_STRING'};
+
+# print content
 my $outfile = "$TEMPDIR/part-00000";
 print `$CWD/newickify.pl -i $outfile -f $params{'format'} $defines`, "\n";
 
@@ -160,5 +181,8 @@ __DATA__
                 <input type="submit"/>
             </fieldset>
         </form>
+		<a href="phylotastic.cgi?format=nexml&tree=mammals&species='Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
+		Example query
+		</a>
     </body>
 </html>
