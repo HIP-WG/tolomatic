@@ -161,6 +161,7 @@ __DATA__
     <body>
         <form action="phylotastic.cgi" method="get">
             <fieldset>
+				<center><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></center>
                 <label for="speciesList">Comma-separated names:</label>
                 <textarea id="speciesList" name="species" width="300" height="100"></textarea>
                 <label for="treeSelector">Select your preferred tree:</label>
