@@ -145,7 +145,7 @@ my %provenance = (
 my $defines = join ' ', map { "--define $_='$provenance{$_}'" } keys %provenance;
 
 # print header
-my $mime_type = 'nexml' eq lc $params{format} ? 'application/xml' : 'text/plain';
+my $mime_type = ( $params{format} =~ /xml$/i ) ? 'application/xml' : 'text/plain';
 print $cgi->header( $mime_type ) if $ENV{'QUERY_STRING'};
 
 # print content
@@ -166,22 +166,23 @@ __DATA__
                 </textarea>
                 <label for="treeSelector">Select your preferred tree:</label>
                 <select name="tree" id="treeSelector">
+                    <option value="mammals">mammals</option>				
                     <option value="fishes">fishes</option>
-                    <option value="mammals">mammals</option>
                     <option value="tol">tol</option>
                     <option value="angiosperms">angiosperms</option>
                     <option value="fishes">fishes</option>
                     <option value="phylomatic">phylomatic</option>
                 </select>
                 <select name="format" id="formatSelector">
-                    <option value="nexml">NeXML</option>
-                    <option value="nexus">Nexus</option>
                     <option value="newick">Newick</option>
+                    <option value="nexus">Nexus</option>
+                    <option value="nexml">NeXML</option>
+                    <option value="nexml">PhyloXML</option>					
                 </select>				
                 <input type="submit"/>
             </fieldset>
         </form>
-		<a href="phylotastic.cgi?format=nexml&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
+		<a href="phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
 		Example query
 		</a>
     </body>
