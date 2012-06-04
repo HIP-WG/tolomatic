@@ -25,6 +25,28 @@ Assume we have a tree like this:
 
  ((((A,B)1,(C,D)2)3,E)4,(F,G)5)6;
 
+In graphical form:
+
+ A-----+
+       |
+       1-----+
+       |     |
+ B-----+     | 
+             3------+
+ C-----+     |      |
+       |     |      |
+       2-----+      4------+
+       |            |      |
+ D-----+            |      |
+                    |      |
+ E------------------+      6
+                           |
+ F-----+                   |
+       |                   |
+       5-------------------+
+       |     
+ G-----+ 
+
 The nodes on this tree are labelled with integers (1-6), which have been applied
 in a post-order traversal. The important point of this is that a child node will
 always have a label whose value is a lower number than any of its ancestors. Now
@@ -38,6 +60,20 @@ assume that we want to get a tree that retains these tips:
 Such that we end up with a tree like this:
 
  ((A,C)3,(F,G)5)6;
+
+In graphical form:
+
+ A-----+
+       |
+       3-----+
+       |     |
+ C-----+     | 
+             6
+ F-----+     |
+       |     |
+       5-----+
+       |      
+ G-----+      
 
 We're going to solve this using MapReduce. Here are the steps:
 
