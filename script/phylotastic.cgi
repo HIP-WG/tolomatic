@@ -181,7 +181,7 @@ __DATA__
                 <input type="submit"/>
             </fieldset>
         </form>
-		<a href="phylotastic.cgi?format=nexml&tree=mammals&species='Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
+		<a href="phylotastic.cgi?format=nexml&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
 		Example query
 		</a>
     </body>
