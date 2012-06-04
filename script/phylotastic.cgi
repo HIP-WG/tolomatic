@@ -162,8 +162,7 @@ __DATA__
         <form action="phylotastic.cgi" method="get">
             <fieldset>
                 <label for="speciesList">Comma-separated names:</label>
-                <textarea id="speciesList" name="species" width="300" height="100">
-                </textarea>
+                <textarea id="speciesList" name="species" width="300" height="100"></textarea>
                 <label for="treeSelector">Select your preferred tree:</label>
                 <select name="tree" id="treeSelector">
                     <option value="mammals">mammals</option>				
