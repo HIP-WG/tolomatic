@@ -6,12 +6,13 @@ use Getopt::Long;
 use Digest::MD5 'md5_hex';
 
 # process command line arguments
-my ( $file, $format, $dir, $url );
+my ( $file, $format, $dir, $url, $outfile );
 GetOptions(
-	'file=s'   => \$file,
-	'url=s'    => \$url,
-	'format=s' => \$format,
-	'dir=s'    => \$dir,
+	'file=s'    => \$file,
+	'url=s'     => \$url,
+	'format=s'  => \$format,
+	'dir=s'     => \$dir,
+	'outfile=s' => \$outfile, # if provided, prints to a single file
 );
 
 # initialize output dir
@@ -37,6 +38,12 @@ $tree->visit_depth_first(
 	}
 );
 
+# open handle to single $outfile, if provided
+my $outfh;
+if ( $outfile ) {
+	open $outfh, '>', $outfile or die "Can't open $outfile: $!";
+}
+
 # write output
 $tree->visit_depth_first(
 	'-pre' => sub {
@@ -50,13 +57,22 @@ $tree->visit_depth_first(
 			
 			# print path
 			if ( $node->is_terminal ) {
-				my $filename = md5_hex($path[0]);
-				open my $fh, '>', "${dir}/${filename}" or die "Can't open ${dir}/${filename}: $!";
-				print $fh join "\t", @path;
-				close $fh;
 				
-				# print mapping
-				print $filename, "\t", $path[0], "\n";
+				# print to a single file
+				if ( $outfh ) {
+					my $tip = shift @path;
+					my $path = join ',', @path;
+					print $outfh "${tip},\"${path}\"\n";
+				}
+				else {
+					my $filename = md5_hex($path[0]);
+					open my $fh, '>', "${dir}/${filename}" or die "Can't open ${dir}/${filename}: $!";
+					print $fh join "\t", @path;
+					close $fh;
+					
+					# print mapping
+					print $filename, "\t", $path[0], "\n";
+				}
 			}
 		}
 		else {
