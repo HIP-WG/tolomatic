@@ -62,7 +62,7 @@ $tree->visit_depth_first(
 				if ( $outfh ) {
 					my $tip = shift @path;
 					my $path = join '|', @path;
-					print $outfh "${tip},\"${path}\"\n";
+					print $outfh "${tip},${path}\n";
 				}
 				else {
 					my $filename = md5_hex($path[0]);
