@@ -61,7 +61,7 @@ $tree->visit_depth_first(
 				# print to a single file
 				if ( $outfh ) {
 					my $tip = shift @path;
-					my $path = join ',', @path;
+					my $path = join '|', @path;
 					print $outfh "${tip},\"${path}\"\n";
 				}
 				else {
