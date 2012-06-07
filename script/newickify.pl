@@ -4,6 +4,7 @@ use warnings;
 use Getopt::Long;
 use Bio::Phylo::Factory;
 use Bio::Phylo::IO 'unparse';
+use Bio::Phylo::Util::CONSTANT ':namespaces';
 
 # process command line arguments
 my $infile;
@@ -64,6 +65,20 @@ my $taxa = $forest->make_taxa;
 my $project = $fac->create_project;
 $project->insert($taxa);
 $project->insert($forest);
+
+# copy scientific names over to phyloxml slots
+if ( 'phyloxml' eq lc $format ) {
+	$taxa->visit(sub{
+		my $taxon = shift;
+		if ( my $name = $taxon->get_name ) {
+			my $meta = $fac->create_meta(
+				'-namespaces' => { 'pxml' => _NS_PHYLOXML_ },
+				'-triple'     => { 'pxml:scientific_name' => $name },
+			);
+			$taxon->add_meta($meta);
+		}
+	});
+}
 
 # attach provenance metadata
 my $ns = 'http://phylotastic.org/terms#';
