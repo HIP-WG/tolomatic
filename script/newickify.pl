@@ -58,9 +58,6 @@ for my $taxon ( keys %ancestors ) {
 	}
 }
 
-# remove unbranched internals
-$tree->remove_unbranched_internals;
-
 # populate wrapper objects
 my $forest  = $fac->create_forest;
 $forest->insert($tree);
