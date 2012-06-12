@@ -12,7 +12,13 @@ my $index = $start;
 open my $fh, '<', $infile or die $!;
 while(<$fh>){
 	chomp;
-	s/(:\d+\.\d+)/.$index$1/g;
-	$index++;
-	print;
+	for my $word ( split /\)/, $_ ) {
+		$word =~ s/'.+?'//g;
+		if ( $word !~ /;/ ) {
+			print $word, ')', $index++;
+		}
+		else {
+			print ';';
+		}
+	}
 }
