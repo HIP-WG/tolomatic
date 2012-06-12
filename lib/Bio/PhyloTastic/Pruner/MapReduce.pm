@@ -28,7 +28,7 @@ sub map {
     my ( $self, $taxon ) = @_;
     my $file = $ENV{'DATADIR'} . '/' . md5_hex($taxon);
     $logger->info("taxon: $taxon (file: $file)");
-    open my $fh, '<', $file or die "Can't process taxon ${taxon} (${file}): $!";
+    open my $fh, '<', $file or $logger->warn("Can't process taxon ${taxon} (${file}): $!") and return;
     my @lines = <$fh>;
     my @fields = split /\t/, $lines[0];
     $logger->debug("path: @fields");
