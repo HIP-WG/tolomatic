@@ -107,6 +107,13 @@ if ( exists $ENV{'QUERY_STRING'} and not $ENV{'QUERY_STRING'} ) {
 
 # make species list 
 my @species = split /,/, $params{'species'};
+
+# sanitize list by fixing spaces, underscores, and capitalization
+s/^\s+|\s+$//g for @species; # remove leading and trailing spaces 
+s/ /_/g for @species;  # convert internal spaces to underscores
+tr/A-Z/a-z/ for @species; # lower-case the whole thing
+s/^(\w)/\u$1/ for @species; # capitalize first word
+
 my ( $fh, $filename ) = tempfile();
 print $fh join "\n", @species;
 close $fh;
@@ -162,10 +169,9 @@ __DATA__
         <form action="phylotastic.cgi" method="get">
             <fieldset>
 				<center><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></center>
-                <label for="speciesList">Species list (Genus1_species1,Genus2_species2,...):</label>
+                <label for="speciesList">Enter species list (comma-separated):</label>
                 <textarea id="speciesList" name="species" width="600" height="100"></textarea>
-                <br>
-                <label for="treeSelector">Source tree:</label>
+                <label for="treeSelector">Choose source tree:</label>
                 <select name="tree" id="treeSelector">
                     <option value="mammals">mammals</option>				
                     <option value="fishes">fishes</option>
@@ -174,7 +180,7 @@ __DATA__
                     <option value="fishes">fishes</option>
                     <option value="phylomatic">phylomatic</option>
                 </select>
-                <label for="formatSelector">Output format:</label>
+                <label for="formatSelector">Choose format:</label>
                 <select name="format" id="formatSelector">
                     <option value="newick">Newick</option>
                     <option value="nexus">Nexus</option>
@@ -185,7 +191,7 @@ __DATA__
             </fieldset>
         </form>
 		<a href="phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
-		Example query (http://phylotastic-wg.nescent.org/script/phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla)
-		</a>
+		Example query</a> (http://phylotastic-wg.nescent.org/script/phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla)
+		)
     </body>
 </html>
