@@ -162,9 +162,10 @@ __DATA__
         <form action="phylotastic.cgi" method="get">
             <fieldset>
 				<center><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></center>
-                <label for="speciesList">Comma-separated names:</label>
-                <textarea id="speciesList" name="species" width="300" height="100"></textarea>
-                <label for="treeSelector">Select your preferred tree:</label>
+                <label for="speciesList">Species list (Genus1_species1,Genus2_species2,...):</label>
+                <textarea id="speciesList" name="species" width="600" height="100"></textarea>
+                <br>
+                <label for="treeSelector">Source tree:</label>
                 <select name="tree" id="treeSelector">
                     <option value="mammals">mammals</option>				
                     <option value="fishes">fishes</option>
@@ -173,6 +174,7 @@ __DATA__
                     <option value="fishes">fishes</option>
                     <option value="phylomatic">phylomatic</option>
                 </select>
+                <label for="formatSelector">Output format:</label>
                 <select name="format" id="formatSelector">
                     <option value="newick">Newick</option>
                     <option value="nexus">Nexus</option>
@@ -183,7 +185,7 @@ __DATA__
             </fieldset>
         </form>
 		<a href="phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
-		Example query
+		Example query (http://phylotastic-wg.nescent.org/script/phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla)
 		</a>
     </body>
 </html>
