@@ -191,7 +191,7 @@ __DATA__
             </fieldset>
         </form>
 		<a href="phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
-		Example query</a> (http://phylotastic-wg.nescent.org/script/phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla)
+		Example query</a> (format=newick, tree=mammals, species="Homo sapiens, Pan troglodytes, Gorilla gorilla")
 		)
     </body>
 </html>
