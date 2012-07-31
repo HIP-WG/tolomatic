@@ -187,7 +187,7 @@ __DATA__
                     <option value="nexml">NeXML</option>
                     <option value="nexml">PhyloXML</option>					
                 </select>				
-                <input type="submit"/>
+                <input value="Get Phylotastic Tree!" type="submit"/>
             </fieldset>
         </form>
 		<a href="phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
