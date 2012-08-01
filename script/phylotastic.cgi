@@ -161,37 +161,99 @@ print `$CWD/newickify.pl -i $outfile -f $params{'format'} $defines`, "\n";
 
 
 __DATA__
-<html>
-    <head>
-        <title>phylotastic web</title>
-    </head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Tolomatic -- Phylotastic topology service demo</title>
+	<!-- we're not going to use this for now 
+	    <link rel="stylesheet" type="text/css" href="css/phylotastic.css">
+	-->
+</head>
     <body>
-        <form action="phylotastic.cgi" method="get">
-            <fieldset>
-				<center><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></center>
-                <label for="speciesList">Enter species list (comma-separated):</label>
-                <textarea id="speciesList" name="species" width="600" height="100"></textarea>
-                <label for="treeSelector">Choose source tree:</label>
-                <select name="tree" id="treeSelector">
-                    <option value="mammals">mammals</option>				
-                    <option value="fishes">fishes</option>
-                    <option value="tol">tol</option>
-                    <option value="angiosperms">angiosperms</option>
-                    <option value="fishes">fishes</option>
-                    <option value="phylomatic">phylomatic</option>
-                </select>
-                <label for="formatSelector">Choose format:</label>
-                <select name="format" id="formatSelector">
-                    <option value="newick">Newick</option>
-                    <option value="nexus">Nexus</option>
-                    <option value="nexml">NeXML</option>
-                    <option value="nexml">PhyloXML</option>					
-                </select>				
-                <input value="Get Phylotastic Tree!" type="submit"/>
-            </fieldset>
-        </form>
-		<a href="phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla">
-		Example query</a> (format=newick, tree=mammals, species="Homo sapiens, Pan troglodytes, Gorilla gorilla")
-		)
+    <table>
+    <tr> <!-- the first row with "about" and logo --> 
+		<td width="25%" border="1">
+			Welcome! This prototype, which is part of a larger project (<a href="http://www.phylotastic.org">Phylotastic!</a>) to make the "Tree of Life" accessible to researchers, takes a very big tree and a list of taxa, and returns a topology for just those taxa. 
+		</td>
+		<td align="right"><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></td>
+    </tr>
+    <tr> <!-- the second row with form on right, top half of instrutions on left -->
+		<td align="center"> <!-- how to do the demo --> 
+			<b>Try it!</b>
+			<br>
+			Using the form at right, select a source tree, enter a list of scientific names, and click "Get Phylotastic Tree!"
+		</td>
+		<td align="left"> <!-- the form --> 
+			<form action="phylotastic.cgi" method="get">
+			<fieldset>
+			   <label for="treeSelector">Source tree:</label>
+				<select name="tree" id="treeSelector">
+					<option value="mammals">mammals</option>				
+					<option value="fishes">fishes</option>
+					<option value="tol">tol</option>
+					<option value="angiosperms">angiosperms</option>
+					<option value="fishes">fishes</option>
+					<option value="phylomatic">phylomatic</option>
+				</select>
+				<label for="formatSelector">Output format:</label>
+				<select name="format" id="formatSelector">
+					<option value="newick">Newick</option>
+					<option value="nexus">Nexus</option>
+					<option value="nexml">NeXML</option>
+					<option value="nexml">PhyloXML</option>					
+				</select>
+				<input value="Get Phylotastic Tree!" type="submit"/>
+				<br>
+				<label for="speciesList">Species list:</label>
+				<textarea id="speciesList" name="species" width="600" height="100"></textarea>				
+			</fieldset>
+			</form>
+		</td>
+	</tr>
+    <tr> <!-- the third row with examples on right, bottom half of instructions on left -->
+	<td align="center">Or, you can just copy and paste one of the examples given here
+	</td>
+	    <td> 
+		<table border="1" width="100%"> <!-- the table of examples -->
+			<tr>
+				<th>Example</th><th>Source tree</th><th>Species list (copy and paste)</th>
+			</tr>
+			<tr>
+				<td>primates</td><td>mammals</td><td>Homo sapiens, Pan troglodytes, Gorilla gorilla</td>
+			</tr>
+			<tr>
+				<td>pets</td><td>mammals</td><td>Felis sylvestris, Canis familiaris, Cavia porcellus, Mustela nigripes</td>
+			</tr>
+			<tr>
+				<td>tbd</td><td>fishes</td><td>[isn't this a family-level tree?]</td>
+			</tr>
+			<tr>
+				<td>tbd</td><td>tol</td><td>tbd</td>
+			</tr>
+			<tr>
+				<td>tbd</td><td>angio</td><td>tbd</td>
+			</tr>
+			<tr>
+				<td>tbd</td><td>phylomatic</td><td>tbd</td>
+			</tr>
+		</table>    
+    </td>
+	</tr>
+    <tr> <!-- the fourth row with additional info -->
+		<td colspan="2" align="left">
+		More information
+		<ul>
+		<li><b>How it works</b>.  Pruning can be done by recursive calls into a database (which probably would need to hit the database many times) or by loading the whole tree into memory (which might take a while to read in the file, and cost a bit of memory).  The way it is done here is much cooler, because it never requires the whole tree to be in memory or in a database: the pruning is done in parallel using <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.  Some tests on the entire dump of the <a href="http://tolweb.org">Tree of Life Web Project</a> showed that this returns a pruned subtree within a few seconds, fast enough for a web service.  To find out more, read the <a href="https://github.com/phylotastic/tolomatic/blob/master/README.pod">online docs at github</a>. 
+		<li><b>Source trees</b>.  Some information on the source trees used in this project is available in the <a href="http://www.evoio.org/wiki/Phylotastic/Use_Cases#Big_Trees">Big Trees</a> section of the Phylotastic use-cases page.  
+		<li><b>The web-services API</b>.  This web page invokes a web service with a simple API exemplified in the following URL:
+		<br> <code>phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla</code>
+		<li><b>Source code</b>. Source code for <a href="https://github.com/phylotastic/tolomatic/">this project</a> (and <a href="https://github.com/phylotastic/">other phylotastic projects</a>) is available at github.  
+		</ul>
+		</td>
+	</tr>
+    </table>
     </body>
 </html>
