@@ -234,15 +234,13 @@ __DATA__
 				<td>musical fish (families)</td><td>fishes</td><td>Aulostomidae, Rhinobatidae, Syngnathidae, Sciaenidae</td>
 			</tr>
 			<tr>
-				<td>tree nuts</td><td>angio</td><td>Macadamia integrifolia, Pinus edulis, Corylus avellana, Pistacia vera, Castanea dentata, Juglans nigra, Prunus dulcis, Bertholletia excelsa</td>
+				<td>tree nuts</td><td>angio</td><td>Macadamia integrifolia, Pinus edulis, Corylus heterophylla, Pistacia vera, Castanea dentata, Juglans nigra, Prunus dulcis, Bertholletia excelsa</td>
 			</tr>
 			<tr>
 				<td>cool ants</td><td>tol</td><td>Oecophylla smaragdina,  Camponotus inflatus, Myrmecia pilosula</td>
 			</tr>
 			<tr>
-			<!-- there is going to be a problem with capitalization --> 
-			<!-- this should work, don't know why it doesn't: lygodiaceae, anemiaceae, schizaeaceae, marsileaceae --> 
-				<td>tree nuts (genera)</td><td>phylomatic</td><td>macadamia_grandis, pinus, corylus_heterophylla, pistacia, castanea, juglans, prunus, bertholletia</td>
+				<td>tree nuts (genera)</td><td>phylomatic</td><td>macadamia integrifolia, pinus, corylus heterophylla, pistacia, castanea, juglans, prunus, bertholletia</td>
 			</tr>
 		</table>    
     </td>
