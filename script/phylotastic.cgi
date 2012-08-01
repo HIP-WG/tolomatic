@@ -176,9 +176,11 @@ __DATA__
     <table>
     <tr> <!-- the first row with "about" and logo --> 
 		<td width="25%" border="1" align="center">
-			Welcome! <br>This prototype-- part of the <a href="http://www.phylotastic.org">Phylotastic!</a> project to make the "Tree of Life" accessible to researchers-- takes a very big tree and a list of taxa, and returns a topology for just those taxa. 
+			Welcome! <br>This prototype pruner takes a very big tree and a list of taxa, and returns a topology for just those taxa. 
 		</td>
-		<td align="right"><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></td>
+		<td align="center"><a href="http://www.phylotastic.org"><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></a>
+		<br>
+		Automated access to the Tree of Life</td>
     </tr>
     <tr> <!-- the second row with form on right, top half of instrutions on left -->
 		<td align="center" bgcolor="#61D27F"> <!-- how to do the demo --> 
@@ -222,22 +224,23 @@ __DATA__
 				<th>Example</th><th>Source tree</th><th>Species list (copy and paste)</th>
 			</tr>
 			<tr>
-				<td>primates</td><td>mammals</td><td>Homo sapiens, Pan troglodytes, Gorilla gorilla</td>
+				<td>great apes</td><td>mammals</td><td>Homo sapiens, Pan troglodytes, Gorilla gorilla, Pongo borneo</td>
 			</tr>
 			<tr>
-				<td>pets</td><td>mammals</td><td>Felis sylvestris, Canis familiaris, Cavia porcellus, Mustela nigripes</td>
+				<td>pets</td><td>mammals</td><td>Felis silvestris, Canis lupus, Cavia porcellus, Mustela nigripes</td>
 			</tr>
 			<tr>
-				<td>tbd</td><td>fishes</td><td>[isn't this a family-level tree?]</td>
+				<td>musical fish (families)</td><td>fishes</td><td>Aulostomidae, Rhinobatidae, Syngnathidae, Sciaenidae</td>
 			</tr>
 			<tr>
-				<td>tbd</td><td>tol</td><td>tbd</td>
+				<td>tree nuts</td><td>angio</td><td>Macadamia integrifolia, Pinus edulis, Corylus avellana, Pistacia vera, Castanea dentata, Juglans nigra, Prunus dulcis, Bertholletia excelsa</td>
 			</tr>
 			<tr>
-				<td>tbd</td><td>angio</td><td>tbd</td>
+				<td>cool ants</td><td>tol</td><td>Oecophylla smaragdina,  Camponotus inflatus, Myrmecia pilosula</td>
 			</tr>
 			<tr>
-				<td>tbd</td><td>phylomatic</td><td>tbd</td>
+			<!-- there is going to be a problem with capitalization --> 
+				<td>tree nuts (genera)</td><td>phylomatic</td><td>macadamia, pinus, corylus, pistacia, castanea, juglans, prunus, bertholletia</td>
 			</tr>
 		</table>    
     </td>
@@ -245,8 +248,9 @@ __DATA__
     <tr> <!-- the fourth row with additional info -->
 		<td colspan="2" align="left">
 		<ul>
+		<li><b>What's missing?</b>  This prototype uses exact matching with names in source trees (so be sure to get the exact scientific name, and follow the capitalization rules in the examples), but a more robust system would correct typos, fix capitalization, and use a Taxonomic Name Resolution Service (TNRS) that recognizes synonyms (and perhaps, common names).  A more flexible system might allow taxonomic grafting (i.e., adding a species based on its genera or family).  This service returns only a topology, without branch lengths or other information, whereas a more complete phylotastic system would supply branch lengths and provenance information.  
 		<li><b>How it works</b>.  Pruning can be done by recursive calls into a database (which probably would need to hit the database many times) or by loading the whole tree into memory (which might take a while to read in the file, and cost a bit of memory).  The way it is done here is much cooler, because it never requires the whole tree to be in memory or in a database: the pruning is done in parallel using <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.  Some tests on the entire dump of the <a href="http://tolweb.org">Tree of Life Web Project</a> showed that this returns a pruned subtree within a few seconds, fast enough for a web service.  To find out more, read the <a href="https://github.com/phylotastic/tolomatic/blob/master/README.pod">online docs at github</a>. 
-		<li><b>Source trees</b>.  Some information on the source trees used in this project is available in the <a href="http://www.evoio.org/wiki/Phylotastic/Use_Cases#Big_Trees">Big Trees</a> section of the Phylotastic use-cases page.  
+		<li><b>Source trees</b>.  Some information on the source trees used in this project is available in the <a href="http://www.evoio.org/wiki/Phylotastic/Use_Cases#Big_Trees">Big Trees</a> section of the Phylotastic use-cases page.  The mammals tree includes the vast majority of known extant mammals, but the other trees are missing many known species.  Some of these trees do not include species, but only higher taxonomic units (genera, families, orders). 
 		<li><b>The web-services API</b>.  This web page invokes a web service with a simple API exemplified in the following URL:
 		<br> <code>phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla</code>
 		<li><b>Source code</b>. Source code for <a href="https://github.com/phylotastic/tolomatic/">this project</a> (and <a href="https://github.com/phylotastic/">other phylotastic projects</a>) is available at github.  
