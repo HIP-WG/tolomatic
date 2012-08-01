@@ -175,18 +175,18 @@ __DATA__
     <body>
     <table>
     <tr> <!-- the first row with "about" and logo --> 
-		<td width="25%" border="1">
-			Welcome! This prototype, which is part of a larger project (<a href="http://www.phylotastic.org">Phylotastic!</a>) to make the "Tree of Life" accessible to researchers, takes a very big tree and a list of taxa, and returns a topology for just those taxa. 
+		<td width="25%" border="1" align="center">
+			Welcome! <br>This prototype-- part of the <a href="http://www.phylotastic.org">Phylotastic!</a> project to make the "Tree of Life" accessible to researchers-- takes a very big tree and a list of taxa, and returns a topology for just those taxa. 
 		</td>
 		<td align="right"><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></td>
     </tr>
     <tr> <!-- the second row with form on right, top half of instrutions on left -->
-		<td align="center"> <!-- how to do the demo --> 
+		<td align="center" bgcolor="#61D27F"> <!-- how to do the demo --> 
 			<b>Try it!</b>
 			<br>
 			Using the form at right, select a source tree, enter a list of scientific names, and click "Get Phylotastic Tree!"
 		</td>
-		<td align="left"> <!-- the form --> 
+		<td align="left" bgcolor="#61D27F"> <!-- the form --> 
 			<form action="phylotastic.cgi" method="get">
 			<fieldset>
 			   <label for="treeSelector">Source tree:</label>
@@ -213,7 +213,7 @@ __DATA__
 			</form>
 		</td>
 	</tr>
-    <tr> <!-- the third row with examples on right, bottom half of instructions on left -->
+    <tr  bgcolor="#61D27F"> <!-- the third row with examples on right, bottom half of instructions on left -->
 	<td align="center">Or, you can just copy and paste one of the examples given here
 	</td>
 	    <td> 
@@ -244,7 +244,6 @@ __DATA__
 	</tr>
     <tr> <!-- the fourth row with additional info -->
 		<td colspan="2" align="left">
-		More information
 		<ul>
 		<li><b>How it works</b>.  Pruning can be done by recursive calls into a database (which probably would need to hit the database many times) or by loading the whole tree into memory (which might take a while to read in the file, and cost a bit of memory).  The way it is done here is much cooler, because it never requires the whole tree to be in memory or in a database: the pruning is done in parallel using <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.  Some tests on the entire dump of the <a href="http://tolweb.org">Tree of Life Web Project</a> showed that this returns a pruned subtree within a few seconds, fast enough for a web service.  To find out more, read the <a href="https://github.com/phylotastic/tolomatic/blob/master/README.pod">online docs at github</a>. 
 		<li><b>Source trees</b>.  Some information on the source trees used in this project is available in the <a href="http://www.evoio.org/wiki/Phylotastic/Use_Cases#Big_Trees">Big Trees</a> section of the Phylotastic use-cases page.  
