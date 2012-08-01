@@ -1,0 +1,135 @@
+body, html {
+    font-family: Helvetica;
+    font-size: 14pt;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h4 {
+    font-size: 20pt;
+    margin: .5em 0;
+}
+
+div.wrapper {
+    width: 1000px;
+    height: 100%;
+}
+
+div.maincol {
+    width: 500px;
+    text-align: left;
+    margin: auto;
+}
+
+div.navwrapper {
+    left:50%;
+}
+
+ul.demolist {
+    padding-left: 0;
+    font-family: Helvetica;
+    font-size: 20pt;
+    list-style-type: none;
+}
+
+ul.demolist li {
+    
+}
+
+ul.demolist li p{
+    margin-left: 1em;
+    margin-top: 5px;
+    font-size: 12pt;
+    color: #888;
+}
+
+ul.demolist li a{
+    text-decoration: none;
+    color: #444;
+}
+
+ul.demolist li a:hover{
+    color: #7AC943;
+}
+
+ul.nav {
+    width: 100%;
+    list-style-type: none;
+    display: block;
+    margin: auto;
+}
+
+ul.nav li {
+    display:inline;
+    float: left;
+    margin: 1em;
+/*    padding: 0;*/
+}
+
+ul.nav li a {
+    background-color: #000;
+    display:inline-block;
+}
+
+ul.nav li a:hover {
+    background-color: #7AC943;
+}
+
+ul.littleul {
+    font-size: 12pt;
+/*    list-style-type: none;*/
+}
+
+blockquote {
+    font-size: 12pt;
+}
+
+div.centered {
+    float: left;
+    position: absolute; top:50%; width: 100%;
+}
+
+img.logo {
+    margin: auto;
+    z-index:-1;
+    margin-top: -108px;
+}
+
+div.wrapper {
+    float: left;
+    width: 100%;
+}
+
+div#accordion {
+    height: 50%;
+    width:79%;
+    position: absolute;
+    z-index: 3;
+}
+
+#tabs { min-height: 600px; height: 95%; background: #eee;} 
+	.tabs-bottom { position: relative; } 
+	.tabs-bottom .ui-tabs-panel { /*height: 140px;*/ overflow: auto; } 
+	.tabs-bottom .ui-tabs-nav { position: absolute !important; left: 0; bottom: 0; right:0; padding: 0 0.2em 0 0; } 
+	.tabs-bottom .ui-tabs-nav li { margin-top: -2px !important; margin-bottom: 1px !important; border-top: none; border-bottom-width: 1px; }
+	.ui-tabs-selected { margin-top: -3px !important; }
+
+.ui-tabs .ui-tabs-panel {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
