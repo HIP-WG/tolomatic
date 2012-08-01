@@ -169,13 +169,13 @@ __DATA__
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Tolomatic -- Phylotastic topology service demo</title>
+	<title>Phylotastic topology server prototype using MapReduce</title>
 	    <link rel="stylesheet" type="text/css" href="../css/phylotastic.css">
 </head>
     <body>
     <table>
     <tr> <!-- the first row with "about" and logo --> 
-		<td width="25%" border="1" align="center">
+		<td width="25%" align="center">
 			Welcome! <br>This prototype pruner takes a very big tree (e.g., 100K nodes) and a list of taxa, and returns a topology for just those taxa. 
 		</td>
 		<td align="center"><a href="http://www.phylotastic.org"><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></a>
@@ -184,15 +184,18 @@ __DATA__
 		<td><!-- intentionally blank, could be used for sponsor logos -->
 		</td>
     </tr>
-    <tr bgcolor="#61D27F"> <!-- second row with form on right, instrutions on left -->
-			<form action="phylotastic.cgi" method="get"> <!-- the form --> 
-			<fieldset>
-		<td align="center" bgcolor="#61D27F"> <!-- how to do the demo --> 
+    <tr bgcolor="#61D27F"> <!-- second row with form on right, instructions on left -->
+		<td align="center"> <!-- how to do the demo --> 
 			<b>Try it!</b>
 			<br>
-			Using the form at right, select a source tree, enter a list of scientific names, and click "Get Phylotastic Tree!"
+			Using the form at right, enter a list of scientific names, select a source tree, and click "Get Phylotastic Tree!"
 		</td>
+		<form action="phylotastic.cgi" method="get"> <!-- the form --> 
+		<fieldset>
 		<td align="left">			
+				<br>
+				<label for="speciesList">Species list:</label>
+				<textarea id="speciesList" name="species" class="species"></textarea>		
 			   <label for="treeSelector">Source tree:</label>
 				<select name="tree" id="treeSelector">
 					<option value="mammals">mammals</option>				
@@ -208,21 +211,18 @@ __DATA__
 					<option value="nexml">NeXML</option>
 					<option value="nexml">PhyloXML</option>					
 				</select>
-				<br>
-				<label for="speciesList">Species list:</label>
-				<textarea id="speciesList" name="species" rows="3" cols="70"></textarea>		
 		</td>
 		<td>
 			 <input value="Get Phylotastic Tree!" type="submit"/>
 		</td>
-			</fieldset>
-			</form>
+		</fieldset>
+		</form>
 	</tr>
-    <tr  bgcolor="#61D27F"> <!-- the third row with examples on right, bottom half of instructions on left -->
-	<td align="center">Or, you can just copy and paste one of the examples given here
+    <tr  bgcolor="#61D27F"> <!-- third row with examples on right, instructions on left -->
+	<td align="center">Or, you can just copy and paste one of the examples here
 	</td>
 	    <td colspan="2"> 
-		<table border="1" width="100%"> <!-- the table of examples -->
+		<table class="examples" border="1"> <!-- the table of examples -->
 			<tr>
 				<th>Example</th><th>Source tree</th><th>Species list (copy and paste)</th>
 			</tr>
@@ -247,9 +247,8 @@ __DATA__
 		</table>    
     </td>
 	</tr>
-    <tr> <!-- the fourth row with additional info -->
-		<td colspan="3" align="left">
-		<ul>
+    </table>
+		<ul class="information">
 		<li><b>What's missing?</b>  This prototype uses exact matching with names in source trees (so be sure to get the exact scientific name, and follow the capitalization rules in the examples), but a more robust system would correct typos, fix capitalization, and use a Taxonomic Name Resolution Service (TNRS) that recognizes synonyms (and perhaps, common names).  A more flexible system might allow taxonomic grafting (i.e., adding a species based on its genera or family).  This service returns only a topology, without branch lengths or other information, whereas a more complete phylotastic system would supply branch lengths and provenance information.  
 		<li><b>How it works</b>.  Pruning can be done by recursive calls into a database (which probably would need to hit the database many times) or by loading the whole tree into memory (which might take a while to read in the file, and cost a bit of memory).  The way it is done here is much cooler, because it never requires the whole tree to be in memory or in a database: the pruning is done in parallel using <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.  Some tests on the entire dump of the <a href="http://tolweb.org">Tree of Life Web Project</a> showed that this returns a pruned subtree within a few seconds, fast enough for a web service.  To find out more, read the <a href="https://github.com/phylotastic/tolomatic/blob/master/README.pod">online docs at github</a>. 
 		<li><b>Source trees</b>.  Some information on the source trees used in this project is as follows: 
@@ -265,9 +264,5 @@ The mammals tree includes the vast majority of known extant mammals, but the oth
 		<br> <code>phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla</code>
 		<li><b>Source code</b>. Source code for <a href="https://github.com/phylotastic/tolomatic/">this project</a> (and <a href="https://github.com/phylotastic/">other phylotastic projects</a>) is available at github.  
 		<li><b>Musical fish?</b>  That's a joke referring to the families of Guitarfish, Trumpetfish, Pipefish, and Drum.  The tree nuts are chestnut (Castanea), almond (Prunus), hazelnut (Corylus), walnut (Juglans), Brazilnut (Bertholletia), macadamia, pine nut, and pistachio.  The pets are cat, dog, guinea pig, and ferret.  
-		</ul>
-		</td>
-	</tr>
-    </table>
     </body>
 </html>

@@ -1,6 +1,6 @@
 body, html {
     font-family: Helvetica;
-    font-size: 14pt;
+    font-size: 12pt;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -120,6 +120,29 @@ div#accordion {
 .ui-tabs .ui-tabs-panel {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+textarea.species {
+	width: 96%;
+	height: 60px;
+	padding: 5px;
+	font-family: Monaco;
+    font-size: 10pt;
+}
+
+table.examples { 
+	border: 1px;
+	width: 100%;
+	font-family: Monaco;
+    font-size: 10pt;
+}
+
+ul.information li { 
+	margin-top: 0.5em; 
+}
+
+ul.information { 
+	text-align: left; 
 }
 
 .clearfix {
