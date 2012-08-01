@@ -111,8 +111,10 @@ my @species = split /,/, $params{'species'};
 # sanitize list by fixing spaces, underscores, and capitalization
 s/^\s+|\s+$//g for @species; # remove leading and trailing spaces 
 s/ /_/g for @species;  # convert internal spaces to underscores
-tr/A-Z/a-z/ for @species; # lower-case the whole thing
-s/^(\w)/\u$1/ for @species; # capitalize first word
+#
+# had to cut this out to allow use of phylomatic tree
+# tr/A-Z/a-z/ for @species; # lower-case the whole thing
+# s/^(\w)/\u$1/ for @species; # capitalize first word
 
 my ( $fh, $filename ) = tempfile();
 print $fh join "\n", @species;
@@ -197,7 +199,6 @@ __DATA__
 					<option value="fishes">fishes</option>
 					<option value="tol">tol</option>
 					<option value="angiosperms">angiosperms</option>
-					<option value="fishes">fishes</option>
 					<option value="phylomatic">phylomatic</option>
 				</select>
 				<label for="formatSelector">Output format:</label>
@@ -240,7 +241,8 @@ __DATA__
 			</tr>
 			<tr>
 			<!-- there is going to be a problem with capitalization --> 
-				<td>tree nuts (genera)</td><td>phylomatic</td><td>macadamia, pinus, corylus, pistacia, castanea, juglans, prunus, bertholletia</td>
+			<!-- this should work, don't know why it doesn't: lygodiaceae, anemiaceae, schizaeaceae, marsileaceae --> 
+				<td>tree nuts (genera)</td><td>phylomatic</td><td>macadamia_grandis, pinus, corylus_heterophylla, pistacia, castanea, juglans, prunus, bertholletia</td>
 			</tr>
 		</table>    
     </td>
