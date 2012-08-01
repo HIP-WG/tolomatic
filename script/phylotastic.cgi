@@ -170,7 +170,7 @@ __DATA__
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Tolomatic -- Phylotastic topology service demo</title>
-	    <link rel="stylesheet" type="text/css" href="css/phylotastic.css">
+	    <link rel="stylesheet" type="text/css" href="../css/phylotastic.css">
 </head>
     <body>
     <table>
