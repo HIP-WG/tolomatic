@@ -170,7 +170,7 @@ __DATA__
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Phylotastic topology server prototype using MapReduce</title>
-	    <link rel="stylesheet" type="text/css" href="../css/phylotastic.css">
+	    <link rel="stylesheet" type="text/css" href="http://phylotastic.org/css/phylotastic.css">
 </head>
     <body>
     <table>
