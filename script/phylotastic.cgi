@@ -195,7 +195,7 @@ __DATA__
 		<td align="left">			
 				<br>
 				<label for="speciesList">Species list:</label>
-				<textarea placeholder="Homo sapiens, Pan troglodytes, Gorilla gorilla, Pongo pygmaeus" cols="70" rows="3"> id="speciesList" name="species" class="species"></textarea>		
+				<textarea placeholder="Homo sapiens, Pan troglodytes, Gorilla gorilla, Pongo pygmaeus" cols="70" rows="3" id="speciesList" name="species" class="species"></textarea>		
 			   <label for="treeSelector">Source tree:</label>
 				<select name="tree" id="treeSelector">
 					<option value="mammals">mammals</option>				
@@ -249,10 +249,10 @@ __DATA__
 	</tr>
     </table>
 		<ul class="information">
-		<li><b>What's missing?</b>  This prototype uses exact matching with names in source trees (so be sure to get the exact scientific name, and follow the capitalization rules in the examples), but a more robust system would correct typos, fix capitalization, and use a Taxonomic Name Resolution Service (TNRS) that recognizes synonyms (and perhaps, common names).  A more flexible system might allow taxonomic grafting (i.e., adding a species based on its genera or family).  This service returns only a topology, without branch lengths or other information, whereas a more complete phylotastic system would supply branch lengths and provenance information.  
+		<li align="left"><b>What's missing?</b>This prototype uses exact matching with names in source trees (so be sure to get the exact scientific name, and follow the capitalization rules in the examples), but a more robust system would correct typos, fix capitalization, and use a Taxonomic Name Resolution Service (TNRS) that recognizes synonyms (and perhaps, common names).  A more flexible system might allow taxonomic grafting (i.e., adding a species based on its genera or family).  This service returns only a topology, without branch lengths or other information, whereas a more complete phylotastic system would supply branch lengths and provenance information.  
 		<li><b>How it works</b>.  Pruning can be done by recursive calls into a database (which probably would need to hit the database many times) or by loading the whole tree into memory (which might take a while to read in the file, and cost a bit of memory).  The way it is done here is much cooler, because it never requires the whole tree to be in memory or in a database: the pruning is done in parallel using <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.  Some tests on the entire dump of the <a href="http://tolweb.org">Tree of Life Web Project</a> showed that this returns a pruned subtree within a few seconds, fast enough for a web service.  To find out more, read the <a href="https://github.com/phylotastic/tolomatic/blob/master/README.pod">online docs at github</a>. 
 		<li><b>Source trees</b>.  Some information on the source trees used in this project is as follows: 
-		<ul>
+		<ul align="left">
 		<li><b>mammals</b>: 4500 mammal species from Bininda-Emonds, et al. 2007. 
 		<li><b>fishes</b>: fish families from Westneat & Lundberg
 		<li><b>tolweb</b>: XML dump of entire phylogeny from tolweb.org
@@ -260,9 +260,9 @@ __DATA__
 		<li><b>phylomatic</b>: tree of plant taxa from the Phylomatic program (Webb & Donoghue, 2005)
 		</ul>
 The mammals tree includes the vast majority of known extant mammals, but the other trees are missing many known species.  Some of these trees do not include species, but only higher taxonomic units (genera, families, orders). 
-		<li><b>The web-services API</b>.  This web page invokes a web service with a simple API exemplified in the following URL:
+		<li align="left"><b>The web-services API</b>.  This web page invokes a web service with a simple API exemplified in the following URL:
 		<br> <code>phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla</code>
-		<li><b>Source code</b>. Source code for <a href="https://github.com/phylotastic/tolomatic/">this project</a> (and <a href="https://github.com/phylotastic/">other phylotastic projects</a>) is available at github.  
+		<li align="left"><b>Source code</b>. Source code for <a href="https://github.com/phylotastic/tolomatic/">this project</a> (and <a href="https://github.com/phylotastic/">other phylotastic projects</a>) is available at github.  
 		<li><b>Musical fish?</b>  That's a joke referring to the families of Guitarfish, Trumpetfish, Pipefish, and Drum.  The tree nuts are chestnut (Castanea), almond (Prunus), hazelnut (Corylus), walnut (Juglans), Brazilnut (Bertholletia), macadamia, pine nut, and pistachio.  The pets are cat, dog, guinea pig, and ferret.  
     </body>
 </html>
