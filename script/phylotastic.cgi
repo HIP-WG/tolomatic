@@ -195,7 +195,7 @@ __DATA__
 		<td align="left">			
 				<br>
 				<label for="speciesList">Species list:</label>
-				<textarea id="speciesList" name="species" class="species"></textarea>		
+				<textarea placeholder="Homo sapiens, Pan troglodytes, Gorilla gorilla, Pongo pygmaeus" cols="70" rows="3"> id="speciesList" name="species" class="species"></textarea>		
 			   <label for="treeSelector">Source tree:</label>
 				<select name="tree" id="treeSelector">
 					<option value="mammals">mammals</option>				
@@ -233,7 +233,7 @@ __DATA__
 				<td>pets</td><td>mammals</td><td>Felis silvestris, Canis lupus, Cavia porcellus, Mustela nigripes</td>
 			</tr>
 			<tr>
-				<td>musical fish (families)</td><td>fishes</td><td>Aulostomidae, Rhinobatidae, Syngnathidae, Sciaenidae</td>
+				<td>musical fish families</td><td>fishes</td><td>Aulostomidae, Rhinobatidae, Syngnathidae, Sciaenidae</td>
 			</tr>
 			<tr>
 				<td>tree nuts</td><td>angio</td><td>Macadamia integrifolia, Pinus edulis, Corylus heterophylla, Pistacia vera, Castanea dentata, Juglans nigra, Prunus dulcis, Bertholletia excelsa</td>
