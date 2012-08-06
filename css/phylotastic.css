@@ -19,7 +19,7 @@ div.wrapper {
 }
 
 div.maincol {
-    width: 500px;
+    width: 700px;
     text-align: left;
     margin: auto;
 }
@@ -122,6 +122,7 @@ div#accordion {
     padding-right: 0px;
 }
 
+/* for the MapReduce pruner web form */
 textarea.species {
 	width: 96%;
 	height: 60px;
@@ -130,6 +131,7 @@ textarea.species {
     font-size: 10pt;
 }
 
+/* for the MapReduce pruner web form */
 table.examples { 
 	border: 1px;
 	width: 100%;
@@ -137,6 +139,7 @@ table.examples {
     font-size: 10pt;
 }
 
+/* for the MapReduce pruner web form */
 ul.information li { 
 	margin-top: 0.5em; 
 }
