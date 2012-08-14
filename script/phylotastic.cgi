@@ -176,7 +176,7 @@ __DATA__
     <table>
     <tr> <!-- the first row with "about" and logo --> 
 		<td width="25%" align="center">
-			Welcome! <br>This prototype pruner takes a very big tree (e.g., 100K nodes) and a list of taxa, and returns a topology for just those taxa. 
+			Welcome! <br>Given a list of taxa, this prototype pruner returns a phylogeny for those taxa based on a library of source trees. 
 		</td>
 		<td align="center"><a href="http://www.phylotastic.org"><img src="http://www.evoio.org/wg/evoio/images/f/f1/Phylotastic_logo.png"/></a>
 		<br>Automated access to the Tree of Life
@@ -218,11 +218,11 @@ __DATA__
 		</fieldset>
 		</form>
 	</tr>
-    <tr  bgcolor="#61D27F"> <!-- third row with examples on right, instructions on left -->
+    <tr  bgcolor="#E6E6E6"> <!-- third row with examples on right, instructions on left -->
 	<td align="center">Or, you can just copy and paste one of the examples here
 	</td>
 	    <td colspan="2"> 
-		<table class="examples" border="1"> <!-- the table of examples -->
+		<table class="examples" border="1" align="left"> <!-- the table of examples -->
 			<tr>
 				<th>Example</th><th>Source tree</th><th>Species list (copy and paste)</th>
 			</tr>
@@ -248,7 +248,7 @@ __DATA__
     </td>
 	</tr>
     </table>
-		<ul class="information">
+		<ul class="information" align="left">
 		<li><b>What's missing?</b>This prototype uses exact matching with names in source trees (so be sure to get the exact scientific name, and follow the capitalization rules in the examples), but a more robust system would correct typos, fix capitalization, and use a Taxonomic Name Resolution Service (TNRS) that recognizes synonyms (and perhaps, common names).  A more flexible system might allow taxonomic grafting (i.e., adding a species based on its genera or family).  This service returns only a topology, without branch lengths or other information, whereas a more complete phylotastic system would supply branch lengths and provenance information.  
 		<li><b>How it works</b>.  Pruning can be done by recursive calls into a database (which probably would need to hit the database many times) or by loading the whole tree into memory (which might take a while to read in the file, and cost a bit of memory).  The way it is done here is much cooler, because it never requires the whole tree to be in memory or in a database: the pruning is done in parallel using <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.  Some tests on the entire dump of the <a href="http://tolweb.org">Tree of Life Web Project</a> showed that this returns a pruned subtree within a few seconds, fast enough for a web service.  To find out more, read the <a href="https://github.com/phylotastic/tolomatic/blob/master/README.pod">online docs at github</a>. 
 		<li><b>Source trees</b>.  Some information on the source trees used in this project is as follows: 
