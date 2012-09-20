@@ -70,7 +70,7 @@ my %source = (
 	'angio'      => 'http://phylotastic-wg.nescent.org/examples/rawdata/Smith_2011_angiosperms.txt',
 	'phylomatic' => 'http://phylotastic-wg.nescent.org/examples/rawdata/Phylomatictree.nex',
 	'goloboff' => 'http://phylotastic-wg.nescent.org/examples/rawdata/Goloboff_molecules_only_shortest.nwk.txt',
-	'greengenes' => 'http://phylotastic-wg.nescent.org/examples/rawdata/Greengenes2011.txt',
+	'greengenes' => 'http://phylotastic-wg.nescent.org/examples/rawdata/Greengenes2011.txt'
 );
 
 
