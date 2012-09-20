@@ -206,6 +206,8 @@ __DATA__
 					<option value="tolweb">tolweb</option>
 					<option value="angiosperms">angiosperms</option>
 					<option value="phylomatic">phylomatic</option>
+					<option value="goloboff">goloboff</option>
+					<option value="greengenes">greengenes</option>
 				</select>
 				<label for="formatSelector">Output format:</label>
 				<select name="format" id="formatSelector">
