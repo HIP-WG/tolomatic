@@ -69,7 +69,10 @@ my %source = (
 	'tolweb'        => 'http://phylotastic-wg.nescent.org/examples/rawdata/TOL.xml',
 	'angio'      => 'http://phylotastic-wg.nescent.org/examples/rawdata/Smith_2011_angiosperms.txt',
 	'phylomatic' => 'http://phylotastic-wg.nescent.org/examples/rawdata/Phylomatictree.nex',
+	'goloboff' => 'http://phylotastic-wg.nescent.org/examples/rawdata/Goloboff_molecules_only_shortest.nwk.txt',
+	'greengenes' => 'http://phylotastic-wg.nescent.org/examples/rawdata/Greengenes2011.txt',
 );
+
 
 # current working directory
 my $CWD = getcwd;
@@ -222,7 +225,7 @@ __DATA__
 	<td align="center">Or, you can just copy and paste one of the examples here
 	</td>
 	    <td colspan="2"> 
-		<table class="examples" border="1" align="left"> <!-- the table of examples -->
+		<table class="examples" border="1"> <!-- the table of examples -->
 			<tr>
 				<th>Example</th><th>Source tree</th><th>Species list (copy and paste)</th>
 			</tr>
@@ -257,10 +260,10 @@ __DATA__
 		<li><b>fishes</b>: fish families from Westneat & Lundberg
 		<li><b>tolweb</b>: XML dump of entire phylogeny from tolweb.org
 		<li><b>angio</b>: Smith, et al., 2011 phylogeny of angiosperms
-		<li><b>phylomatic</b>: tree of plant taxa from the Phylomatic program (Webb & Donoghue, 2005)
+		<li><b>phylomatic</b>: plant framework from Phylomatic (Webb & Donoghue, 2005)
 		</ul>
 The mammals tree includes the vast majority of known extant mammals, but the other trees are missing many known species.  Some of these trees do not include species, but only higher taxonomic units (genera, families, orders). 
-		<li><b>The web-services API</b>.  This web page invokes a web service with a simple API exemplified in the following URL:
+		<li><b>The web-services API</b>.  This web page is just a front end to a web service!  You can call the service directly (no web page) like this:
 		<br> <code>phylotastic.cgi?format=newick&tree=mammals&species=Homo_sapiens,Pan_troglodytes,Gorilla_gorilla</code>
 		<li><b>Source code</b>. Source code for <a href="https://github.com/phylotastic/tolomatic/">this project</a> (and <a href="https://github.com/phylotastic/">other phylotastic projects</a>) is available at github.  
 		<li><b>Musical fish?</b>  That's a joke referring to the families of Guitarfish, Trumpetfish, Pipefish, and Drum.  The tree nuts are chestnut (Castanea), almond (Prunus), hazelnut (Corylus), walnut (Juglans), Brazilnut (Bertholletia), macadamia, pine nut, and pistachio.  The pets are cat, dog, guinea pig, and ferret.  
