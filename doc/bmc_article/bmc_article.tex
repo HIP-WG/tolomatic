@@ -271,8 +271,90 @@ published megatrees.
 
   % we can get this from the readme
   \subsection*{The algorithm}
-  - steps in the algorithm
-  - the need for denormalization  
+	Assume we have a tree as shown in Figure 1A. The nodes on this tree are 
+	labelled with integers (1-6), which have been applied in a post-order 
+	traversal. The important point of this is that a child node will always 
+	have a label whose value is a lower number than any of its ancestors. Now
+	assume that we want to get a tree that retains tips A, C, F and G such
+	that we end up with a tree as shown in Figure 1B. Here are the steps to
+	solve this using our algorithm.
+	\subsubsection*{Map}
+		In the first step, the map function is passed one taxon to retain 
+		per call. In response to each of these, we return a list of key value 
+		pairs, where each key is a node label for one of the nodes between 
+		the taxon and the root of the tree, and the value is the taxon. 
+		This is what it emits:
+
+		 (for A:)
+		 1 => A
+		 3 => A
+		 4 => A
+		 6 => A
+		
+		 (for C:)
+		 2 => C
+		 3 => C
+		 4 => C
+		 6 => C
+		
+		 (for F:)
+		 5 => F
+		 6 => F
+		
+		 (for G:)
+		 5 => G
+		 6 => G
+
+	\subsubsection*{Combine}
+		In the second step, the outputs of the map function are passed into 
+		a combiner that preprocesses the output from map such that 
+		each key - that perhaps was emitted multiple times by map - is only seen 
+		once, with a list of the values associated with it, i.e. like so:
+
+		 1 => [ A ]
+		 2 => [ C ]
+		 3 => [ A, C ]
+		 4 => [ A, C ]
+		 5 => [ F, G ]
+		 6 => [ A, C, F, G ]
+
+		In this step we then switch the keys and values around, as a first
+		step towards identifying and filtering out the unbranched internal node 
+		that was created by pruning tip E (because of the parallelization we 
+		cannot know whether that is node 3 or 4). In addition, we will also 
+		want to prune out the unbranched internal nodes that were created by 
+		pruning B and D (being node 1 and 2, respectively). For that we count 
+		how many descendants those nodes have. So two things: switch keys and 
+		values, count number of descendants. Because keys and values we emit 
+		need to be scalars we concatenate the keys with | and the values with , 
+		(for example). Here's the result we would then emit:
+
+		 A       => 1,1 # the first integer is the node ID, the second its tip count
+		 C       => 2,1
+		 A|C     => 3,2
+		 A|C     => 4,2
+		 F|G     => 5,2
+		 A|C|F|G => 6,4
+
+	\subsubsection*{Reduce}
+
+		Out of the key/value pairs emitted by the combine step we firstly filter 
+		out "unbranched internal nodes" such as node 1 and 2, which became 
+		"unbranched" by the pruning of B and D, respectively. This is trivial, 
+		because we will just not emit any key/value pairs where the value has a
+		tip count of one (the integer after the comma). For 3 and 4 this is a bit 
+		harder, we know they are both on the path to the root for both A and C, but 
+		the only way to know which of these is the MRCA is by recourse to our 
+		node labelling scheme: because the labels were applied in post-order, 
+		descendants have lower label values than ancestors, and so 3 is the MRCA. 
+		Having so reduced the number of key/value pairs, we finally emit:
+
+		 A|C     => 3,2
+		 F|G     => 5,2
+		 A|C|F|G => 6,4
+
+		This final result is the tree represented as a taxon bipartition table 
+		with labels for each implied node retained.
 
   % this describes at a high level the perl code and web service
   \subsection*{Tolomatic}
@@ -351,7 +433,7 @@ published megatrees.
 
 \section*{Figures}
   \subsection*{Figure 1 - Example tree}
-      Figure of a tree pre- and post pruning
+      Figure of a tree before (A) and after (B) pruning
 
   \subsection*{Figure 2 - Algorithm flowchart}
       Figure of the steps in the algorithm
