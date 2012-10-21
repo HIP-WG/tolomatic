@@ -123,7 +123,7 @@
        \email{Rutger A Vos\correspondingauthor - Rutger.Vos@naturalis.nl}%
       \and
          Aaron Steele\correspondingauthor$^2$%
-         \email{Aaron Steele\correspondingauthor - eightysteele@gmail.com}
+         \email{Aaron Steele\correspondingauthor - asteele@berkeley.edu}
       }
       
 
@@ -329,7 +329,7 @@ published megatrees.
 		need to be scalars we concatenate the keys with | and the values with , 
 		(for example). Here's the result we would then emit:
 
-		 A       => 1,1 # the first integer is the node ID, the second its tip count
+		 A       => 1,1 % the first integer is the node ID, the second its tip count
 		 C       => 2,1
 		 A|C     => 3,2
 		 A|C     => 4,2
@@ -363,10 +363,9 @@ published megatrees.
   - performance
 
   % this describes at a high level Aaron's code
-  \subsection*{Name of the Clojure implementation}
-  - using the clojure implementation
-  - web front-end
-  - performance
+  \subsection*{Clojure implementation on Hadoop}
+
+  Clojure is a dynamic programming language that compiles down to bytecode which is executed on the Java Virtual Machine. It can natively access Java frameworks like Apache Hadoop, making it a good candidate for implementing distributed MapReduce algorithms in an extrememly performant way. In addition to Clojure, our implementation rides on Cascalog, a high performance data processing library for querying "Big Data" on Hadoop using clusters or local machines with the interactive Clojure REPL. As input, our implementation takes two files: The phylogenetic tree that has been transformed and labelled in a post-order traversal from node tip to root, and a file containing the node tips from which to prune. The output is the  taxon bipartition table described above.
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section*{Conclusions}
