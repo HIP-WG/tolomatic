@@ -135,7 +135,7 @@
 
 \address{%
     \iid(1)Naturalis Biodiversity Center, Einsteinweg 2, Leiden, the Netherlands\\
-    \iid(2)University of California at Berkeley, Berkeley, USA
+    \iid(2)University of California Berkeley, Berkeley, USA
 }%
 
 \maketitle
@@ -225,11 +225,44 @@ methodology of phylogenetic inference have been constructing larger and
 larger trees ("megatrees") of, among other higher taxa, mammals (ref), 
 fishes (ref) and angiosperms (ref) while community projects on classification 
 have resulted in tree-like artefacts such as the NCBI taxonomy (ref), the 
-skeleton of the Tree of Life Web Project (ref) and the "green genes" tree (ref). However, a recent survey of community practices (ref) has indicated that there are considerable barriers to re-use of these megatrees by non-experts. Among these barriers is the dearth of tools to prune such trees down to the set of taxa of interest. The "Phylomatic" tool (ref), which by default operates on the APG3 composite estimate of phylogeny, is the main exception to this situation as it provides a convenient way for researchers to obtain subtrees (usually of plants) that can be applied towards towards their research questions - which explain Phylomatic's popularity as observed in the survey (ref). Noting the usefulness of Phylomatic, biologists and informaticists have teamed up to formalize a design pattern subsequent to which they are developing a standards-compliant "stack" of web services that provides more generalized functionality of taxonomic name resolution, tree pruning and grafting, branch length estimation and data integration:
-"Phylotastic". Participants in this collaboration have developed tree pruning functionality using a variety of approaches, including triple store and RDBMS queries and implementations in several open source programming toolkits for phyloinformatics (e.g. DendroPy (ref), Bio::Phylo (ref), ...). This process also resulted in the development of a tree pruning algorithm that leverages the MapReduce design pattern for massively parallel data analysis (ref). MapReduce is a simple pattern originally developed by Google that consists of -at a minimum - two steps. In the first step, input data are transformed by 
-"mappers" into meaningful key/value pairs. As these mappers operate in a trivially parallel way, the same key may be emitted multiple times (possibly with different values). These emitted result are subsequently aggregated into a single datum comprised of a key associated with a list of all values observed for that key, and this datum is then passed to the next step, where parallelized "reducers" whittle down each datum (i.e. a single key and a list of values) to zero or more key/value pairs. In an optional third step, 
-"combiners" then operate on these key/value pairs to obtain a final result. In recent years, MapReduce has found application in some areas of "big data
-biology", for example in the Genome Analysis Tool Kit (GATK, ref), where it is applied to parallelized traversal of aligned short reads obtained by high-throughput shotgun sequencing ("next generation sequencing"). Here we present a tree pruning algorithm that operates on megatrees, returning a result in reasonable time by employing MapReduce-based parallelization. We have implemented this algorithm in two programming languages (Perl and Clojure) and have launched a prototype web service (ref - location) that allows users to harvest subtrees from several published megatrees.
+skeleton of the Tree of Life Web Project (ref) and the "green genes" tree (ref). 
+However, a recent survey of community practices (ref) has indicated that there 
+are considerable barriers to re-use of these megatrees by non-experts. Among 
+these barriers is the dearth of tools to prune such trees down to the set of 
+taxa of interest. The "Phylomatic" tool (ref), which by default operates on the 
+APG3 composite estimate of phylogeny, is the main exception to this situation as 
+it provides a convenient way for researchers to obtain subtrees (usually of 
+plants) that can be applied towards towards their research questions - which 
+explain Phylomatic's popularity as observed in the survey (ref). Noting the 
+usefulness of Phylomatic, biologists and informaticists have teamed 
+up to formalize a design pattern subsequent to which they are developing a 
+standards-compliant "stack" of web services that provides more generalized 
+functionality of taxonomic name resolution, tree pruning and grafting, branch 
+length estimation and data integration: "Phylotastic". Participants in this
+collaboration have developed tree pruning functionality using a variety of
+approaches, including triple store and RDBMS queries and implementations in
+several open source programming toolkits for phyloinformatics (e.g. DendroPy (ref),
+Bio::Phylo (ref), ...). This process also resulted in the development of a tree
+pruning algorithm that leverages the MapReduce design pattern for massively 
+parallel data analysis (ref). MapReduce is a simple pattern originally developed
+by Google that consists of - at a minimum - two steps. In the first step, input
+data are transformed by "mappers" into meaningful key/value pairs. As these 
+mappers operate in a trivially parallel way, the same key may be emitted multiple 
+times (possibly with different values). These emitted result are subsequently 
+aggregated into a single datum comprised of a key associated with a list of 
+all values observed for that key, and this datum is then passed to the next
+step, where parallelized "reducers" whittle down each datum (i.e. a single key
+and a list of values) to zero or more key/value pairs. In an optional third
+step, "combiners" then operate on these key/value pairs to obtain a final result.
+In recent years, MapReduce has found application in some areas of "big data
+biology", for example in the Genome Analysis Tool Kit (GATK, ref), where it is
+applied to parallelized traversal of aligned short reads obtained by high-throughput
+shotgun sequencing ("next generation sequencing"). Here we present a tree pruning
+algorithm that operates on megatrees, returning a result in reasonable time by
+employing MapReduce-based parallelization. We have implemented this algorithm in
+two programming languages (Perl and Clojure) and have launched a prototype web
+service (ref - location) that allows users to harvest subtrees from several 
+published megatrees.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Results and Discussion %%
@@ -238,7 +271,8 @@ biology", for example in the Genome Analysis Tool Kit (GATK, ref), where it is a
 
   % we can get this from the readme
   \subsection*{The algorithm}
-	Assume we have a tree as shown in Figure 1A. The nodes on this tree are labelled with integers (1-6), which have been applied in a post-order 
+	Assume we have a tree as shown in Figure 1A. The nodes on this tree are 
+	labelled with integers (1-6), which have been applied in a post-order 
 	traversal. The important point of this is that a child node will always 
 	have a label whose value is a lower number than any of its ancestors. Now
 	assume that we want to get a tree that retains tips A, C, F and G such
@@ -272,7 +306,10 @@ biology", for example in the Genome Analysis Tool Kit (GATK, ref), where it is a
 		 6 => G
 
 	\subsubsection*{Combine}
-		In the second step, the outputs of the map function are passed into combiner that preprocesses the output from map such that each key - that perhaps was emitted multiple times by map - is only seen once, with a list of the values associated with it, i.e. like so:
+		In the second step, the outputs of the map function are passed into 
+		a combiner that preprocesses the output from map such that 
+		each key - that perhaps was emitted multiple times by map - is only seen 
+		once, with a list of the values associated with it, i.e. like so:
 
 		 1 => [ A ]
 		 2 => [ C ]
@@ -306,8 +343,10 @@ biology", for example in the Genome Analysis Tool Kit (GATK, ref), where it is a
 		"unbranched" by the pruning of B and D, respectively. This is trivial, 
 		because we will just not emit any key/value pairs where the value has a
 		tip count of one (the integer after the comma). For 3 and 4 this is a bit 
-		harder, we know they are both on the path to the root for both A and C, but the only way to know which of these is the MRCA is by recourse to our 
-		node labelling scheme: because the labels were applied in post-order, descendants have lower label values than ancestors, and so 3 is the MRCA. 
+		harder, we know they are both on the path to the root for both A and C, but 
+		the only way to know which of these is the MRCA is by recourse to our 
+		node labelling scheme: because the labels were applied in post-order, 
+		descendants have lower label values than ancestors, and so 3 is the MRCA. 
 		Having so reduced the number of key/value pairs, we finally emit:
 
 		 A|C     => 3,2
