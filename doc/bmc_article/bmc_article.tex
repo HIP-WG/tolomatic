@@ -363,9 +363,32 @@ published megatrees.
   - performance
 
   % this describes at a high level Aaron's code
-  \subsection*{Clojure implementation on Hadoop}
+  \subsection*{Clojure}
 
-  Clojure is a dynamic programming language that compiles down to bytecode which is executed on the Java Virtual Machine. It can natively access Java frameworks like Apache Hadoop, making it a good candidate for implementing distributed MapReduce algorithms in an extrememly performant way. In addition to Clojure, our implementation rides on Cascalog, a high performance data processing library for querying "Big Data" on Hadoop using clusters or local machines with the interactive Clojure REPL. As input, our implementation takes two files: The phylogenetic tree that has been transformed and labelled in a post-order traversal from node tip to root, and a file containing the node tips from which to prune. The output is the  taxon bipartition table described above.
+  Our implementation rides on Clojure, a dynamic programming language that 
+  compiles down to bytecode and gets executed on the Java Virtual Machine. It
+  can natively access Java frameworks like Apache Hadoop, making it an ideal 
+  candidate for implementing distributed MapReduce algorithms in an extrememly 
+  performant way. In addition to Clojure, our implementation rides on 
+  Cascalog, a high performance data processing library for querying "Big Data" 
+  on Hadoop using clusters or local machines with the interactive Clojure REPL.
+
+  \subsubsection*{Implementation details}
+  
+  As input, our implementation takes two files: The phylogenetic tree that has 
+  been transformed and labelled in a post-order traversal from node tip to 
+  root, and a file containing the node tips from which to prune. The output is 
+  the taxon bipartition table described above. The algorithm initially maps 
+  each node to its tip, then combines and merges resulting tips to create the 
+  final bipartition table. The MapReduce job can be launched from the command 
+  line on a Hadoop cluster or interactively using the REPL.
+
+  \subsubsection*{Runtime performance}
+
+  Here a brief overview of how performance improves as input data gets larger 
+  since the Hadoop overhead is eclipsed. Also mention combining other sources 
+  of Big Data such as spatial data via GADM native Java bindings, taxonomy 
+  synonyms, etc could be done much faster than serial methods.
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section*{Conclusions}
