@@ -1,13 +1,9 @@
 package Bio::PhyloTastic::Pruner::MapReduce;
 use Moose::Role;
-use Scalar::Util 'refaddr';
-use Bio::Phylo::Util::Logger ':levels';
-use Digest::MD5 'md5_hex';
-use Data::Dumper;
+use Bio::PhyloTastic::Pruner::Util;
 
-die "Need DATADIR environment variable" if not -d $ENV{'DATADIR'};
-
-my $logger = Bio::Phylo::Util::Logger->new( '-level' => INFO );
+my $util = Bio::PhyloTastic::Pruner::Util->new;
+my $log  = $util->logger;
 
 =item map($self,$taxon)
 
@@ -26,15 +22,9 @@ that path is emitted as node ID => taxon. For example, for tree
 
 sub map { 
     my ( $self, $taxon ) = @_;
-    my $file = $ENV{'DATADIR'} . '/' . md5_hex($taxon);
-    $logger->info("taxon: $taxon (file: $file)");
-    open my $fh, '<', $file or $logger->warn("Can't process taxon ${taxon} (${file}): $!") and return;
-    my @lines = <$fh>;
-    my @fields = split /\t/, $lines[0];
-    $logger->debug("path: @fields");
-    for my $i ( 1 .. $#fields ) {
-        $self->emit( $fields[$i], $fields[0] );        
-    }
+    my ( $dir, $file ) = $util->taxon_dir(undef,$taxon);
+    my @path = $util->read_taxon_file( "$dir/$file" );
+    $self->emit( $path[$_], $path[0] ) for 1 .. $#path
 }
 
 =item combine($self,$node,$iter)
@@ -58,7 +48,6 @@ sub combine {
     while( $iter->has_next ) {
         push @tips, $iter->next;        
     }
-    $logger->debug("node: $node tips: @tips");
     if ( @tips ) {
         $self->emit( join("|", sort{$a cmp $b} @tips), $node . ',' . scalar(@tips) );
     }
@@ -87,7 +76,6 @@ sub reduce {
     my @sorted = sort { $a->{node} <=> $b->{node} } grep { $_->{count} > 1 } @nodes;
     if ( @sorted ) {
         my $mrca = $sorted[0];
-        $logger->info("mrca: " . $mrca->{node} . " tips: " . $tips);
         $self->emit( $tips, $mrca->{node} . ',' . $mrca->{count} );
     }
 }
