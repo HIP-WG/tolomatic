@@ -1,18 +1,27 @@
 package Bio::PhyloTastic::Pruner::Util;
 use strict;
 use warnings;
+use JSON;
+use CQL::Parser;
+use URI::Escape;
 use Config::Tiny;
 use Data::Dumper;
+use Bio::Phylo::Factory;
 use Digest::MD5 'md5_hex';
 use File::Path 'make_path';
 use Bio::Phylo::Util::Logger;
+use Bio::PhyloTastic::Pruner::CONSTANT qw(TREEID TAXALIST);
+
+# fetch the constants
+my $treeid   = TREEID;
+my $taxalist = TAXALIST;
 
 use base 'Config::Tiny';
 
 my $log = Bio::Phylo::Util::Logger->new;
 
 sub new {
-	my $class = shift;
+	my $class  = shift;
 	my $config = shift || $ENV{PHYLOTASTIC_MAPREDUCE_CONFIG};
 	if ( -e $config ) {
 		$log->info("going to read config $config");
@@ -35,7 +44,6 @@ sub encode_taxon {
 	
 	# the encoding is a simple MD5 checksum
 	my $hash = md5_hex($taxon);
-	$log->debug("$taxon => $hash");
 	
 	return $hash;
 }
@@ -50,7 +58,6 @@ sub taxon_dir {
 	
 	# input tree URI should map onto a data dir
 	my $dir  = $self->{_}->{dataroot} . '/' . $self->{$tree}->{datadir};
-	$log->debug("datadir for $tree is $dir");
 	
 	# encode the taxon name
 	my $encoded = $self->encode_taxon($taxon);
@@ -59,7 +66,6 @@ sub taxon_dir {
 	my @parts = split //, $encoded;
 	my $taxon_dir = join '/', @parts[ 0 .. $self->{_}->{hashdepth} ];
 	my $path = $dir . '/' . $taxon_dir . '/';
-	$log->debug("taxon dir location is $path");
 	
 	return wantarray ? ($path, $encoded) : $path;
 }
@@ -97,6 +103,90 @@ sub write_taxon_file {
 	close $fh;
 	
 	return "$dir/$file";
+}
+
+sub read_outfile {
+	my ($self,$file) = @_;
+	
+	# build ancestor paths for all tips
+	my %ancestors;
+	{
+		open my $fh, '<', $file or die $!;
+		while(<$fh>) {
+			chomp;
+			my @line = split /\t/, $_;
+			my @taxa = split /\|/, $line[0];
+			my ( $ancestor, $ntax ) = split /,/, $line[1];
+			
+			# by now these aren't sorted in post-order
+			for my $taxon ( @taxa ) {
+				$ancestors{$taxon} = [] if not $ancestors{$taxon};
+				push @{ $ancestors{$taxon} }, $ancestor;
+			}
+		}
+	}
+	
+	# instantiate factory and tree
+	my $fac = Bio::Phylo::Factory->new;
+	my $tree = $fac->create_tree;
+	
+	# build up node relations
+	my %node;
+	for my $taxon ( keys %ancestors ) {
+		my $child = $fac->create_node( '-name' => $taxon );
+		$tree->insert($child);
+		
+		# break once we've coalesced with a previously seen lineage
+		ANCESTOR: for my $ancestor ( sort { $a <=> $b } @{ $ancestors{$taxon} } ) {
+			my $parent = $node{$ancestor};
+			if ( $parent ) {
+				$parent->set_child( $child );
+				last ANCESTOR;
+			}
+			$parent = $node{$ancestor} = $fac->create_node( '-name' => $ancestor );
+			$parent->set_child($child);
+			$tree->insert($parent);
+			$child = $parent;
+		}
+	}
+	
+	return $tree;
+}
+
+sub parse_cql {
+	my ($self,$query) = @_;
+	my %result; # hash with 'tree' and 'taxa'
+	
+	# instantiate the CQL parser, parse string to syntax tree
+	my $parser = CQL::Parser->new;
+	my $root = $parser->parse($query);
+	
+	# the root node has to be an "AND" node for the two terms
+	if ( UNIVERSAL::isa($root,'CQL::AndNode') ) {
+		
+		# iterate over the children
+		for my $child ( $root->left, $root->right ) {
+			
+			# all children need to be term nodes
+			if ( UNIVERSAL::isa($child,'CQL::TermNode') ) {
+				
+				# it's either the taxa list or the tree id
+				if ( $child->getQualifier eq $taxalist ) {
+					$result{$taxalist} = decode_json(uri_unescape($child->getTerm));
+				}
+				elsif ( $child->getQualifier eq $treeid ) {
+					$result{$treeid} = uri_unescape($child->getTerm);
+				}
+			}
+			else {
+				$log->warn("child CQL node not a TERM node");
+			}
+		}
+	}
+	else {
+		$log->warn("root of CQL syntax tree not an AND node");
+	}
+	return %result;
 }
 
 
