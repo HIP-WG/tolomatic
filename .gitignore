@@ -8,6 +8,8 @@ examples\/mammals/
 examples\/phylomatic/
 examples\/greengenes/
 examples\/tol/
+examples\/16S_candiv_gg_2011_1/
+examples\/rawdata/
 _Inline
 script\/pruner\/build
 outfile\.tre
