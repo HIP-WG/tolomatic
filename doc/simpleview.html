@@ -1,0 +1,43 @@
+<html>
+	<body>
+		<script type="text/javascript">
+			function doSubmit () {
+				var redirect = 'http://localhost/cgi-bin/phylotastic.cgi?query=';
+				var treeId = document.getElementById('pt.identifier.tree').value;
+				var taxa   = document.getElementById('pt.taxaForSubtree').value;
+				var query = 'pt.identifier.tree='
+					+ encodeURIComponent(treeId)
+					+ ' and '
+					+ 'pt.taxaForSubtree='
+					+ encodeURIComponent(taxa);
+				document.location.href = redirect + query;
+			}
+		</script>
+		<form
+			action="phylotastic.cgi"
+			method="get">
+			
+			<!-- pulldown menu to select the tree to prune -->
+			<select
+				name="pt.identifier.tree"
+				id="pt.identifier.tree">
+				<option
+					value="http://phylotastic-wg.nescent.org/examples/rawdata/Greengenes2011.txt">greengenes</option>
+			</select>
+			
+			<!-- textarea to paste the JSON -->
+			<textarea
+				id="pt.taxaForSubtree"
+				name="pt.taxaForSubtree"
+				rows="5"
+				cols="50">			
+			</textarea>
+			
+			<!-- triggers JS function that composes CQL query -->
+			<input
+				value="Get Phylotastic Tree!"
+				type="button"
+				onclick="doSubmit()"/>
+		</form>
+	</body>
+</html>
