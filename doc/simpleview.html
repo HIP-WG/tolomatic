@@ -2,7 +2,6 @@
 	<body>
 		<script type="text/javascript">
 			function doSubmit () {
-				//var redirect = 'http://localhost/phylows/tree/subtree?query=';
 				var treeId = document.getElementById('pt.identifier.tree').value;
 				var taxa   = document.getElementById('pt.taxaForSubtree').value;
 				var query = 'pt.identifier.tree="'
@@ -17,8 +16,7 @@
 		</script>
 			<!-- pulldown menu to select the tree to prune -->
 			<select id="pt.identifier.tree">
-				<option
-					value="http://phylotastic-wg.nescent.org/examples/rawdata/Greengenes2011.txt">greengenes</option>
+				<option value="http://example.org/16S_candiv_gg_2011_1">greengenes</option>
 			</select>
 			
 			<!-- textarea to paste the JSON -->
@@ -28,6 +26,14 @@
 			id="form"
 			action="http://localhost/phylows/tree/subtree"
 			method="post">
+			
+			<!-- output format -->
+			<select name="format">
+				<option value="nexml">nexml</option>
+				<option value="newick">newick</option>
+				<option value="nexus">nexus</option>
+				<option value="phyloxml">phyloxml</option>
+			</select>			
 			
 			<!-- this will hold the CQL query -->
 			<input type="hidden" id="query" name="query" />
