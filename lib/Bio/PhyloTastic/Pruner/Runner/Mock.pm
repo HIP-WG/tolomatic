@@ -57,17 +57,21 @@ sub run {
 					'-name'          => $label,
 					'-branch_length' => $length,
 				);
-				$tree->insert($seen{$path[$i]});
+				$tree->insert($seen{$label});
 			}
 			
 			# path fragment is interior, so could have multiple children
 			if ( $i > 0 ) {
-				my ($parent) = split /:/, $path[$i-1];
-				$seen{$parent}->set_parent($seen{$label});
+				my ($child) = split /:/, $path[$i-1];
+				
+				# do this only once
+				if ( not $seen{$child}->get_parent ) {
+					$seen{$child}->set_parent($seen{$label});
+				}
 			}
 		}
 	}
-	$tree->_analyze;
+	$tree->remove_unbranched_internals;
 	my $taxa = $forest->make_taxa;
 	$project->insert($taxa);
 	return $project;
