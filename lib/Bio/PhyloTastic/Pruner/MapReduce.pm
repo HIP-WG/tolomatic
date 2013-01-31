@@ -73,7 +73,7 @@ sub reduce {
         ( $tuple{node}, $tuple{count} ) = split /,/, $iter->next;
         push @nodes, \%tuple;
     }
-    my @sorted = sort { $a->{node} <=> $b->{node} } grep { $_->{count} > 1 } @nodes;
+    my @sorted = sort { $b->{node} <=> $a->{node} } grep { $_->{count} > 1 } @nodes;
     if ( @sorted ) {
         my $mrca = $sorted[0];
         $self->emit( $tips, $mrca->{node} . ',' . $mrca->{count} );
