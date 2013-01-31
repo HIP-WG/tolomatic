@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 BEGIN {
-	$ENV{PHYLOTASTIC_MAPREDUCE_CONFIG} = '/Users/rvosa/Dropbox/documents/projects/current/tolomatic/conf/config.ini';	
+	$ENV{PHYLOTASTIC_MAPREDUCE_CONFIG} = '/Library/WebServer/Perl/tolomatic/conf/config.ini';	
 }
 use strict;
 use warnings;
