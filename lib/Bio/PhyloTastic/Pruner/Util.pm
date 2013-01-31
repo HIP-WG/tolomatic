@@ -19,20 +19,25 @@ my $taxalist = TAXALIST;
 use base 'Config::Tiny';
 
 my $log = Bio::Phylo::Util::Logger->new;
+my $SINGLETON;
 
 sub new {
 	my $class  = shift;
-	my $config = shift || $ENV{PHYLOTASTIC_MAPREDUCE_CONFIG};
-	if ( -e $config ) {
-		$log->info("going to read config $config");
-		my $self = $class->read( $config );
-		$log->VERBOSE( '-level' => $self->{_}->{loglevel} );
-		$log->info("data root is ".$self->{_}->{dataroot} );
-		return $self;
+	if ( not $SINGLETON ) {
+		my $config = shift || $ENV{PHYLOTASTIC_MAPREDUCE_CONFIG};
+		
+		# read the config file once
+		if ( -e $config ) {
+			$log->info("going to read config $config");
+			$SINGLETON = $class->read( $config );
+			$log->VERBOSE( '-level' => $SINGLETON->{_}->{loglevel} );
+			$log->info("data root is ".$SINGLETON->{_}->{dataroot} );
+		}
+		else {
+			die "Couldn't read config file '$config'";
+		}
 	}
-	else {
-		die "Couldn't read config file '$config'";
-	}
+	return $SINGLETON;
 }
 
 sub tree { $ENV{PHYLOTASTIC_MAPREDUCE_TREE} }
@@ -88,8 +93,9 @@ sub read_taxon_file {
 sub write_taxon_file {
 	my ($self,$tree,@path) = @_;
 	
-	# first parth of path should be UN-encoded taxon name
+	# first part of path should be UN-encoded taxon name
 	my $taxon = $path[0];
+	$taxon =~ s/:.+//; # strip branch length
 	my ($dir,$file) = $self->taxon_dir($tree,$taxon);
 	
 	# make the path if it didn't already exist
