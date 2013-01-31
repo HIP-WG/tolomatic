@@ -44,8 +44,10 @@ sub traverse {
 		}
 	}
 	my $id = $node->id;
+	my $ln = $node->length;
+	my $token = defined $ln ? "${id}:${ln}" : $id;
 	my @path = @{ $path{$id} } if $path{$id};
-	unshift @path, $id;
+	unshift @path, $token;
 	for my $child ( @children ) {
 		$path{$child->id} = \@path;
 		traverse($child);
@@ -54,13 +56,15 @@ sub traverse {
 }
 
 sub path {
-	my $tip = shift;
-	my $name = $tip->get_name;
-	my $node = $tip->get_parent;
+	my $tip   = shift;
+	my $name  = $tip->get_name;
+	my $node  = $tip->get_parent;
+	my $brln  = $tip->get_branch_length;
+	my $label = defined $brln ? "$name:$brln" : $name;
 	$tipcounter++;
 	if ( not $tipcounter % 100 ) {
 		$log->info("writing path for tip $tipcounter ($name)");
 	}
-	my @path = ( $tip->get_name, @{ $path{$tip->id} } );	
+	my @path = ( $label, @{ $path{$tip->id} } );	
 	return @path;
 }
